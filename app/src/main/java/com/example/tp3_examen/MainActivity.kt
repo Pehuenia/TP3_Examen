@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                             value = usuario,
                             onValueChange = { usuario = it },
                             label = "DNI o E-mail",
-                            errorMessage = "Formato de email invalido",
+                            errorMessage = "Formato de email invalidoo",
                             isValid =  {Patterns.EMAIL_ADDRESS.matcher(it).matches()},
                         )
                         Input(
