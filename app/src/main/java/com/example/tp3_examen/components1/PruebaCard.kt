@@ -100,7 +100,7 @@ fun PruebaCard() {
                             append("CVU:")
                         }
                         withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                            append("0000654326538129540653")
+                            append("000654326538129540653")
                         }
                     },
                     color = colorResource(id = R.color.black),
