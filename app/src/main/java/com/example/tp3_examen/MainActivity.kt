@@ -23,7 +23,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -34,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 import com.example.tp3_examen.utilities.LastCharVisibleTransformation
@@ -56,6 +59,7 @@ class MainActivity : ComponentActivity() {
                             .padding(top = 24.dp, end = 12.dp, bottom = 24.dp, start = 12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
+
                         var usuario by remember { mutableStateOf(TextFieldValue("")) }
                         var password by remember { mutableStateOf(TextFieldValue("")) }
 
