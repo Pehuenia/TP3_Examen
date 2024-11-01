@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .padding(top = 24.dp, end = 12.dp, bottom = 24.dp, start = 12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
-                    ) { /*
+                    ) {
 
                         var usuario by remember { mutableStateOf(TextFieldValue("")) }
                         var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -81,9 +81,7 @@ class MainActivity : ComponentActivity() {
                             isPassword = true
                         )
                         ButtonApp(text = "Ingresar", {})
-                        */
 
-                        PruebasScreen()
                     }
                 }
             }
