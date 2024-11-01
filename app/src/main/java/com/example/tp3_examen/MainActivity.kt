@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 import com.example.tp3_examen.utilities.LastCharVisibleTransformation
 import kotlinx.coroutines.CoroutineScope
@@ -77,6 +78,7 @@ class MainActivity : ComponentActivity() {
                             isPassword = true
                         )
                         ButtonApp(text = "Ingresar", {})
+                        PruebaCard()
                     }
                 }
             }
