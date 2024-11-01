@@ -9,7 +9,7 @@ import com.example.tp3_examen.R
 @Composable
 fun ChevronIcon(){
     val icon =  ImageVector.vectorResource(id = R.drawable.chevron_icon)
-    val iconSize = 20.dp
+    val iconSize = 26.dp
     CircularIcon(icon = icon, iconSize = iconSize)
 
 
