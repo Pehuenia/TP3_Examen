@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">TP3_Examen</string>
 
-    <string name="perfil_text">Mi perfil</string>
+    `Drawer menu`
+    <string name="profile_text">Mi perfil</string>
+    <string name="drawer_greeting">Hola, %s</string>
 
 
 </resources>
