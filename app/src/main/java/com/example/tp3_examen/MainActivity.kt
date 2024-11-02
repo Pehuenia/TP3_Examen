@@ -5,11 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.CustomCard
+import com.example.tp3_examen.components1.ButtonApp
+import com.example.tp3_examen.components1.CardService
+import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,18 +33,19 @@ class MainActivity : ComponentActivity() {
                             .padding(12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
-                        // Muestra la tarjeta personalizada
+                        // Display custom card
                         CustomCard(cardNumber = "4957 7124 81544 2582")
 
-                        var usuario by remember { mutableStateOf("") }
-                        var password by remember { mutableStateOf("") }
+                        // Login inputs and button
+                        var usuario by remember { mutableStateOf(TextFieldValue("")) }
+                        var password by remember { mutableStateOf(TextFieldValue("")) }
 
                         Input(
                             value = usuario,
                             onValueChange = { usuario = it },
                             label = "DNI o E-mail",
                             errorMessage = "Formato de email invalido",
-                            isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
+                            isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() }
                         )
                         Input(
                             value = password,
@@ -53,9 +59,8 @@ class MainActivity : ComponentActivity() {
                             isPassword = true
                         )
                         ButtonApp(text = "Ingresar", {})
-                        PruebaCard()
 
-                        TransactionsList()
+                        CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)
                     }
                 }
             }
