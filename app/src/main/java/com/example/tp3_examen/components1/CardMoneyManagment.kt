@@ -34,25 +34,8 @@ import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 
 @Composable
-fun CardMoneyManagment() {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = colorResource(id = R.color.white),
-        ),
-        modifier = Modifier
-            .padding(0.dp)
-            .fillMaxWidth()
-            .height(96.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .border(
-                BorderStroke(1.dp, colorResource(id = R.color.gray_500)),
-                shape = RoundedCornerShape(8.dp)
-            )
-            .shadow(
-                elevation = 4.dp,
-                shape = RoundedCornerShape(8.dp)
-            )
-    ) {
+fun CardMoneyManagement() {
+    CustomCard(height = 96) {
         Column(
             modifier = Modifier
                 .padding(0.dp)
@@ -60,85 +43,12 @@ fun CardMoneyManagment() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Primera fila de acciones
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f) // Ocupa la mitad del espacio vertical
-            ) {
-                Column(
-                    Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .border(1.dp, colorResource(id = R.color.gray_500)),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    ActionItemMoney("CARGAR\n DINERO", R.drawable.servicios_cargar_dinero)
-                }
-                Column(
-                    Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .border(1.dp, colorResource(id = R.color.gray_500)),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    ActionItemMoney("EXTRAER\n DINERO", R.drawable.servicios_extraer_dinero)
-                }
-                Column(
-                    Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .border(1.dp, colorResource(id = R.color.gray_500)),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    ActionItemMoney("SEGUIR\n MI PRÉSTAMO", R.drawable.servicios_prestamos)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun ActionItemMoney(label: String, iconResId: Int) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .clickable { /* Acción del botón */ },
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(
-            painter = painterResource(id = iconResId),
-            contentDescription = null,
-            tint = colorResource(id = R.color.green),
-            modifier = Modifier
-                .size(32.dp)
-                .padding(5.dp)
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(1.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = label,
-                color = colorResource(id = R.color.black),
-                style = TextStyle(
-                    fontSize = 12.sp,
-                    lineHeight = 14.4.sp,
-                    fontWeight = FontWeight.Bold
-                ),
-                textAlign = TextAlign.Center,
-                maxLines = Int.MAX_VALUE, // Permitir todas las líneas necesarias para envolver el texto
-                overflow = TextOverflow.Clip, // Sin truncar el texto
-                modifier = Modifier.fillMaxWidth()
+            ActionRow(
+                actions = listOf(
+                    "CARGAR\n DINERO" to R.drawable.servicios_cargar_dinero,
+                    "EXTRAER\n DINERO" to R.drawable.servicios_extraer_dinero,
+                    "TRANSFERIR\n DINERO" to R.drawable.servicios_transferencia
+                )
             )
         }
     }

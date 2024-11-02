@@ -13,6 +13,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardActions
+import com.example.tp3_examen.components1.CardMoneyManagement
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
@@ -59,6 +60,7 @@ class MainActivity : ComponentActivity() {
                         ButtonApp(text = "Ingresar", {})
                         PruebaCard()
                         CardActions()
+                        CardMoneyManagement()
                         TransactionsList()
 
                     }
