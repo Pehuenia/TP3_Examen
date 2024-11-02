@@ -38,6 +38,7 @@ import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.components1.PruebaCard
+import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 import com.example.tp3_examen.utilities.LastCharVisibleTransformation
 import kotlinx.coroutines.CoroutineScope
@@ -53,38 +54,55 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TP3_ExamenTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    Column(
-                        modifier = Modifier
-                            .padding(top = 24.dp, end = 12.dp, bottom = 24.dp, start = 12.dp),
-                        verticalArrangement = Arrangement.spacedBy(24.dp)
-                    ) {
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    content = { paddingValues ->
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(paddingValues)
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .padding(top = 24.dp, end = 12.dp, bottom = 24.dp, start = 12.dp),
+                                verticalArrangement = Arrangement.spacedBy(24.dp)
+                            ) {
 
-                        var usuario by remember { mutableStateOf(TextFieldValue("")) }
-                        var password by remember { mutableStateOf(TextFieldValue("")) }
+                                var usuario by remember { mutableStateOf(TextFieldValue("")) }
+                                var password by remember { mutableStateOf(TextFieldValue("")) }
 
-                        Input(
-                            value = usuario,
-                            onValueChange = { usuario = it },
-                            label = "DNI o E-mail",
-                            errorMessage = "Formato de email invalidoo",
-                            isValid =  {Patterns.EMAIL_ADDRESS.matcher(it).matches()},
-                        )
-                        Input(
-                            value = password,
-                            onValueChange = { password = it },
-                            label = "Contraseña",
-                            errorMessage = "La contraseña debe tener al menos 4 caracteres",
-                            isValid = { it.length >= 4 },
-                            keyboardType = KeyboardType.Password,
-                            imeAction = ImeAction.Done,
-                            visualTransformation = PasswordVisualTransformation(),
-                            isPassword = true
-                        )
-                        ButtonApp(text = "Ingresar", {})
-                        PruebaCard()
+                                Input(
+                                    value = usuario,
+                                    onValueChange = { usuario = it },
+                                    label = "DNI o E-mail",
+                                    errorMessage = "Formato de email invalidoo",
+                                    isValid =  {Patterns.EMAIL_ADDRESS.matcher(it).matches()},
+                                )
+                                Input(
+                                    value = password,
+                                    onValueChange = { password = it },
+                                    label = "Contraseña",
+                                    errorMessage = "La contraseña debe tener al menos 4 caracteres",
+                                    isValid = { it.length >= 4 },
+                                    keyboardType = KeyboardType.Password,
+                                    imeAction = ImeAction.Done,
+                                    visualTransformation = PasswordVisualTransformation(),
+                                    isPassword = true
+                                )
+                                ButtonApp(text = "Ingresar", {})
+                                PruebaCard()
+
+                            }
+
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            ) {
+                                TransactionsList()
+                            }
+                        }
                     }
-                }
+                )
             }
         }
     }
