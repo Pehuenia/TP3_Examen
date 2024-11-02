@@ -13,6 +13,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardActions
+import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
@@ -57,9 +58,8 @@ class MainActivity : ComponentActivity() {
                             isPassword = true
                         )
                         ButtonApp(text = "Ingresar", {})
-                        PruebaCard()
-                        CardActions()
-                        TransactionsList()
+
+                        CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)
 
                     }
                 }
