@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
+import com.example.tp3_examen.components1.WavingHandIcon
 
 @Composable
 fun DrawerHeader() {
@@ -52,13 +53,8 @@ fun DrawerHeader() {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Start
         ) {
-            Image(
-                painter = painterResource(R.drawable.waving_hand2),
-                //imageVector = Icons.Default.WavingHand,
-                contentDescription = "Waving Hand",
-                //  tint = Color.Black,
-                modifier = Modifier.size(26.dp)
-            )
+            WavingHandIcon()
+
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = "Hola, Mariana Belén",
