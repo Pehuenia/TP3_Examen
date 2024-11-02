@@ -8,13 +8,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardActions
-import com.example.tp3_examen.components1.CardMoneyManagment
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
@@ -36,11 +34,9 @@ class MainActivity : ComponentActivity() {
                             .padding(12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
-                        // Muestra la tarjeta personalizada
-                        CustomCard(cardNumber = 4957712481542582L) // Asegúrate de pasar un Long
 
-                        var usuario by remember { mutableStateOf("") }
-                        var password by remember { mutableStateOf("") }
+                        var usuario by remember { mutableStateOf(TextFieldValue("")) }
+                        var password by remember { mutableStateOf(TextFieldValue("")) }
 
                         Input(
                             value = usuario,
@@ -63,7 +59,6 @@ class MainActivity : ComponentActivity() {
                         ButtonApp(text = "Ingresar", {})
                         PruebaCard()
                         CardActions()
-                        CardMoneyManagment()
                         TransactionsList()
 
                     }
