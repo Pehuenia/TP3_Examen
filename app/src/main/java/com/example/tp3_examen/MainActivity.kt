@@ -5,11 +5,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.CustomCard
+import com.example.tp3_examen.components1.ButtonApp
+import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.components1.PruebaCard
+import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,8 +26,43 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TP3_ExamenTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    CustomCard(cardNumber = "4957 7124 81544 2582")
+                Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                            .padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(24.dp)
+                    ) {
+                        // Muestra la tarjeta personalizada
+                        CustomCard(cardNumber = 4957712481542582L) // Asegúrate de pasar un Long
+
+                        var usuario by remember { mutableStateOf("") }
+                        var password by remember { mutableStateOf("") }
+
+                        Input(
+                            value = usuario,
+                            onValueChange = { usuario = it },
+                            label = "DNI o E-mail",
+                            errorMessage = "Formato de email invalido",
+                            isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
+                        )
+                        Input(
+                            value = password,
+                            onValueChange = { password = it },
+                            label = "Contraseña",
+                            errorMessage = "La contraseña debe tener al menos 4 caracteres",
+                            isValid = { it.length >= 4 },
+                            keyboardType = androidx.compose.ui.text.input.KeyboardType.Password,
+                            imeAction = androidx.compose.ui.text.input.ImeAction.Done,
+                            visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                            isPassword = true
+                        )
+                        ButtonApp(text = "Ingresar", {})
+                        PruebaCard()
+
+                        TransactionsList()
+                    }
                 }
             }
         }
