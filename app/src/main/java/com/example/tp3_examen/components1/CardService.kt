@@ -54,7 +54,7 @@ fun CardService(
         ) {
             Box(
                 modifier = Modifier
-                    .size(80.dp)
+                    .size(70.dp)
                     .clip(CircleShape)
                     .background(Color(0xFF64B5F6)),
                 contentAlignment = Alignment.Center
