@@ -59,7 +59,6 @@ class MainActivity : ComponentActivity() {
                         ButtonApp(text = "Ingresar", {})
                         PruebaCard()
                         CardActions()
-                        CardMoneyManagement()
                         TransactionsList()
 
                     }
