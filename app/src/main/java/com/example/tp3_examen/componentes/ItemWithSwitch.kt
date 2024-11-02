@@ -30,11 +30,12 @@ fun DrawerItemWithSwitch(item: DrawerMenuItem) {
             checked = switchState.value,
             onCheckedChange = { switchState.value = it }
         )
-        Spacer(modifier = Modifier.height(4.dp)) // Añade un pequeño espacio entre el switch y el texto
+        Spacer(modifier = Modifier.height(4.dp))
+
         Text(
             text = item.text,
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.align(Alignment.CenterHorizontally) // Alinea el texto en el centro horizontal
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 }

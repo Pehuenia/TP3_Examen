@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.data.models.DrawerMenuItem
 
@@ -29,7 +30,10 @@ fun DrawerItem(item: DrawerMenuItem) {
         Spacer(modifier = Modifier.width(16.dp))
         Text(
             item.text,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyMedium
+                .copy(
+                    fontWeight = FontWeight.Bold
+                ),
             modifier = Modifier.weight(1f)
         )
 

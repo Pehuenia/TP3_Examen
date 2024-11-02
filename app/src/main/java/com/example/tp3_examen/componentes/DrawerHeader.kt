@@ -26,7 +26,7 @@ import com.example.tp3_examen.components1.WavingHandIcon
 
 @Composable
 fun DrawerHeader() {
-    var name = "Mariana Belén";  //Provisorio. Borrar cuando haya conexión con la API.
+    var name = "Mariana Belén"  //Provisorio. Borrar cuando haya conexión con la API.
 
 
 
@@ -53,12 +53,12 @@ fun DrawerHeader() {
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape)
-                .padding(bottom = 8.dp)
+              //  .padding(bottom = 2.dp)
         )
 
         Row(
             modifier = Modifier
-                .padding(top = 4.dp)
+                .padding(top = 2.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {

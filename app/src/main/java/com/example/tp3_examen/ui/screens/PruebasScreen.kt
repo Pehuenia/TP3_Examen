@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.tp3_examen.componentes.DrawerContent
+import com.example.tp3_examen.componentes.NavDrawer
 
 
 @Composable
@@ -21,6 +22,6 @@ fun PruebasScreen() {
 
 
 
-       DrawerContent()
+       NavDrawer()
     }
 }

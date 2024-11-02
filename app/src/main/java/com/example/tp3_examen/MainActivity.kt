@@ -26,7 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
-import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        setContent {   /*
+        setContent {
             TP3_ExamenTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     Column(
@@ -70,7 +69,7 @@ class MainActivity : ComponentActivity() {
 
                     }
                 }
-            }  */   PruebasScreen()
+            }
         }
     }
 }
