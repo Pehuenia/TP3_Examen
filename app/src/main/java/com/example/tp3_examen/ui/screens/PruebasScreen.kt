@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.tp3_examen.componentes.navigationdrawer.DrawerContent
 import com.example.tp3_examen.componentes.navigationdrawer.DrawerItem
 
 
@@ -21,6 +22,6 @@ fun PruebasScreen() {
 
 
 
-       DrawerItem(item)
+       DrawerContent()
     }
 }

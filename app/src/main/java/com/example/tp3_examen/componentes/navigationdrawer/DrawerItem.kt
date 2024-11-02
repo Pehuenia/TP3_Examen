@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.tp3_examen.components1.ChevronIcon
 import com.example.tp3_examen.data.models.DrawerMenuItem
 
 
@@ -21,17 +20,20 @@ fun DrawerItem(item: DrawerMenuItem) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp, horizontal = 16.dp),
+            .padding(vertical = 12.dp, horizontal = 0.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
         Spacer(modifier = Modifier.width(16.dp))
         Text(
-            text = "prueba son datos de prueba",
+            item.text,
             style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.weight(1f)
         )
-        ChevronIcon()
+
+
+        item.icon()
     }
 }
 
