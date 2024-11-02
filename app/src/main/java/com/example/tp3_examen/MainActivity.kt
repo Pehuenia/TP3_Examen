@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
+import com.example.tp3_examen.components1.CardActions
+import com.example.tp3_examen.components1.CardMoneyManagment
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
@@ -60,8 +62,10 @@ class MainActivity : ComponentActivity() {
                         )
                         ButtonApp(text = "Ingresar", {})
                         PruebaCard()
-
+                        CardActions()
+                        CardMoneyManagment()
                         TransactionsList()
+
                     }
                 }
             }
