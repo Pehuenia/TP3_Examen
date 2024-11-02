@@ -90,14 +90,15 @@ fun PruebaCard() {
             )
 
             Row(
-                modifier = Modifier.weight(1f).fillMaxWidth(),
+                modifier = Modifier.weight(1f).fillMaxWidth().padding(top = 12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
+
             ) {
                 Text(
                     buildAnnotatedString {
                         withStyle(SpanStyle()) {
-                            append("CVU:")
+                            append("CVU: ")
                         }
                         withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                             append("000654326538129540653")
@@ -105,20 +106,23 @@ fun PruebaCard() {
                     },
                     color = colorResource(id = R.color.black),
                     style = TextStyle(
-                        fontSize = 16.sp,
+                        fontSize = 14.sp,
+                        lineHeight = 19.6.sp,
                     ),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.weight(0.8f).fillMaxWidth(),
                 )
 
                 Text(
                     text = "Copiar",
                     color = colorResource(id = R.color.black),
                     style = TextStyle(
-                        fontSize = 16.sp,
+                        fontSize = 14.sp,
+                        lineHeight = 19.6.sp,
                         fontWeight = FontWeight.Bold
                     ),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.clickable {
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.weight(0.2f).fillMaxWidth().clickable {
                     }
                 )
             }

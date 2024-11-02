@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -37,6 +38,7 @@ data class Transaction(
 
 @Composable
 fun TransactionsList() {
+    val borderColor = colorResource(id = R.color.gray_500)
     val transactions  = listOf(
         Transaction("19-03-20", "2000.00", "Aut. 394991", "Transferencia", true ),
         Transaction("19-03-20", "400.00", "Aut. 394991", "Pago de Servicio", false),
@@ -46,14 +48,15 @@ fun TransactionsList() {
         Transaction("19-03-20", "1000.00", "Aut. 394991", "Transferencia", false),
     )
     LazyColumn(
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(0.dp)
     ) {
         item {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(colorResource(id = R.color.black))
-                    .padding(top = 8.dp, end = 12.dp, bottom = 8.dp, start = 12.dp)
+                    .padding(top = 8.dp, end = 12.dp, bottom = 8.dp, start = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = "MOVIMIENTOS",
@@ -76,7 +79,7 @@ fun TransactionItem(transaction: Transaction) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp)
+            .fillMaxHeight()
             .background(colorResource(id = R.color.white))
             .drawBehind {
                 val strokeWidth = 1.dp.toPx()
@@ -91,85 +94,85 @@ fun TransactionItem(transaction: Transaction) {
                 )
             }
     ) {
-
-            Row(
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.Top
+        ) {
+            Column(
                 modifier = Modifier
+                    .weight(1f)
                     .fillMaxWidth()
-                    .padding(top = 8.dp, end = 12.dp, bottom = 8.dp, start = 12.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-
-                ) {
-                    Text(
-                        text = transaction.date,
-                        color = colorResource(id = R.color.black),
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier.fillMaxWidth(),
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            lineHeight = 19.6.sp
-                        )
+                Text(
+                    text = transaction.date,
+                    color = colorResource(id = R.color.black),
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.fillMaxWidth(),
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        lineHeight = 19.6.sp
                     )
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .weight(2f)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = transaction.type,
+                    color = colorResource(id = R.color.black),
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.fillMaxWidth(),
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        lineHeight = 19.6.sp
+                    )
+                )
+                Text(
+                    text = transaction.description,
+                    color = colorResource(id = R.color.black),
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.fillMaxWidth(),
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        lineHeight = 19.6.sp
+                    )
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+                val amountText = if (transaction.isIncoming) {
+                    "+ $${transaction.amount}"
+                } else {
+                    "- $${transaction.amount}"
                 }
 
-                Column(
-                    modifier = Modifier
-                        .weight(2f)
-                ) {
-                    Text(
-                        text = transaction.type,
-                        color = colorResource(id = R.color.black),
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier.fillMaxWidth(),
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            lineHeight = 19.6.sp
-                        )
-                    )
-                    Text(
-                        transaction.description,
-                        color = colorResource(id = R.color.black),
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier.fillMaxWidth(),
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            lineHeight = 19.6.sp
-                        )
-                    )
+                val amountColor = if (transaction.isIncoming) {
+                    colorResource(id = R.color.green)
+                } else {
+                    colorResource(id = R.color.red_900)
                 }
-
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    val amountText = if (transaction.isIncoming) {
-                        "+ $${transaction.amount}"
-                    } else {
-                        "- $${transaction.amount}"
-                    }
-
-                    val amountColor = if (transaction.isIncoming) {
-                        colorResource(id = R.color.green)
-                    } else {
-                        colorResource(id = R.color.red_900)
-                    }
-                    Text(
-                        text = amountText,
-                        color = amountColor,
-                        textAlign = TextAlign.End,
-                        modifier = Modifier.fillMaxWidth(),
-                        style = TextStyle(
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 14.sp,
-                            lineHeight = 19.6.sp
-                        )
+                Text(
+                    text = amountText,
+                    color = amountColor,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.fillMaxWidth(),
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        lineHeight = 19.6.sp
                     )
-
+                )
             }
         }
     }
-
 }
 
