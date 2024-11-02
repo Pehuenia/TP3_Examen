@@ -35,6 +35,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.components1.ButtonApp
+import com.example.tp3_examen.components1.CardActions
+import com.example.tp3_examen.components1.CardMoneyManagment
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.components1.PruebaCard
@@ -83,6 +85,8 @@ class MainActivity : ComponentActivity() {
                         )
                         ButtonApp(text = "Ingresar", {})
                         PruebaCard()
+                        CardActions()
+                        CardMoneyManagment()
                     }
                 }
             }
