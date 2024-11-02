@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TP3_ExamenTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    CustomCard(cardNumber = "4957 7124 81544 2582")
+                    CustomCard(cardNumber = "4957 7124 81544 2582",cardExpiryDate = "12/25")
                 }
             }
         }
