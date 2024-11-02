@@ -18,8 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 
+// cardExpiryDate: String
 @Composable
-fun CustomCard(cardNumber: String,cardExpiryDate: String) {
+fun CustomCard(cardNumber: String) {
     var isRevealed by remember { mutableStateOf(false) }
 
     // Box externo para centrar la tarjeta en la pantalla
@@ -119,8 +120,8 @@ fun CustomCard(cardNumber: String,cardExpiryDate: String) {
 
                     // Fecha de expiración
                     Text(
-                        // text = "05/23", por si esta hardcodeado la fecha
-                        text = cardExpiryDate,
+                         text = "05/23", //por si esta hardcodeado la fecha
+                        // text = cardExpiryDate,
                         style = TextStyle(
                             color = Color.White,
                             fontSize = 20.sp,

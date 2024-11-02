@@ -20,8 +20,43 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TP3_ExamenTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    CustomCard(cardNumber = "4957 7124 81544 2582",cardExpiryDate = "12/25")
+                Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                            .padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(24.dp)
+                    ) {
+                        // Muestra la tarjeta personalizada
+                        CustomCard(cardNumber = "4957 7124 81544 2582")
+
+                        var usuario by remember { mutableStateOf("") }
+                        var password by remember { mutableStateOf("") }
+
+                        Input(
+                            value = usuario,
+                            onValueChange = { usuario = it },
+                            label = "DNI o E-mail",
+                            errorMessage = "Formato de email invalido",
+                            isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
+                        )
+                        Input(
+                            value = password,
+                            onValueChange = { password = it },
+                            label = "Contraseña",
+                            errorMessage = "La contraseña debe tener al menos 4 caracteres",
+                            isValid = { it.length >= 4 },
+                            keyboardType = androidx.compose.ui.text.input.KeyboardType.Password,
+                            imeAction = androidx.compose.ui.text.input.ImeAction.Done,
+                            visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                            isPassword = true
+                        )
+                        ButtonApp(text = "Ingresar", {})
+                        PruebaCard()
+
+                        TransactionsList()
+                    }
                 }
             }
         }
