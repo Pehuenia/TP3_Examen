@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TP3_Examen</string>
+
+    <string name="perfil_text">Mi perfil</string>
+
+
 </resources>
