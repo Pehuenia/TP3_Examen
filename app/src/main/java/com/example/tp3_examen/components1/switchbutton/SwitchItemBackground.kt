@@ -1,4 +1,4 @@
-package com.example.tp3_examen.components1
+package com.example.tp3_examen.components1.switchbutton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -14,11 +14,11 @@ import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
 
 @Composable
-fun ItemsBackground(content: @Composable () -> Unit) {
+fun SwitchItemBackground(content: @Composable () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(16.dp)
             .background(
                 color = Color.White,
                 shape = RoundedCornerShape(8.dp)
@@ -26,9 +26,9 @@ fun ItemsBackground(content: @Composable () -> Unit) {
             .border(
                 width = 1.dp,
                 color = colorResource(R.color.gray_500),
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(8.dp)
             )
-
+            .padding(16.dp) // Padding interno para el contenido
     ) {
         content()
     }
