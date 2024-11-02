@@ -1,18 +1,17 @@
 package com.example.tp3_examen.components1
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
-
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,20 +22,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -88,30 +83,32 @@ fun Input(
                 focusedContainerColor = colorResource(id = R.color.white),
                 unfocusedContainerColor = colorResource(id = R.color.white),
                 errorContainerColor = colorResource(id = R.color.white),
-                focusedTextColor =  colorResource(id = R.color.black_purple)
+                focusedTextColor =  colorResource(id = R.color.black)
             ),
             isError = isError,
             trailingIcon = {
-                if (isError && value.text.isNotEmpty()) {
-                    Text(
-                        text = "!",
-                        color = colorResource(id = R.color.red_900),
-                        style = MaterialTheme.typography.bodyMedium.copy(
-                            fontWeight = FontWeight.Bold
+                Row (verticalAlignment = Alignment.CenterVertically) {
+                    if (isError && value.text.isNotEmpty()) {
+                        Text(
+                            text = "!",
+                            color = colorResource(id = R.color.red_900),
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontWeight = FontWeight.Bold
+                            )
                         )
-                    )
+                        Spacer(modifier = Modifier.width(4.dp))
+                    }
+
+                    if (isPassword) {
+                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                            Icon(
+                                painter = if (passwordVisible) painterResource(id = R.drawable.ojo_tachado) else painterResource(id = R.drawable.ojo_abierto),
+                                contentDescription = if (passwordVisible) "Hide password" else "Show password",
+                                tint = if (passwordVisible) colorResource(id = R.color.purple_900) else colorResource(id = R.color.gray_500),
+                            )
+                        }
+                    }
                 }
-                //Aca falta el agregado del icono para el password que tiene que ser gray_500 en todos los estados,
-                //salvo cuando lo presionan que tiene que cambiar a otro icono en color purple_900
-                /*
-                if (isPassword) {
-                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(
-                            imageVector = if (passwordVisible) Icons.Rounded.ShoppingCart else Icons.Filled.VisibilityOff,
-                            contentDescription = if (passwordVisible) "Hide password" else "Show password",
-                            tint = colorResource(id = R.color.purple_900)
-                        )
-                    }*/
             },
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = keyboardType,
@@ -134,19 +131,11 @@ fun Input(
                 .onFocusChanged { focusState ->
                     isFocused = focusState.isFocused
                 },
-                //Esto no me esta haciendo nada, no se que onda. es para dibujar el sombreado
-                //cuando esta focuseado.
-                /*.drawBehind {
-                    if (isFocused) {
-                        drawRoundRect(
-                            color = shadowColor,
-                            size = Size(size.width, size.height),
-                            cornerRadius = CornerRadius(20.dp.toPx(), 20.dp.toPx()),
-                            style = Stroke(width = 0f)
-                        )
-                    }
-                },*/
-            visualTransformation = visualTransformation,
+            visualTransformation = if (isPassword && !passwordVisible) {
+                PasswordVisualTransformation()
+            } else {
+                VisualTransformation.None
+            },
         )
         if (isError) {
             Text(
