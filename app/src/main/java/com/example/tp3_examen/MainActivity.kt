@@ -11,12 +11,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
-import com.example.tp3_examen.components1.CardActions
 import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
-import com.example.tp3_examen.components1.PruebaCard
-import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,7 +33,10 @@ class MainActivity : ComponentActivity() {
                             .padding(12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
+                        // Display custom card
+                        CustomCard(cardNumber = "4957 7124 81544 2582")
 
+                        // Login inputs and button
                         var usuario by remember { mutableStateOf(TextFieldValue("")) }
                         var password by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -44,7 +45,7 @@ class MainActivity : ComponentActivity() {
                             onValueChange = { usuario = it },
                             label = "DNI o E-mail",
                             errorMessage = "Formato de email invalido",
-                            isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
+                            isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() }
                         )
                         Input(
                             value = password,
@@ -60,7 +61,6 @@ class MainActivity : ComponentActivity() {
                         ButtonApp(text = "Ingresar", {})
 
                         CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)
-
                     }
                 }
             }
