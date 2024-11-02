@@ -1,6 +1,5 @@
-package com.example.tp3_examen.componentes.navigationdrawer
+package com.example.tp3_examen.componentes
 
-import android.R.attr.fontFamily
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

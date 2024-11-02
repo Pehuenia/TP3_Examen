@@ -18,9 +18,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
@@ -32,7 +36,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        setContent {
+        setContent {   /*
             TP3_ExamenTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     Column(
@@ -50,7 +54,8 @@ class MainActivity : ComponentActivity() {
                             label = "DNI o E-mail",
                             errorMessage = "Formato de email invalidoo",
                             isValid =  {Patterns.EMAIL_ADDRESS.matcher(it).matches()},
-                        ) /*                        Input(
+                        )
+                        Input(
                             value = password,
                             onValueChange = { password = it },
                             label = "Contraseña",
@@ -61,11 +66,11 @@ class MainActivity : ComponentActivity() {
                             visualTransformation = PasswordVisualTransformation(),
                             isPassword = true
                         )
-                        ButtonApp(text = "Ingresar", {})   */
-                        PruebasScreen()
+                        ButtonApp(text = "Ingresar", {})
+
                     }
                 }
-            }
+            }  */   PruebasScreen()
         }
     }
 }

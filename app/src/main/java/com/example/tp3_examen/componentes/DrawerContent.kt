@@ -1,9 +1,8 @@
-package com.example.tp3_examen.componentes.navigationdrawer
+package com.example.tp3_examen.componentes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
@@ -24,20 +23,21 @@ fun DrawerContent() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
                 .background(
                     color = Color.White,
                     shape = RoundedCornerShape(8.dp)
                 )
-                .padding(16.dp)
+
         ) {
 
             drawerMenuItems.forEachIndexed { index, item ->
                 DrawerItem(item = item)
                 if (index < drawerMenuItems.size - 1) {
                     HorizontalDivider(
-                        thickness = 1.dp, color = colorResource(R.color.gray_500),
-                        modifier = Modifier.fillMaxWidth()
+                      //  thickness = 1.dp,
+                        color = colorResource(R.color.gray_500),
+                      modifier = Modifier.fillMaxWidth()
+
                     )
                 }
             }

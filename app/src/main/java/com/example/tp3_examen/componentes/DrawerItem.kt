@@ -1,4 +1,4 @@
-package com.example.tp3_examen.componentes.navigationdrawer
+package com.example.tp3_examen.componentes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -20,7 +20,8 @@ fun DrawerItem(item: DrawerMenuItem) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp, horizontal = 0.dp),
+            .padding(vertical = 18.dp)
+            .padding(end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

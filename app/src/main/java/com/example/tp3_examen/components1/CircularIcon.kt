@@ -18,7 +18,7 @@ import com.example.tp3_examen.R
 @Composable
 fun CircularIcon(
     size: Dp = 31.dp,  // Tamaño predeterminado, pero personalizable
-    backgroundColor: Color = colorResource(id = R.color.green),
+    backgroundColor: Color = colorResource(id = R.color.green_800),
     icon: ImageVector? = null,
     iconTint: Color = Color.White,
     iconSize: Dp? = null // Tamaño personalizado del ícono
