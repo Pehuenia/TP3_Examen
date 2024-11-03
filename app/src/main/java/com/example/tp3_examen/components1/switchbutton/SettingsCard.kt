@@ -31,7 +31,7 @@ fun SettingsCard(
             .padding(13.dp)
             .background(color = Color.White, shape = RoundedCornerShape(13.dp))
             .border(width = 1.dp, color = colorResource(R.color.gray_500), shape = RoundedCornerShape(13.dp))
-            .padding(13.dp)
+            .padding(0.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
             // Switch arriba a la izquierda
@@ -44,7 +44,8 @@ fun SettingsCard(
             Spacer(modifier = Modifier.height(12.dp))
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 13.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
