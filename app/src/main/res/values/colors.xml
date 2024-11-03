@@ -12,5 +12,6 @@
     <color name="red_900">#F96440</color>
     <color name="gray_900">#575372</color>
     <color name="green">#47E084</color>
+    <color name="green_800">#0FD08B</color>
     <color name="gray_100">#F8F8F6</color>
 </resources>

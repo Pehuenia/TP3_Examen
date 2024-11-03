@@ -10,12 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tp3_examen.R
 
+// cardExpiryDate: String
 @Composable
 fun CustomCard(cardNumber: String) {
     var isRevealed by remember { mutableStateOf(false) }
@@ -41,21 +44,20 @@ fun CustomCard(cardNumber: String) {
                             0.dp
                         )
                     ),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFF0FD08B)) // Color del fondo de la tarjeta
             ) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.BottomStart
                 ) {
                     Image(
-                        painter = painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.bkg),
+                        painter = painterResource(id = R.drawable.bkg),
                         contentDescription = "Background",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
 
                     Image(
-                        painter = painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.bkg_1),
+                        painter = painterResource(id = R.drawable.bkg_1),
                         contentDescription = "Triangle Bottom Left",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
@@ -69,7 +71,7 @@ fun CustomCard(cardNumber: String) {
                             .size(55.dp, 34.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.vector),
+                            painter = painterResource(id = R.drawable.vector),
                             contentDescription = "Connector",
                             modifier = Modifier
                                 .size(15.95.dp, 26.06.dp)
@@ -77,7 +79,7 @@ fun CustomCard(cardNumber: String) {
                         )
 
                         Image(
-                            painter = painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.vector1),
+                            painter = painterResource(id = R.drawable.vector1),
                             contentDescription = "Red Circle",
                             modifier = Modifier
                                 .size(26.81.dp, 33.14.dp)
@@ -85,7 +87,7 @@ fun CustomCard(cardNumber: String) {
                         )
 
                         Image(
-                            painter = painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.vector2),
+                            painter = painterResource(id = R.drawable.vector2),
                             contentDescription = "Yellow Circle",
                             modifier = Modifier
                                 .size(26.81.dp, 33.15.dp)
@@ -94,7 +96,7 @@ fun CustomCard(cardNumber: String) {
                     }
 
                     Image(
-                        painter = painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.logo),
+                        painter = painterResource(id = R.drawable.logo),
                         contentDescription = "Card Logo",
                         modifier = Modifier
                             .align(Alignment.TopEnd)
@@ -104,6 +106,7 @@ fun CustomCard(cardNumber: String) {
 
                     // Número de tarjeta
                     Text(
+                        // text = if (isRevealed) "4957 7124 81544 2582" else "4957 **** ***** 2582", por si esta hardcodeado el numero
                         text = if (isRevealed) cardNumber else "${cardNumber.substring(0, 4)} **** ***** ${cardNumber.substring(15)}",
                         style = TextStyle(
                             color = Color.White,
@@ -117,7 +120,8 @@ fun CustomCard(cardNumber: String) {
 
                     // Fecha de expiración
                     Text(
-                        text = "05/23",
+                         text = "05/23", //por si esta hardcodeado la fecha
+                        // text = cardExpiryDate,
                         style = TextStyle(
                             color = Color.White,
                             fontSize = 20.sp,
@@ -138,22 +142,22 @@ fun CustomCard(cardNumber: String) {
             ) {
                 // Icono de ojo
                 val eyeIcon = if (isRevealed) {
-                    painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.ojo_tachado) // Reemplaza con tu drawable para el ojo cerrado
+                    painterResource(id = R.drawable.ojo_tachado)
                 } else {
-                    painterResource(id = _root_ide_package_.com.example.tp3_examen.R.drawable.ojo_abierto) // Reemplaza con tu drawable para el ojo abierto
+                    painterResource(id = R.drawable.ojo_abierto)
                 }
 
                 Icon(
                     painter = eyeIcon,
                     contentDescription = "Eye Icon",
                     modifier = Modifier.size(20.dp),
-                    tint = Color(0xFF442E83) // Color púrpura
+                    tint = colorResource(id = R.color.purple_900)
                 )
 
-                Spacer(modifier = Modifier.width(4.dp)) // Espacio entre el icono y el texto
+                Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     text = if (isRevealed) "Ocultar datos" else "Mostrar datos",
-                    color = Color(0xFF442E83) // Color púrpura
+                    color = colorResource(id = R.color.purple_900),
                 )
             }
         }
