@@ -9,13 +9,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.tp3_examen.ui.screens.LoginScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.ui.screens.HomeScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TP3_ExamenTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    LoginScreen()
+                    HomeScreen()
                 }
             }
         }
