@@ -13,9 +13,11 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardActions
+import com.example.tp3_examen.components1.CardMoneyManagement
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
+import com.example.tp3_examen.components1.modalCargaSube.CardSube
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -57,8 +59,10 @@ class MainActivity : ComponentActivity() {
                             isPassword = true
                         )
                         ButtonApp(text = "Ingresar", {})
+                        CardSube()
                         PruebaCard()
                         CardActions()
+                        CardMoneyManagement()
                         TransactionsList()
 
                     }
