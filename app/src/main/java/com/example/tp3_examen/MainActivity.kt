@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.components1.Menu
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -57,6 +58,9 @@ class MainActivity : ComponentActivity() {
                         ButtonApp(text = "Ingresar", {})
 
                         CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.circulo)
+                        Scaffold {
+
+                        }
 
                     }
                 }

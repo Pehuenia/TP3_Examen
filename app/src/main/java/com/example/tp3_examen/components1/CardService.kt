@@ -56,18 +56,18 @@ fun CardService(
             Box(
                 modifier = Modifier
                     .size(80.dp)
-                    .clip(RoundedCornerShape(40.dp)), // Para que sea circular
+                    .clip(RoundedCornerShape(40.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = painterResource(id = backgroundRes), // Usa el nuevo parámetro para la imagen de fondo
+                    painter = painterResource(id = backgroundRes),
                     contentDescription = "Background Image",
-                    modifier = Modifier.fillMaxSize() // Llenar todo el Box
+                    modifier = Modifier.fillMaxSize()
                 )
                 Icon(
                     painter = painterResource(id = iconRes),
                     contentDescription = "Icono",
-                    tint = colorResource(R.color.green), // Puedes ajustar el tinte si es necesario
+                    tint = colorResource(R.color.green),
                     modifier = Modifier.size(40.dp)
                 )
             }
