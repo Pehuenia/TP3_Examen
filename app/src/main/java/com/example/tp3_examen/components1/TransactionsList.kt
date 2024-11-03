@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -59,7 +60,7 @@ fun TransactionsList() {
                     verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "MOVIMIENTOS",
+                    text = stringResource(id = R.string.transactions),
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(end = 8.dp),
                     color = colorResource(id = R.color.white)

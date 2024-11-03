@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">TP3_Examen</string>
-
-    `Drawer menu`
+    <string name="my_account">Mi Cuenta</string>
+    <string name="transactions">MOVIMIENTOS</string>
+    <string name="copy">Copiar</string>
+    <string name="charge">CARGAR\nDINERO</string>
+    <string name="login">Ingresá a tu cuenta:</string>
+    <string name="forgot_password">Olvidé mi contraseña</string>
     <string name="profile_text">Mi perfil</string>
     <string name="drawer_greeting">Hola, %s</string>
-
 
 </resources>

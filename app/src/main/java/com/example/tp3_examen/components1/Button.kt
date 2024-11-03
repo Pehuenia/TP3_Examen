@@ -1,5 +1,8 @@
 package com.example.tp3_examen.components1
 
+import androidx.compose.foundation.interaction.HoverInteraction
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -9,6 +12,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
@@ -21,6 +27,23 @@ fun ButtonApp(
     text: String,
     onClick: () -> Unit
 ){
+    val colorDefault = colorResource(id = R.color.purple_900)
+    val colorPressed = colorResource(id = R.color.green_900)
+    val colorHover = colorResource(id = R.color.green_800)
+
+    val interactionSource = remember { MutableInteractionSource() }
+    val backgroundColor = remember { mutableStateOf(colorDefault) }
+    
+    LaunchedEffect(interactionSource) {
+        interactionSource.interactions.collect { interaction ->
+            when (interaction) {
+                is PressInteraction.Press -> backgroundColor.value = colorPressed
+                is PressInteraction.Release -> backgroundColor.value = colorDefault
+                is HoverInteraction.Enter -> backgroundColor.value = colorHover
+                is HoverInteraction.Exit -> backgroundColor.value = colorDefault
+            }
+        }
+    }
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -28,9 +51,10 @@ fun ButtonApp(
             .height(48.dp),
         shape = RoundedCornerShape(28.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = colorResource(id = R.color.purple_900),
+            containerColor = backgroundColor.value,
             contentColor = colorResource(id = R.color.white)
         ),
+        interactionSource = interactionSource
     ) {
         Text(
             text = text,
