@@ -16,17 +16,19 @@ import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.ui.screens.CargarSubeScreen
+import com.example.tp3_examen.ui.screens.LoginScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
 
         setContent {
             TP3_ExamenTheme {
-                CargarSubeScreen("Hola")
+                LoginScreen()
+                //CargarSubeScreen("Hola")
                 Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
                     Column(
                         modifier = Modifier
