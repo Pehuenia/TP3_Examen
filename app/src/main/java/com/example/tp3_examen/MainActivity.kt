@@ -15,6 +15,7 @@ import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
                             .padding(paddingValues)
                             .padding(12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
-                    ) {
+                    ) {     /*
                         // Display custom card
                         CustomCard(cardNumber = "4957 7124 81544 2582")
 
@@ -60,7 +61,8 @@ class MainActivity : ComponentActivity() {
                         )
                         ButtonApp(text = "Ingresar", {})
 
-                        CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)
+                        CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)   */
+                        PruebasScreen()
                     }
                 }
             }

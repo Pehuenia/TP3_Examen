@@ -39,3 +39,28 @@ fun DrawerItemWithSwitch(item: DrawerMenuItem) {
         )
     }
 }
+
+
+/*
+@Composable
+fun BottomItemView(item: BottomItem, onSwitchChanged: (Boolean) -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Icon(
+            painter = painterResource(id = item.icon),
+            contentDescription = null,
+            tint = Color.Green
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = item.title, style = MaterialTheme.typography.body1)
+        Spacer(modifier = Modifier.weight(1f))
+        Switch(
+            checked = item.isSwitchOn,
+            onCheckedChange = { onSwitchChanged(it) }
+        )
+    }
+}
+
+ */
