@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -33,6 +33,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TP3_ExamenTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) {
+                    PagoDeServiciosScreen()
                 Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
                     Column(
                         modifier = Modifier
