@@ -26,7 +26,7 @@ fun ItemsBackground(content: @Composable () -> Unit) {
             .border(
                 width = 1.dp,
                 color = colorResource(R.color.gray_500),
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(13.dp)
             )
 
     ) {

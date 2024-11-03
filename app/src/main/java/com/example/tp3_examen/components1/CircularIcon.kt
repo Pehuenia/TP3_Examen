@@ -17,7 +17,7 @@ import com.example.tp3_examen.R
 
 @Composable
 fun CircularIcon(
-    size: Dp = 31.dp,
+    size: Dp = 29.dp,
     backgroundColor: Color = colorResource(id = R.color.green_800),
     icon: ImageVector? = null,
     iconTint: Color = Color.White,
@@ -27,7 +27,8 @@ fun CircularIcon(
         modifier = Modifier
             .size(size)
             .clip(CircleShape)
-            .background(backgroundColor),
+            .background(backgroundColor)
+            .padding(4.dp),
         contentAlignment = Alignment.Center
     ) {
         if (icon != null)

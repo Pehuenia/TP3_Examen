@@ -14,4 +14,9 @@
     <color name="gray_900">#575372</color>
     <color name="green">#47E084</color>
     <color name="green_800">#0FD08B</color>
+    <color name="sky_blue">#FF00BCD4</color>
+    <color name="silver">#FFC0C0C0</color>
+
+
+
 </resources>

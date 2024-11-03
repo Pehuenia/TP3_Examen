@@ -28,16 +28,20 @@ fun SettingsCard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp)
-            .background(color = Color.White, shape = RoundedCornerShape(16.dp))
-            .border(width = 1.dp, color = Color.Gray, shape = RoundedCornerShape(16.dp))
-            .padding(16.dp)
+            .padding(13.dp)
+            .background(color = Color.White, shape = RoundedCornerShape(13.dp))
+            .border(width = 1.dp, color = colorResource(R.color.gray_500), shape = RoundedCornerShape(13.dp))
+            .padding(13.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
             // Switch arriba a la izquierda
-            CustomSwitch(isChecked = isChecked, onCheckedChange = onCheckedChange)
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(0.dp)) {
+                SwitchButton2(isChecked = isChecked, onCheckedChange = onCheckedChange)
 
-            Spacer(modifier = Modifier.height(8.dp))
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -58,14 +62,15 @@ fun SettingsCard(
         }
     }
 }
-
+/*
 @Composable
-fun CustomSwitch(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
+fun CustomSwitch(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit, modifier: Modifier) {
     // Acá va el código del CustomSwitch
     // para `isChecked` y `onCheckedChange`
     Box(
         modifier = Modifier
-            .size(width = 60.dp, height = 32.dp)
+            .size(width = 56.dp, height = 29.dp)
+            .padding(start = 0.dp, top = 0.dp)
             .background(
                 color = if (isChecked) Color(0xFF00BCD4) else Color.LightGray,
                 shape = RoundedCornerShape(16.dp)
@@ -74,14 +79,17 @@ fun CustomSwitch(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
         contentAlignment = Alignment.CenterStart
     ) {
         val thumbOffset = if (isChecked) 28.dp else 4.dp
-        Box(
+        Box(                                                           //círculo del switch button
             modifier = Modifier
-                .size(24.dp)
+                .size(22.dp)
                 .offset(x = thumbOffset)
                 .background(color = Color.White, shape = CircleShape)
         )
     }
 }
+
+
+*/
 /*
 
 @Composable
