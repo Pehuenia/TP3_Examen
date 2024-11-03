@@ -1,4 +1,4 @@
-package com.example.tp3_examen.ui.screens
+package com.example.tp3_examen.components1
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,8 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
 
 @Composable
-fun LoginScreen() {
-    Box(
+fun LoginScreenLogo(content: @Composable () -> Unit) {    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.green_800))
@@ -44,5 +43,6 @@ fun LoginScreen() {
                 .align(Alignment.TopStart)
                 .offset(x = 55.dp, y = 150.dp) // Adjust the offset as needed
         )
+        content()
     }
 }
