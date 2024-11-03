@@ -19,7 +19,7 @@ fun SwitchButton2(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
     // para `isChecked` y `onCheckedChange`
     Box(
         modifier = Modifier
-            .size(width = 56.dp, height = 29.dp)
+            .size(width = 58.dp, height = 29.dp)
             .background(
                 color = if (isChecked) Color(0xFF00BCD4) else Color.LightGray,
                 shape = RoundedCornerShape(16.dp)
@@ -28,9 +28,9 @@ fun SwitchButton2(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
         contentAlignment = Alignment.CenterStart
     ) {
         val thumbOffset = if (isChecked) 28.dp else 4.dp
-        Box(                                                           //círculo del switch button
+        Box(                  //círculo del switch button
             modifier = Modifier
-                .size(22.dp)
+                .size(24.dp)
                 .offset(x = thumbOffset)
                 .background(color = Color.White, shape = CircleShape)
         )

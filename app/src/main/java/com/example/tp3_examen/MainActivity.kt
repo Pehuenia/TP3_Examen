@@ -5,17 +5,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardService
+import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.Input
-import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +38,7 @@ class MainActivity : ComponentActivity() {
                             .padding(paddingValues)
                             .padding(12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
-                    ) {     /*
+                    ) {
                         // Display custom card
                         CustomCard(cardNumber = "4957 7124 81544 2582")
 
@@ -61,8 +66,8 @@ class MainActivity : ComponentActivity() {
                         )
                         ButtonApp(text = "Ingresar", {})
 
-                        CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)   */
-                        PruebasScreen()
+                        CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)
+
                     }
                 }
             }
