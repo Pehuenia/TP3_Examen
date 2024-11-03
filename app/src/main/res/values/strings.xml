@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TP3_Examen</string>
+    <string name="my_account">Mi Cuenta</string>
+    <string name="transactions">MOVIMIENTOS</string>
+    <string name="copy">Copiar</string>
+    <string name="charge">CARGAR\nDINERO</string>
+    <string name="login">Ingresá a tu cuenta:</string>
+    <string name="forgot_password">Olvidé mi contraseña</string>
 </resources>

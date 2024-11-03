@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun PruebaCard() {
@@ -90,7 +91,10 @@ fun PruebaCard() {
             )
 
             Row(
-                modifier = Modifier.weight(1f).fillMaxWidth().padding(top = 12.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .padding(top = 12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
 
@@ -110,20 +114,25 @@ fun PruebaCard() {
                         lineHeight = 19.6.sp,
                     ),
                     textAlign = TextAlign.Start,
-                    modifier = Modifier.weight(0.8f).fillMaxWidth(),
+                    modifier = Modifier
+                        .weight(0.8f)
+                        .fillMaxWidth(),
                 )
 
                 Text(
-                    text = "Copiar",
-                    color = colorResource(id = R.color.black),
+                    text = stringResource(id = R.string.copy),
+                    color = colorResource(id = R.color.purple_900),
                     style = TextStyle(
                         fontSize = 14.sp,
                         lineHeight = 19.6.sp,
                         fontWeight = FontWeight.Bold
                     ),
                     textAlign = TextAlign.End,
-                    modifier = Modifier.weight(0.2f).fillMaxWidth().clickable {
-                    }
+                    modifier = Modifier
+                        .weight(0.2f)
+                        .fillMaxWidth()
+                        .clickable {
+                        }
                 )
             }
         }

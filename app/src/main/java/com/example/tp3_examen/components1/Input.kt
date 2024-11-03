@@ -1,8 +1,10 @@
 package com.example.tp3_examen.components1
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -58,9 +60,14 @@ fun Input(
 
     val shadowColor = colorResource(id = R.color.gray_500)
 
-    Column {
+    Column(
+        modifier = Modifier
+            .animateContentSize()
+    ) {
+
         TextField(
             value = value,
+            singleLine = true,
             onValueChange = {
                 onValueChange(it)
                 if (it.text.isNotEmpty()) {
@@ -145,7 +152,7 @@ fun Input(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                 ),
-                modifier = Modifier.padding(start = 12.dp)
+                modifier = Modifier.padding(start = 12.dp, top = 4.dp),
             )
         }
     }
