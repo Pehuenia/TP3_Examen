@@ -26,111 +26,115 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
+import com.example.tp3_examen.components1.BackgroundLogin
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen() {
     var usuario by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(colorResource(id = R.color.green)),
-        ) {
-            Column(
-                Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-                    .height(400.dp)
-                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)) // Añade esto
-                    .border(0.dp, colorResource(id = R.color.gray_500), RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)) // Añade el borde aquí
-                    .background(colorResource(id = R.color.gray_100)) // Mueve el background después de la propiedad clip
-                    .padding(horizontal = 12.dp, vertical = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+    BackgroundLogin {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize(),
             ) {
-                Text(
-                    text = stringResource(id = R.string.login),
-                    color = colorResource(id = R.color.black),
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        lineHeight = 22.4.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Start
-                )
-                Input(
-                    value = usuario,
-                    onValueChange = { usuario = it },
-                    label = "DNI o E-mail",
-                    errorMessage = "Formato de email invalido",
-                    isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
-                )
                 Column(
                     Modifier
-                        .fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                        .align(Alignment.BottomCenter)
+                        .fillMaxWidth()
+                        .height(480.dp)
+                        .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                        .border(
+                            0.dp,
+                            colorResource(id = R.color.gray_500),
+                            RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
+                        )
+                        .background(colorResource(id = R.color.gray_100))
+                        .padding(horizontal = 12.dp, vertical = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Input(
-                        value = password,
-                        onValueChange = { password = it },
-                        label = "Contraseña",
-                        errorMessage = "La contraseña debe tener al menos 4 caracteres",
-                        isValid = { it.length >= 4 },
-                        keyboardType = androidx.compose.ui.text.input.KeyboardType.Password,
-                        imeAction = androidx.compose.ui.text.input.ImeAction.Done,
-                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-                        isPassword = true
-                    )
                     Text(
-                        text = stringResource(id = R.string.forgot_password),
-                        color = colorResource(id = R.color.purple_900),
+                        text = stringResource(id = R.string.login),
+                        color = colorResource(id = R.color.black),
                         style = TextStyle(
                             fontSize = 16.sp,
                             lineHeight = 22.4.sp,
                             fontWeight = FontWeight.Bold
                         ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                // Acción aquí
-                            },
-                        textAlign = TextAlign.End
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Start
                     )
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                Row(
-                    Modifier
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Recordar datos de ingreso",
-                        color = colorResource(id = R.color.black),
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            lineHeight = 22.4.sp
-                        ),
-                        modifier = Modifier.padding(start = 8.dp)
+                    Input(
+                        value = usuario,
+                        onValueChange = { usuario = it },
+                        label = "DNI o E-mail",
+                        errorMessage = "Formato de email invalido",
+                        isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
                     )
-                }
+                    Column(
+                        Modifier
+                            .fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Input(
+                            value = password,
+                            onValueChange = { password = it },
+                            label = "Contraseña",
+                            errorMessage = "La contraseña debe tener al menos 4 caracteres",
+                            isValid = { it.length >= 4 },
+                            keyboardType = KeyboardType.Password,
+                            imeAction = ImeAction.Done,
+                            visualTransformation = PasswordVisualTransformation(),
+                            isPassword = true
+                        )
+                        Text(
+                            text = stringResource(id = R.string.forgot_password),
+                            color = colorResource(id = R.color.purple_900),
+                            style = TextStyle(
+                                fontSize = 16.sp,
+                                lineHeight = 22.4.sp,
+                                fontWeight = FontWeight.Bold
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    // Acción aca
+                                },
+                            textAlign = TextAlign.End
+                        )
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    Row(
+                        Modifier
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Recordar datos de ingreso",
+                            color = colorResource(id = R.color.black),
+                            style = TextStyle(
+                                fontSize = 16.sp,
+                                lineHeight = 22.4.sp
+                            ),
+                            modifier = Modifier.padding(start = 8.dp)
+                        )
+                    }
 
-                ButtonApp(text = "Ingresar", {})
+                    ButtonApp(text = "Ingresar", {})
+                }
             }
-        }
-    }
 
+    }
 }

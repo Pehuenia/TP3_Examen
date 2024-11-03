@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
 
 @Composable
-fun LoginScreenLogo(content: @Composable () -> Unit) {    Box(
+fun BackgroundLogin(content: @Composable () -> Unit) {
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.green_800))
@@ -30,7 +31,7 @@ fun LoginScreenLogo(content: @Composable () -> Unit) {    Box(
                 .height(35.dp)
                 .padding(0.dp)
                 .align(Alignment.TopCenter)
-                .offset(y = 80.dp) // Adjust the offset as needed
+                .offset(y = 80.dp)
         )
 
         Image(
@@ -40,8 +41,8 @@ fun LoginScreenLogo(content: @Composable () -> Unit) {    Box(
                 .width(280.dp)
                 .height(90.dp)
                 .padding(0.dp)
-                .align(Alignment.TopStart)
-                .offset(x = 55.dp, y = 150.dp) // Adjust the offset as needed
+                .align(Alignment.TopCenter)
+                .offset(x = 0.dp, y = 150.dp) // Adjust the offset as needed
         )
         content()
     }
