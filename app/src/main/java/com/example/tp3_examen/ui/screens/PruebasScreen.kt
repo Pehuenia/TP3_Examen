@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.tp3_examen.componentes.NavDrawer
 import com.example.tp3_examen.components1.CircularIcon
 import com.example.tp3_examen.components1.switchbutton.SettingsCard
 import com.example.tp3_examen.components1.switchbutton.SwitchItemBackground
@@ -31,14 +32,8 @@ fun PruebasScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        var isChecked by remember { mutableStateOf(false) }
+     NavDrawer()
 
-        SettingsCard(
-            text = "Dark Mode",
-            isChecked = isChecked,
-            onCheckedChange = { isChecked = it },
-            IconComponent = { CircularIcon() }
-        )
 
 
 
