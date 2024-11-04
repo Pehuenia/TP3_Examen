@@ -4,10 +4,10 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
-/*
+
 @Composable
 fun MainScreenWithBottomNavigation() {
-    val menuItems = listOf(
+    /*val menuItems = listOf(
 
     )
     BottomAppBar{
@@ -22,8 +22,5 @@ fun MainScreenWithBottomNavigation() {
             }
 
         }
-    }
+    }*/
 }
-
-
- */
