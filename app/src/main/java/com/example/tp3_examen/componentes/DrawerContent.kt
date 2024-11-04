@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
@@ -25,7 +25,7 @@ fun DrawerContent() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.surface,
                     shape = RoundedCornerShape(8.dp)
                 )
 
@@ -35,18 +35,13 @@ fun DrawerContent() {
                 DrawerItem(item = item)
                 if (index < drawerMenuItems.size - 1) {
                     HorizontalDivider(
-                      //  thickness = 1.dp,
+                        //  thickness = 1.dp,
                         color = colorResource(R.color.gray_500),
-                      modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
 
                     )
                 }
             }
         }
-
-
-
     }
-
-
 }

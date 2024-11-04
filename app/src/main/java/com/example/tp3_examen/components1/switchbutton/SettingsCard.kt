@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +30,7 @@ fun SettingsCard(
         modifier = modifier
             .fillMaxWidth()
             .padding(start = 2.dp, end = 2.dp, top = 25.dp, bottom = 4.dp)
-            .background(color = Color.White, shape = RoundedCornerShape(13.dp))
+            .background(color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(13.dp))
             .border(
                 width = 1.dp,
                 color = colorResource(R.color.gray_500),
@@ -61,7 +62,7 @@ fun SettingsCard(
                     text = text,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = colorResource(R.color.black)
+                    color = MaterialTheme.colorScheme.onSurface
                 )
 
                 // Ícono verde a la derecha
@@ -70,43 +71,3 @@ fun SettingsCard(
         }
     }
 }
-/*
-@Composable
-fun CustomSwitch(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit, modifier: Modifier) {
-    // Acá va el código del CustomSwitch
-    // para `isChecked` y `onCheckedChange`
-    Box(
-        modifier = Modifier
-            .size(width = 56.dp, height = 29.dp)
-            .padding(start = 0.dp, top = 0.dp)
-            .background(
-                color = if (isChecked) Color(0xFF00BCD4) else Color.LightGray,
-                shape = RoundedCornerShape(16.dp)
-            )
-            .clickable { onCheckedChange(!isChecked) },
-        contentAlignment = Alignment.CenterStart
-    ) {
-        val thumbOffset = if (isChecked) 28.dp else 4.dp
-        Box(                                                           //círculo del switch button
-            modifier = Modifier
-                .size(22.dp)
-                .offset(x = thumbOffset)
-                .background(color = Color.White, shape = CircleShape)
-        )
-    }
-}
-
-
-*/
-/*
-
-@Composable
-fun GreenCircleIcon() {
-    Box(
-        modifier = Modifier
-            .size(24.dp)
-            .background(Color(0xFF00C853), CircleShape)
-    )
-}
-
-*/

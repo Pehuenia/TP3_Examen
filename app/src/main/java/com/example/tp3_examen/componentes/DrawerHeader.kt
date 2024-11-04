@@ -60,9 +60,6 @@ fun DrawerHeader() {
                 text = stringResource(R.string.drawer_greeting, "👋", " Mariana Belén"),
                 fontSize = 19.sp,
                 fontWeight = FontWeight.W700,
-
-
-
                 )
         }
 

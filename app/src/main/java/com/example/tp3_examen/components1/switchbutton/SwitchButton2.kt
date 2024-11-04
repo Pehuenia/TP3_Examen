@@ -21,7 +21,7 @@ fun SwitchButton2(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
         modifier = Modifier
             .size(width = 58.dp, height = 29.dp)
             .background(
-                color = if (isChecked) Color(0xFF202DA4) else Color.LightGray,
+                color = if (isChecked) Color(0xFF235EB7) else Color.LightGray,
                 shape = RoundedCornerShape(16.dp)
             )
             .clickable { onCheckedChange(!isChecked) },
