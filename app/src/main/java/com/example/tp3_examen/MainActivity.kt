@@ -20,6 +20,7 @@ import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.data.network.AuthRetrofit
 import com.example.tp3_examen.data.shared.LoginUseCase
+import com.example.tp3_examen.navigation.AppNavigation
 import com.example.tp3_examen.ui.screens.LoginScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 import com.example.tp3_examen.viewmodels.LoginViewModel
@@ -35,12 +36,15 @@ class MainActivity : ComponentActivity() {
         val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
 
         setContent {
-            LoginScreen(viewModel = viewModel)
-        }
-        setContent {
             TP3_ExamenTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                  LoginScreen(viewModel)
+                val token by viewModel.token
+
+                if (token == null) {
+                    Scaffold {
+                        LoginScreen(viewModel)
+                    }
+                } else {
+                    AppNavigation()
                 }
             }
         }

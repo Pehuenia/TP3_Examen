@@ -48,10 +48,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
 
     var usuario by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
-    val token by viewModel.token
-    if (token != null) {
-        Text(text = "Hola, Rodolfo")
-    } else{
+
         BackgroundLogin {
             Box(
                 modifier = Modifier
@@ -146,6 +143,4 @@ fun LoginScreen(viewModel: LoginViewModel) {
             }
 
         }
-    }
-
 }
