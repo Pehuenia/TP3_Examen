@@ -16,6 +16,9 @@ import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardActions
 import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.ui.screens.CargarSubeScreen
+import com.example.tp3_examen.ui.screens.Splash
+import com.example.tp3_examen.ui.screens.SplashScreen
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.data.network.AuthRetrofit

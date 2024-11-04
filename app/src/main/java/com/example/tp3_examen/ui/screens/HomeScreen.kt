@@ -67,7 +67,8 @@ fun HomeScreen() {
         }
         // tarjeta de credito
         CreditCard(
-            cardNumber = "4957 7124 8154 2582"
+            cardNumber = "4957 7124 8154 2582" ,
+            expirationDate = "12/23"
         )
         //saldo disponible
 
