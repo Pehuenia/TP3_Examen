@@ -26,12 +26,10 @@ import com.example.tp3_examen.components1.WavingHandIcon
 
 @Composable
 fun DrawerHeader() {
-  // var name = "Mariana Belén"  //Provisorio. Borrar cuando haya conexión con la API.
+    // var name = "Mariana Belén"  //Provisorio. Borrar cuando haya conexión con la API.
 
 
-
-
-        Column(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(0.dp),
@@ -43,7 +41,7 @@ fun DrawerHeader() {
             text = stringResource(R.string.profile_text),
             fontSize = 19.sp,
             fontWeight = FontWeight.W700,
-            modifier = Modifier.padding(top = 0.dp)
+            modifier = Modifier.padding(top = 0.dp, bottom = 38.dp)
         )
 
 
@@ -52,9 +50,9 @@ fun DrawerHeader() {
             painter = painterResource(id = R.drawable.profile_picture),
             contentDescription = "User Photo",
             modifier = Modifier
-                .size(200.dp)
+                .size(170.dp)
                 .clip(CircleShape)
-              //  .padding(bottom = 2.dp)
+                .padding(bottom = 32.dp)
         )
 
         Row(
@@ -67,12 +65,12 @@ fun DrawerHeader() {
 
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = stringResource(R.string.drawer_greeting, "Mariana Belén"),
+                text = stringResource(R.string.drawer_greeting, "👋 Hola Mariana Belén" ),
                 fontSize = 19.sp,
                 fontWeight = FontWeight.W700,
 
 
-            )
+                )
         }
 
     }

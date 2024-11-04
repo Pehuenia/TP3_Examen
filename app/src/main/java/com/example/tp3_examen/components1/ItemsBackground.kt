@@ -18,7 +18,7 @@ fun ItemsBackground(content: @Composable () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 2.dp, end = 2.dp, top = 6.dp)
+            .padding(start = 2.dp, end = 2.dp, top = 26.dp)
             .background(
                 color = Color.White,
                 shape = RoundedCornerShape(8.dp)
