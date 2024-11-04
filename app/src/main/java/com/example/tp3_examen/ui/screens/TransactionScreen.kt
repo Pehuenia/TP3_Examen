@@ -22,7 +22,7 @@ import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
 
 @Composable
-fun TransactionScreen(){
+fun TransactionScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -57,7 +57,7 @@ fun TransactionScreen(){
                         actions = listOf(
                             stringResource(id = R.string.charge) to R.drawable.servicios_recarga_sube,
                             "EXTRAER\nDINERO" to R.drawable.servicios_extraer_dinero,
-                            "TRANSFERIR\nDINERO" to R.drawable.servicios_transferencia
+                            "TRANSFERIR\nDINERO" to R.drawable.transfer_icon
                         )
                     )
                 }
