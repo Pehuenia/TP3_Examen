@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             TP3_ExamenTheme {
                 val token by viewModel.token
 
-                if (token == null) {
+                if (token != null) {
                     Scaffold {
                         LoginScreen(viewModel)
                     }
