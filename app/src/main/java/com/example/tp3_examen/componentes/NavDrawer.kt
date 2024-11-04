@@ -9,7 +9,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.tp3_examen.R
 import com.example.tp3_examen.components1.CircularIcon
 import com.example.tp3_examen.components1.switchbutton.SettingsCard
 import com.example.tp3_examen.viewmodels.ThemeViewModel
@@ -27,7 +29,7 @@ fun NavDrawer() {    //themeViewModel: ThemeViewModel
         DrawerContent()
 
         SettingsCard(
-            text = "Dark Mode",
+            text = stringResource(R.string.dark_mode),
             isChecked = isChecked,
             onCheckedChange = { isChecked = it },
             IconComponent = { CircularIcon() }

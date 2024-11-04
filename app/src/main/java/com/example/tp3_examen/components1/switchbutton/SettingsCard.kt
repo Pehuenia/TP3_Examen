@@ -28,9 +28,9 @@ fun SettingsCard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(13.dp)
+            .padding(start = 2.dp, end = 2.dp, top = 25.dp, bottom = 4.dp)
             .background(color = Color.White, shape = RoundedCornerShape(13.dp))
-            .border(width = 1.dp, color = colorResource(R.color.gray_500), shape = RoundedCornerShape(13.dp))
+            .border(width = 1.dp, color = colorResource(R.color.gray_500), shape = RoundedCornerShape(8.dp))
             .padding(0.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {

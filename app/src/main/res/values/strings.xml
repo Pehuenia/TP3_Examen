@@ -11,12 +11,12 @@
 
     `Drawer items`
     <string name="data_text">Mis datos</string>
-    <string name="cvu_text">Mi CVUa</string>
+    <string name="cvu_text">Mi CVU</string>
     <string name="config_text">Configuración</string>
     <string name="help_text">Ayuda</string>
     <string name="terms_text">Términos y condiciones</string>
     <string name="close_session_text">Cerrar sesión</string>
-
+    <string name="dark_mode">Dark Mode</string>
 
 
 </resources>

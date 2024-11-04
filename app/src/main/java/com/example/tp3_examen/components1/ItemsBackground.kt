@@ -18,7 +18,7 @@ fun ItemsBackground(content: @Composable () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(start = 2.dp, end = 2.dp, top = 6.dp)
             .background(
                 color = Color.White,
                 shape = RoundedCornerShape(8.dp)
@@ -26,7 +26,7 @@ fun ItemsBackground(content: @Composable () -> Unit) {
             .border(
                 width = 1.dp,
                 color = colorResource(R.color.gray_500),
-                shape = RoundedCornerShape(13.dp)
+                shape = RoundedCornerShape(8.dp)
             )
 
     ) {
