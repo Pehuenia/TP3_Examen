@@ -47,7 +47,7 @@ class ThemeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    }
+}
 
 
 

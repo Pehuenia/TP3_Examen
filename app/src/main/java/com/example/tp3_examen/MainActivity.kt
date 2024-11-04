@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
             val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
-
+/*
                 if (token == null) {
                     Scaffold {
                         LoginScreen(viewModel)
@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
                 } else {
                     AppNavigation()
                 }
-
+*/             AppNavigation()
             }
         }
     }
