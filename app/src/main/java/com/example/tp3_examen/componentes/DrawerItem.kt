@@ -36,6 +36,7 @@ fun DrawerItem(item: DrawerMenuItem) {
                 .copy(
                     fontWeight = FontWeight.Bold
                 ),
+            color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.weight(1f)
 
         )

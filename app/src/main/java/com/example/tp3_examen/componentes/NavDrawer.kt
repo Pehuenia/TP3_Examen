@@ -1,8 +1,11 @@
 package com.example.tp3_examen.componentes
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,7 +21,11 @@ import com.example.tp3_examen.viewmodels.ThemeViewModel
 fun NavDrawer(themeViewModel: ThemeViewModel) {
 val isChecked by themeViewModel.isNightMode.collectAsState()
 
-    Column {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface)
+    ) {
 
         DrawerHeader()
 

@@ -33,6 +33,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.viewmodels.ThemeViewModel
 import com.example.tp3_examen.viewmodels.ThemeViewModelFactory
 
@@ -55,7 +56,7 @@ class MainActivity : ComponentActivity() {
             val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
-
+/*
                 if (token == null) {
                     Scaffold {
                         LoginScreen(viewModel)
@@ -63,6 +64,8 @@ class MainActivity : ComponentActivity() {
                 } else {
                     AppNavigation()
                 }
+                */
+                PruebasScreen(themeViewModel)
             }
         }
     }

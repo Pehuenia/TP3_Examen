@@ -69,5 +69,5 @@ dependencies {
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.datastore
+    implementation(libs.androidx.datastore.preferences)
 }

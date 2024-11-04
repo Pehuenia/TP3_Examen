@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,6 +37,7 @@ fun DrawerHeader() {
             text = stringResource(R.string.profile_text),
             fontSize = 19.sp,
             fontWeight = FontWeight.W700,
+            color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.padding(top = 0.dp, bottom = 38.dp)
         )
 
@@ -60,6 +62,7 @@ fun DrawerHeader() {
                 text = stringResource(R.string.drawer_greeting, "👋", " Mariana Belén"),
                 fontSize = 19.sp,
                 fontWeight = FontWeight.W700,
+                color = MaterialTheme.colorScheme.onSurface
                 )
         }
 
