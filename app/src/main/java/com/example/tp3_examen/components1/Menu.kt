@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun MainScreenWithBottomNavigation() {
-    val menuItems = listOf(
+    /*val menuItems = listOf(
 
     )
     BottomAppBar{
@@ -22,5 +22,5 @@ fun MainScreenWithBottomNavigation() {
             }
 
         }
-    }
+    }*/
 }
