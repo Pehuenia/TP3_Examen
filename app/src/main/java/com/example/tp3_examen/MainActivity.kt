@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.CardActions
 import com.example.tp3_examen.components1.CardService
@@ -20,8 +21,12 @@ import com.example.tp3_examen.ui.screens.Splash
 import com.example.tp3_examen.ui.screens.SplashScreen
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
-
+import com.example.tp3_examen.data.network.AuthRetrofit
+import com.example.tp3_examen.data.shared.LoginUseCase
+import com.example.tp3_examen.navigation.AppNavigation
+import com.example.tp3_examen.ui.screens.LoginScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
+import com.example.tp3_examen.viewmodels.LoginViewModel
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -29,12 +34,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        val authService = AuthRetrofit
+        val loginUseCase = LoginUseCase(authService)
+        val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
+
         setContent {
             TP3_ExamenTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    //LoginScreen()
-                    //CargarSubeScreen("Continuar")
-                    SplashScreen()  
+                val token by viewModel.token
+
+                if (token == null) {
+                    Scaffold {
+                        LoginScreen(viewModel)
+                    }
+                } else {
+                    AppNavigation()
                 }
             }
         }

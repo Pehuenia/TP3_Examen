@@ -1,5 +1,6 @@
 package com.example.tp3_examen.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,8 +14,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,13 +40,16 @@ import com.example.tp3_examen.R
 import com.example.tp3_examen.components1.BackgroundLogin
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.viewmodels.LoginViewModel
+
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(viewModel: LoginViewModel) {
+
     var usuario by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
 
-    BackgroundLogin {
+        BackgroundLogin {
             Box(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -67,7 +73,7 @@ fun LoginScreen() {
                     Text(
                         text = stringResource(id = R.string.login),
                         color = colorResource(id = R.color.black),
-                        style = TextStyle(
+                        style = typography.bodyLarge.copy(
                             fontSize = 16.sp,
                             lineHeight = 22.4.sp,
                             fontWeight = FontWeight.Bold
@@ -132,9 +138,9 @@ fun LoginScreen() {
                         )
                     }
 
-                    ButtonApp(text = "Ingresar", {})
+                    ButtonApp(text = "Ingresar") { viewModel.login(usuario.text, password.text) }
                 }
             }
 
-    }
+        }
 }
