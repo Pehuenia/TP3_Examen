@@ -26,7 +26,7 @@ import com.example.tp3_examen.components1.WavingHandIcon
 
 @Composable
 fun DrawerHeader() {
-   //var name = "Mariana Belén"  //Provisorio. Borrar cuando haya conexión con la API.
+   var name = "Mariana Belén"  //Provisorio. Borrar cuando haya conexión con la API.
 
 
 

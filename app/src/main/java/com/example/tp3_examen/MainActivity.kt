@@ -17,6 +17,7 @@ import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.components1.PruebaCard
 import com.example.tp3_examen.components1.TransactionsList
+import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
                             .padding(12.dp),
                         verticalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
-
+/*
                         var usuario by remember { mutableStateOf(TextFieldValue("")) }
                         var password by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -60,6 +61,12 @@ class MainActivity : ComponentActivity() {
                         ButtonApp(text = "Ingresar", {})
 
                         CardService(R.drawable.servicios_recarga_sube, "RECARGA SUBE", R.drawable.img)
+
+
+
+
+                        */
+                        PruebasScreen()
 
                     }
                 }
