@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,8 +18,8 @@ import com.example.tp3_examen.components1.switchbutton.SettingsCard
 import com.example.tp3_examen.viewmodels.ThemeViewModel
 
 @Composable
-fun NavDrawer() {    //themeViewModel: ThemeViewModel
-    var isChecked by remember { mutableStateOf(false) }
+fun NavDrawer(themeViewModel: ThemeViewModel) {    //themeViewModel: ThemeViewModel
+val isChecked by themeViewModel.isNightMode.collectAsState()
 
     Column {
 
@@ -31,8 +32,9 @@ fun NavDrawer() {    //themeViewModel: ThemeViewModel
         SettingsCard(
             text = stringResource(R.string.dark_mode),
             isChecked = isChecked,
-            onCheckedChange = { isChecked = it },
+            onCheckedChange = { themeViewModel.toggleNightMode()},
             IconComponent = { CircularIcon() }
+
         )
     }
 
