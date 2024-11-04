@@ -7,7 +7,7 @@
     <string name="login">Ingresá a tu cuenta:</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
     <string name="profile_text">Mi perfil</string>
-    <string name="drawer_greeting">Hola, %s </string>
+    <string name="drawer_greeting">%s Hola, %s </string>
 
     `Drawer items`
     <string name="data_text">Mis datos</string>

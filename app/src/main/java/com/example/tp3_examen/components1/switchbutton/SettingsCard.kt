@@ -61,7 +61,7 @@ fun SettingsCard(
                     text = text,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.DarkGray
+                    color = colorResource(R.color.black)
                 )
 
                 // Ícono verde a la derecha
