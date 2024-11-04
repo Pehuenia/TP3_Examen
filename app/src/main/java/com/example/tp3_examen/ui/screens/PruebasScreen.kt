@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -26,6 +27,8 @@ fun PruebasScreen(themeViewModel: ThemeViewModel) {
     ) {
 
         NavDrawer(themeViewModel)
+
+        //Text("Tamo probando el modo noche. 😎")
 
 
 
