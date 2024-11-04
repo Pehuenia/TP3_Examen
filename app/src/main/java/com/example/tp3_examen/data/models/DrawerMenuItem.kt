@@ -12,12 +12,4 @@ data class DrawerMenuItem(
 
 val chevronIcon: @Composable () -> Unit = { ChevronIcon() }
 
-val drawerMenuItems = listOf(
-    DrawerMenuItem("Mis datos", { chevronIcon() }),
-    DrawerMenuItem("Mi CVU", { chevronIcon() }),
-    DrawerMenuItem("Configuración", { chevronIcon() }),
-    DrawerMenuItem("Ayuda", { chevronIcon() }),
-    DrawerMenuItem("Términos y condiciones", { chevronIcon() }),
-    DrawerMenuItem("Cerrar sesión", { chevronIcon() })
 
-)

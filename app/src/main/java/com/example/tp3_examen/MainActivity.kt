@@ -26,6 +26,7 @@ import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.components1.modalCargaSube.CardSube
 import com.example.tp3_examen.ui.screens.LoginScreen
 import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
+import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
                                 .padding(12.dp),
                             verticalArrangement = Arrangement.spacedBy(24.dp)
                         ) {
-
+/*
                             var usuario by remember { mutableStateOf(TextFieldValue("")) }
                             var password by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -74,6 +75,7 @@ class MainActivity : ComponentActivity() {
                             CardSube()
                             PruebaCard()
                             CardActions()
+
                             CardMoneyManagement()
                             TransactionsList()
 
@@ -81,9 +83,17 @@ class MainActivity : ComponentActivity() {
                         Scaffold(modifier = Modifier.fillMaxSize()) {
                             //HomeScreen()
                             LoginScreen()
+*/
+                            PruebasScreen()
+
+
+
+                            
+
                         }
                     }
                 }
             }
         }
-    }}
+    }
+}

@@ -9,4 +9,14 @@
     <string name="profile_text">Mi perfil</string>
     <string name="drawer_greeting">Hola, %s</string>
 
+    `Drawer items`
+    <string name="data_text">Mis datos,%s</string>
+    <string name="cvu_text">Mi CVUa,%s</string>
+    <string name="config_text">Configuración,%s</string>
+    <string name="help_text">Ayuda,%s</string>
+    <string name="terms_text">Términos y condiciones", %s</string>
+    <string name="close_session_text">Cerrar sesión, %s</string>
+
+
+
 </resources>

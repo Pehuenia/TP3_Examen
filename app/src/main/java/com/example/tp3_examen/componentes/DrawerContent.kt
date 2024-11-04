@@ -12,11 +12,12 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
 import com.example.tp3_examen.components1.ItemsBackground
-import com.example.tp3_examen.data.models.drawerMenuItems
+import com.example.tp3_examen.utilities.GetDrawerMenuItems
 
 
 @Composable
 fun DrawerContent() {
+    val drawerMenuItems = GetDrawerMenuItems()
 
     ItemsBackground {
 

@@ -12,27 +12,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.components1.CircularIcon
 import com.example.tp3_examen.components1.switchbutton.SettingsCard
+import com.example.tp3_examen.viewmodels.ThemeViewModel
 
 @Composable
-fun NavDrawer() {
+fun NavDrawer() {    //themeViewModel: ThemeViewModel
     var isChecked by remember { mutableStateOf(false) }
 
-Column {
+    Column {
 
-    DrawerHeader()
+        DrawerHeader()
 
-    Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
-    DrawerContent()
+        DrawerContent()
 
-    SettingsCard(
-        text = "Dark Mode",
-        isChecked = isChecked,
-        onCheckedChange = { isChecked = it },
-        IconComponent = { CircularIcon() }
-    )
-}
-
+        SettingsCard(
+            text = "Dark Mode",
+            isChecked = isChecked,
+            onCheckedChange = { isChecked = it },
+            IconComponent = { CircularIcon() }
+        )
+    }
 
 
 }
