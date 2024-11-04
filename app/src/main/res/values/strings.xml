@@ -6,4 +6,8 @@
     <string name="charge">CARGAR\nDINERO</string>
     <string name="login">Ingresá a tu cuenta:</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
+    <string name="my_card">Mi tarjeta</string>
+    <string name="physical_card">TARJETA FÍSICA </string>
+    <string name="virtual_card">TARJETA VIRTUAL</string>
+    <string name="text_card">💡 ¿Sabías que poder pedir una tarjeta Mastercard física para utilizar directamente en los negocios que vos elijas?</string>
 </resources>
