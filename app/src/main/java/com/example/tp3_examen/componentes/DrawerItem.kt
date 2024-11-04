@@ -1,6 +1,6 @@
 package com.example.tp3_examen.componentes
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +22,7 @@ fun DrawerItem(item: DrawerMenuItem) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { /*onClick() */}
             .padding(vertical = 18.dp)
             .padding(end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -35,7 +36,6 @@ fun DrawerItem(item: DrawerMenuItem) {
                 .copy(
                     fontWeight = FontWeight.Bold
                 ),
-          //  color = colorResource(R.color.black),
             modifier = Modifier.weight(1f)
 
         )

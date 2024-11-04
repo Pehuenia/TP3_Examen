@@ -11,17 +11,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import com.example.tp3_examen.R
 
 @Composable
 fun SwitchButton2(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
-    // Acá va el código del CustomSwitch
-    // para `isChecked` y `onCheckedChange`
+
     Box(
         modifier = Modifier
             .size(width = 58.dp, height = 29.dp)
             .background(
-                color = if (isChecked) Color(0xFF235EB7) else Color.LightGray,
+                color = if (isChecked) colorResource(R.color.blue) else Color.LightGray,
                 shape = RoundedCornerShape(16.dp)
             )
             .clickable { onCheckedChange(!isChecked) },
