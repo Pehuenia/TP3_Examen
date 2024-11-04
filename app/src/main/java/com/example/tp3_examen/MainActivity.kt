@@ -9,16 +9,18 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.tp3_examen.ui.screens.LoginScreen
-import com.example.tp3_examen.ui.screens.TransactionScreen
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import com.example.tp3_examen.components1.CustomCard
 import com.example.tp3_examen.components1.ButtonApp
+import com.example.tp3_examen.components1.CardActions
+import com.example.tp3_examen.components1.CardService
 import com.example.tp3_examen.components1.Input
 import com.example.tp3_examen.ui.screens.CargarSubeScreen
 import com.example.tp3_examen.ui.screens.Splash
 import com.example.tp3_examen.ui.screens.SplashScreen
+import com.example.tp3_examen.components1.PruebaCard
+import com.example.tp3_examen.components1.TransactionsList
+
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     //LoginScreen()
                     //CargarSubeScreen("Continuar")
-                    SplashScreen()
+                    SplashScreen()  
                 }
             }
         }
