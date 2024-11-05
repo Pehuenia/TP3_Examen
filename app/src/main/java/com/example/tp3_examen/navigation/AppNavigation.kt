@@ -37,9 +37,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.tp3_examen.R
 import com.example.tp3_examen.ui.screens.CargarSubeScreen
 import com.example.tp3_examen.ui.screens.HomeScreen
-import com.example.tp3_examen.ui.screens.MyAcountyScreen
 import com.example.tp3_examen.ui.screens.MycardScreen
 import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
+import com.example.tp3_examen.ui.screens.SplashScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -105,10 +105,10 @@ fun AppNavigation() {
                         BottomBarIcon(
                             painter = painterResource(id = R.drawable.toolbar5),
                             description = "MyAcountyScreen",
-                            isSelected = selectedItem == Rutas.MyAcountyScreen.ruta,
+                            isSelected = selectedItem == null,
                             onClick = {
-                                selectedItem = Rutas.MyAcountyScreen.ruta
-                                navController.navigate(Rutas.MyAcountyScreen.ruta)
+                                //selectedItem = Rutas.
+                                //navController.navigate(Rutas.)
                             },
                             modifier = Modifier.weight(1f)
                         )
@@ -123,7 +123,6 @@ fun AppNavigation() {
             composable(Rutas.TransaccionsScreen.ruta) { TransactionScreen() }
             composable(Rutas.MyCardScreen.ruta) { MycardScreen() }
             composable(Rutas.PagoDeServiciosScreen.ruta) { PagoDeServiciosScreen(navController) }
-            composable(Rutas.MyAcountyScreen.ruta) { MyAcountyScreen() }
             composable(Rutas.CargarSubeScreen.ruta) { CargarSubeScreen(navController) }
         }
     }

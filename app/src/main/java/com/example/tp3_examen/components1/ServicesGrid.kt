@@ -32,12 +32,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.tp3_examen.R
 import com.example.tp3_examen.navigation.Rutas
-import com.example.tp3_examen.ui.screens.CargarSubeScreen
-import com.example.tp3_examen.ui.screens.HomeScreen
-import com.example.tp3_examen.ui.screens.MyAcountyScreen
-import com.example.tp3_examen.ui.screens.MycardScreen
-import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
-import com.example.tp3_examen.ui.screens.TransactionScreen
 
 @Composable
 fun ServicesGrid(navController: NavController) {
