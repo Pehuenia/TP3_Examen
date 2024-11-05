@@ -141,7 +141,7 @@ fun BottomBarIcon(
         modifier = modifier
             .fillMaxHeight()
             .fillMaxWidth()
-            .padding(0.dp) // Asegúrate de que no haya padding adicional
+            .padding(0.dp)
     ) {
         // Línea verde en la parte superior
         Box(
