@@ -2,11 +2,11 @@ package com.example.tp3_examen.navigation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -29,9 +29,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.tp3_examen.R
+import com.example.tp3_examen.ui.screens.CargarSubeScreen
 import com.example.tp3_examen.ui.screens.HomeScreen
-import com.example.tp3_examen.ui.screens.MenuScreen
 import com.example.tp3_examen.ui.screens.MyAcountyScreen
+import com.example.tp3_examen.ui.screens.MycardScreen
 import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
 
@@ -54,7 +55,7 @@ fun AppNavigation() {
                     ) {
                         // Distribuir los iconos usando `weight`
                         BottomBarIcon(
-                            painter = painterResource(id = R.drawable.menu4),
+                            painter = painterResource(id = R.drawable.toolbar1),
                             description = "Home",
                             isSelected = selectedItem == Rutas.HomeScreen.ruta,
                             onClick = {
@@ -64,7 +65,7 @@ fun AppNavigation() {
                             modifier = Modifier.weight(1f) // Cada icono tiene el mismo peso
                         )
                         BottomBarIcon(
-                            painter = painterResource(id = R.drawable.menu6),
+                            painter = painterResource(id = R.drawable.toolbar2),
                             description = "TransaccionsScreen",
                             isSelected = selectedItem == Rutas.TransaccionsScreen.ruta,
                             onClick = {
@@ -74,17 +75,17 @@ fun AppNavigation() {
                             modifier = Modifier.weight(1f)
                         )
                         BottomBarIcon(
-                            painter = painterResource(id = R.drawable.menu3),
+                            painter = painterResource(id = R.drawable.toolbar3),
                             description = "Menu",
-                            isSelected = selectedItem == Rutas.MenuScreen.ruta,
+                            isSelected = selectedItem == Rutas.MyCardScreen.ruta,
                             onClick = {
-                                selectedItem = Rutas.MenuScreen.ruta
-                                navController.navigate(Rutas.MenuScreen.ruta)
+                                selectedItem = Rutas.MyCardScreen.ruta
+                                navController.navigate(Rutas.MyCardScreen.ruta)
                             },
                             modifier = Modifier.weight(1f)
                         )
                         BottomBarIcon(
-                            painter = painterResource(id = R.drawable.menu5),
+                            painter = painterResource(id = R.drawable.toolbar4),
                             description = "PagoDeServiciosScreen",
                             isSelected = selectedItem == Rutas.PagoDeServiciosScreen.ruta,
                             onClick = {
@@ -94,7 +95,7 @@ fun AppNavigation() {
                             modifier = Modifier.weight(1f)
                         )
                         BottomBarIcon(
-                            painter = painterResource(id = R.drawable.menu2),
+                            painter = painterResource(id = R.drawable.toolbar5),
                             description = "MyAcountyScreen",
                             isSelected = selectedItem == Rutas.MyAcountyScreen.ruta,
                             onClick = {
@@ -111,9 +112,10 @@ fun AppNavigation() {
         NavHost(navController = navController, startDestination = Rutas.HomeScreen.ruta) {
             composable(Rutas.HomeScreen.ruta) { HomeScreen() }
             composable(Rutas.TransaccionsScreen.ruta) { TransactionScreen() }
-            composable(Rutas.MenuScreen.ruta) { MenuScreen() }
-            composable(Rutas.PagoDeServiciosScreen.ruta) { PagoDeServiciosScreen() }
+            composable(Rutas.MyCardScreen.ruta) { MycardScreen() }
+            composable(Rutas.PagoDeServiciosScreen.ruta) { PagoDeServiciosScreen(navController) }
             composable(Rutas.MyAcountyScreen.ruta) { MyAcountyScreen() }
+            composable(Rutas.CargarSubeScreen.ruta) { CargarSubeScreen() }
         }
     }
 }
@@ -134,16 +136,17 @@ fun BottomBarIcon(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(3.dp)
-                .background(if (isSelected) Color.Green else Color.Transparent)
+                .height(2.dp)
+                .background(if (isSelected) Color(0xFF0FD08B) else Color.Transparent)
+                .fillMaxHeight()
         )
 
         IconButton(onClick = onClick) {
             Icon(
                 painter = painter,
                 contentDescription = description,
-                modifier = Modifier.size(50.dp), // Tamaño del ícono
-                tint = if (isSelected) Color.Green else Color.Gray // Color verde si está seleccionado
+                modifier = Modifier.size(88.dp), // Tamaño del ícono
+                tint = if (isSelected) Color(0xFF0FD08B) else Color.Gray// Color verde si está seleccionado
             )
         }
     }
