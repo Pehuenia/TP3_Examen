@@ -6,10 +6,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,6 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.tp3_examen.R
 import com.example.tp3_examen.ui.screens.CargarSubeScreen
@@ -42,15 +46,18 @@ fun AppNavigation() {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf(Rutas.HomeScreen.ruta) } // Estado para el ítem seleccionado
 
+
     Scaffold(
         bottomBar = {
+            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+            if(currentRoute != Rutas.CargarSubeScreen.ruta){
             BottomAppBar(
-                modifier = Modifier.height(56.dp),
+                modifier = Modifier.height(50.dp).padding(0.dp),
                 content = {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(56.dp),
+                            .height(40.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         // Distribuir los iconos usando `weight`
@@ -108,6 +115,7 @@ fun AppNavigation() {
                 }
             )
         }
+        }
     ) {
         NavHost(navController = navController, startDestination = Rutas.HomeScreen.ruta) {
             composable(Rutas.HomeScreen.ruta) { HomeScreen() }
@@ -115,7 +123,7 @@ fun AppNavigation() {
             composable(Rutas.MyCardScreen.ruta) { MycardScreen() }
             composable(Rutas.PagoDeServiciosScreen.ruta) { PagoDeServiciosScreen(navController) }
             composable(Rutas.MyAcountyScreen.ruta) { MyAcountyScreen() }
-            composable(Rutas.CargarSubeScreen.ruta) { CargarSubeScreen() }
+            composable(Rutas.CargarSubeScreen.ruta) { CargarSubeScreen(navController) }
         }
     }
 }
@@ -130,23 +138,28 @@ fun BottomBarIcon(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.height(56.dp)
+        modifier = modifier
+            .fillMaxHeight()
+            .fillMaxWidth()
+            .padding(0.dp)
     ) {
-        // Línea verde arriba del icono si está seleccionado
+        // Línea verde en la parte superior
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(2.dp)
+                .height(2.dp) // Altura de la línea
                 .background(if (isSelected) Color(0xFF0FD08B) else Color.Transparent)
-                .fillMaxHeight()
         )
+
+        // Espacio entre la línea y el ícono
+        Spacer(modifier = Modifier.height(0.dp)) // Si no deseas espacio, ajusta a 0.dp
 
         IconButton(onClick = onClick) {
             Icon(
                 painter = painter,
                 contentDescription = description,
                 modifier = Modifier.size(88.dp), // Tamaño del ícono
-                tint = if (isSelected) Color(0xFF0FD08B) else Color.Gray// Color verde si está seleccionado
+                tint = if (isSelected) Color(0xFF0FD08B) else Color.Gray // Color del ícono
             )
         }
     }
