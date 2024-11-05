@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -38,46 +39,43 @@ fun HomeScreen() {
             .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
-        // texto bienvenida
         Column (Modifier.padding(12.dp)
                  .fillMaxWidth()) {
             Text(
-                text = "\uD83D\uDC4B Hola Mariana",
+                text = "\uD83D\uDC4B Hola Mariana", // le deberiamos pasar el nombre
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     lineHeight = 21.6.sp,
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Left,
+                    textAlign = TextAlign.Left,
                     color = colorResource(id = R.color.black)
                 )
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "Ultimo acceso: Mar 01, 2020 4:55 PM",
+                text = "Ultimo acceso: Mar 01, 2020 4:55 PM", // le deberiamos pasar la fecha
                 style = TextStyle(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium,
                     lineHeight = 14.4.sp,
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Left,
+                    textAlign = TextAlign.Left,
                     color = colorResource(id = R.color.gray_900)
                 )
             )
 
 
         }
-        // tarjeta de credito
         CreditCard(
             cardNumber = "4957 7124 8154 2582" ,
             expirationDate = "12/23"
         )
-        //saldo disponible
 
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "SALDO DISPONIBLE",
+                text = stringResource(id = R.string.available_balance),
                 color = colorResource(id = R.color.black),
                 style = TextStyle(
                     fontSize = 12.sp,
@@ -87,7 +85,7 @@ fun HomeScreen() {
                 textAlign = TextAlign.Center
             )
             Text(
-                text = "$ 1.322,78",
+                text = "$ 1.322,78", // le deberiamos pasar el monto
                 color = colorResource(id = R.color.black),
                 style = TextStyle(
                     fontSize = 44.sp,
@@ -98,7 +96,7 @@ fun HomeScreen() {
             )
         }
 
-        //alerta
+        // La alerta solo se deberia mostras si tiene un prestamo activo por vencer
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -110,7 +108,7 @@ fun HomeScreen() {
             Column( modifier = Modifier.weight(0.8f)
             ) {
                 Text(
-                    text = "La cuota de tu préstamo está próxima a vencer",
+                    text = stringResource(id = R.string.warning),
                     color = colorResource(id = R.color.white),
                     style = TextStyle(
                         fontSize = 12.sp,
@@ -119,7 +117,7 @@ fun HomeScreen() {
                     ),
                 )
                 Text(
-                    text = "Ver préstamo",
+                    text = stringResource(id = R.string.see_loan),
                     color = colorResource(id = R.color.white),
                     style = TextStyle(
                         fontSize = 12.sp,
@@ -142,7 +140,6 @@ fun HomeScreen() {
                 )
 
             }
-
 
         }
 

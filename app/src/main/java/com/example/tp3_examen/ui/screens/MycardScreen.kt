@@ -1,12 +1,13 @@
 package com.example.tp3_examen.ui.screens
 
+import ExpandingOptionCard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,8 +22,7 @@ import com.example.tp3_examen.R
 import com.example.tp3_examen.components1.CreditCard
 
 @Composable
-
-fun MycardScreen(){
+fun MycardScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,15 +55,14 @@ fun MycardScreen(){
                 textAlign = TextAlign.Left
             )
             CreditCard(
-                cardNumber = "4957 7124 8154 2582" ,
+                cardNumber = "4957 7124 8154 2582",
                 expirationDate = "12/23"
             )
-            }
-        Divider(
-            color = colorResource(id = R.color.gray_500),
+        }
+        HorizontalDivider(
+            modifier = Modifier.fillMaxWidth(),
             thickness = 1.dp,
-            modifier = Modifier.fillMaxWidth()
-
+            color = colorResource(id = R.color.gray_500)
         )
         Text(
             text = stringResource(id = R.string.text_card),
@@ -76,25 +75,33 @@ fun MycardScreen(){
             lineHeight = 19.6.sp,
             textAlign = TextAlign.Left
         )
-
-
-
         Text(
             text = stringResource(id = R.string.physical_card),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 12.dp),
+                .padding(start = 12.dp, bottom = 4.dp),
             color = colorResource(id = R.color.black),
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             lineHeight = 14.4.sp,
             textAlign = TextAlign.Left
         )
-
-
+        ExpandingOptionCard(
+            items = listOf(
+            stringResource(id = R.string.i_want_my_card) to "",
+                stringResource(id = R.string.i_have_my_card) to stringResource(id = R.string.activate_card) ,
+            ),
+            onItemClick = { index ->
+                // definimos acciones items
+                when (index) {
+                    0 -> {
+                        // accion primer item
+                    }
+                    1 -> {
+                        // accion segundo item
+                    }
+                }
+            }
+        )
     }
-
-
-
-
 }

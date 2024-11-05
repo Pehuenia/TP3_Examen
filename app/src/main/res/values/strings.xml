@@ -10,7 +10,12 @@
     <string name="physical_card">TARJETA FÍSICA </string>
     <string name="virtual_card">TARJETA VIRTUAL</string>
     <string name="text_card">💡 ¿Sabías que poder pedir una tarjeta Mastercard física para utilizar directamente en los negocios que vos elijas?</string>
-
+<string name="i_want_my_card">Quiero mi tarjeta física</string>
+    <string name="i_have_my_card">Ya tengo mi tarjeta física</string>
+    <string name="activate_card">Activa tu tarjeta para comenzar a usarla</string>
+    <string name="available_balance">SALDO DISPONIBLE</string>
+    <string name="warning">La cuota de tu préstamo está próxima a vencer</string>
+    <string name="see_loan">Ver préstamo</string>
 
 
     `Drawer items`
@@ -23,8 +28,8 @@
     <string name="terms_text">Términos y condiciones</string>
     <string name="close_session_text">Cerrar sesión</string>
     <string name="dark_mode">Dark Mode</string>
-
-
+    <string name="request_physical_card">Quiero mi tarjeta física</string>
+    <string name="activate_physical_card">Ya tengo mi tarjeta física Activa tu tarjeta para comenzar a usarla</string>
 
 
 </resources>
