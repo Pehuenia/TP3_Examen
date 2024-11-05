@@ -1,6 +1,5 @@
 package com.example.tp3_examen.ui.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,6 +27,8 @@ import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 import com.example.tp3_examen.components1.CardActions
 import com.example.tp3_examen.components1.CreditCard
+
+
 
 @Composable
 fun HomeScreen() {
