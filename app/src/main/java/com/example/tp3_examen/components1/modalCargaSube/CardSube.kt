@@ -87,7 +87,7 @@ fun CardSube() {
             // Saldo
             Text(
                 text = "$200,00",
-                color = colorResource(id = R.color.purple_900),
+                color = colorResource(id = R.color.black),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 lineHeight = 35.2.sp,

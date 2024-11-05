@@ -17,17 +17,18 @@ import com.example.tp3_examen.R
 
 @Composable
 fun CircularIcon(
-    size: Dp = 31.dp,  // Tamaño predeterminado, pero personalizable
-    backgroundColor: Color = colorResource(id = R.color.green),
+    size: Dp = 29.dp,
+    backgroundColor: Color = colorResource(id = R.color.green_800),
     icon: ImageVector? = null,
     iconTint: Color = Color.White,
-    iconSize: Dp? = null // Tamaño personalizado del ícono
+    iconSize: Dp? = null
 ) {
     Box(
         modifier = Modifier
             .size(size)
             .clip(CircleShape)
-            .background(backgroundColor),
+            .background(backgroundColor)
+            .padding(4.dp),
         contentAlignment = Alignment.Center
     ) {
         if (icon != null)
@@ -41,23 +42,3 @@ fun CircularIcon(
     }
 }
 
-/*
-@Composable
-fun CircularBackground(
-    size: Dp = 31.dp,
-    backgroundColor: Color = colorResource(id = R.color.green), // Verde predeterminado
-    content: @Composable BoxScope.() -> Unit = {}
-) {
-    Box(
-        modifier = Modifier
-            .size(size)
-            .clip(CircleShape)
-            .background(backgroundColor),
-        contentAlignment = Alignment.Center
-    ) {
-        content() // Contenido opcional (ícono o cualquier otro)
-    }
-}
-
-
-*/

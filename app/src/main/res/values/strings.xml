@@ -6,4 +6,25 @@
     <string name="charge">CARGAR\nDINERO</string>
     <string name="login">Ingresá a tu cuenta:</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
+    <string name="my_card">Mi tarjeta</string>
+    <string name="physical_card">TARJETA FÍSICA </string>
+    <string name="virtual_card">TARJETA VIRTUAL</string>
+    <string name="text_card">💡 ¿Sabías que poder pedir una tarjeta Mastercard física para utilizar directamente en los negocios que vos elijas?</string>
+
+
+
+    `Drawer items`
+    <string name="profile_text">Mi perfil</string>
+    <string name="drawer_greeting">%s Hola, %s </string>
+    <string name="data_text">Mis datos</string>
+    <string name="cvu_text">Mi CVU</string>
+    <string name="config_text">Configuración</string>
+    <string name="help_text">Ayuda</string>
+    <string name="terms_text">Términos y condiciones</string>
+    <string name="close_session_text">Cerrar sesión</string>
+    <string name="dark_mode">Dark Mode</string>
+
+
+
+
 </resources>
