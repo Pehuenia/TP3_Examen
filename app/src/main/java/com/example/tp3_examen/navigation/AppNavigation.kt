@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
@@ -52,13 +54,12 @@ fun AppNavigation() {
             val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
             if(currentRoute != Rutas.CargarSubeScreen.ruta){
             BottomAppBar(
-                modifier = Modifier.height(50.dp).padding(0.dp),
+                modifier = Modifier.height(70.dp),
                 content = {
                     Row(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .height(40.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                            .height(70.dp),
+                        //horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         // Distribuir los iconos usando `weight`
                         BottomBarIcon(
@@ -140,8 +141,7 @@ fun BottomBarIcon(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxHeight()
-            .fillMaxWidth()
-            .padding(0.dp)
+
     ) {
         // Línea verde en la parte superior
         Box(
@@ -149,18 +149,18 @@ fun BottomBarIcon(
                 .fillMaxWidth()
                 .height(2.dp) // Altura de la línea
                 .background(if (isSelected) Color(0xFF0FD08B) else Color.Transparent)
+
         )
 
-        // Espacio entre la línea y el ícono
-        Spacer(modifier = Modifier.height(0.dp)) // Si no deseas espacio, ajusta a 0.dp
-
-        IconButton(onClick = onClick) {
+        IconButton(onClick = onClick, modifier = Modifier.size(70.dp)) {
             Icon(
                 painter = painter,
                 contentDescription = description,
-                modifier = Modifier.size(88.dp), // Tamaño del ícono
+                modifier = Modifier.fillMaxSize(), // Tamaño del ícono
                 tint = if (isSelected) Color(0xFF0FD08B) else Color.Gray // Color del ícono
             )
         }
     }
 }
+
+
