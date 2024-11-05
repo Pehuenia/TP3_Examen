@@ -87,10 +87,18 @@ fun CargarSubeScreen(navController: NavHostController) {
             modifier = Modifier.padding(innerPadding),
             textButton = buttonText,
             onClickContinuar = {
-                showArrow = false
-                showSubeCard = false
-                buttonText = "Finalizar"
-                showSuccessMessage = true
+                if (buttonText == "Finalizar") {
+                    // Navegar al HomeScreen cuando el texto del botón sea "Finalizar"
+                    navController.navigate(Rutas.PagoDeServiciosScreen.ruta) {
+                        //popUpTo(Rutas.PagoDeServiciosScreen.ruta) { inclusive = true }
+                    }
+                } else {
+                    // Actualizar el estado para mostrar el mensaje de éxito
+                    showArrow = false
+                    showSubeCard = false
+                    buttonText = "Finalizar"
+                    showSuccessMessage = true
+                }
             },
             showSubeCard = showSubeCard,
             showSuccessMessage = showSuccessMessage
