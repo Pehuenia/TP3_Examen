@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.tp3_examen.data.models.LoginResponse
-import com.example.tp3_examen.data.models.User
+import com.example.tp3_examen.data.models.UserComplete
 import com.example.tp3_examen.data.shared.LoginUseCase
 import kotlinx.coroutines.launch
 
@@ -18,7 +18,7 @@ class LoginViewModel(
     var token = mutableStateOf<String?>(null)
 
     fun login(email: String, password: String) {
-        val user = User(email, password)
+        val user = UserComplete(email, password)
         Log.d("viewmodel", user.toString())
         viewModelScope.launch {
             Log.d("viewmodel", "entro aca")
