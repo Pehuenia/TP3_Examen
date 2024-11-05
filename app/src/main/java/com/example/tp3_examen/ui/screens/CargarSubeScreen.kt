@@ -41,7 +41,7 @@ import com.example.tp3_examen.components1.modalCargaSube.CardSube
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CargarSubeScreen(
-    textButton: String,
+
 ) {
     var showArrow by remember { mutableStateOf(true) }
     var showSubeCard by remember { mutableStateOf(true) }
