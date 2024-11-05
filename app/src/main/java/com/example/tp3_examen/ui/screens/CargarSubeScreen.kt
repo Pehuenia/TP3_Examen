@@ -34,15 +34,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.tp3_examen.R
 import com.example.tp3_examen.components1.ButtonApp
 import com.example.tp3_examen.components1.modalCargaSube.CardSube
+import com.example.tp3_examen.navigation.Rutas
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CargarSubeScreen(
-    textButton: String,
-) {
+fun CargarSubeScreen(navController: NavHostController) {
     var showArrow by remember { mutableStateOf(true) }
     var showSubeCard by remember { mutableStateOf(true) }
     var buttonText by remember { mutableStateOf("Continuar") }
@@ -64,7 +64,7 @@ fun CargarSubeScreen(
                 },
                 navigationIcon = {
                     if (showArrow) {
-                        IconButton(onClick = { /* do something */ }) {
+                        IconButton(onClick = { navController.navigate(Rutas.PagoDeServiciosScreen.ruta) }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = "Localized description"
@@ -73,7 +73,7 @@ fun CargarSubeScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = { navController.navigate(Rutas.PagoDeServiciosScreen.ruta) }) {
                         Icon(
                             imageVector = Icons.Filled.Close,
                             contentDescription = "Localized description"

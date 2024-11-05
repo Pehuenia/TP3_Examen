@@ -1,6 +1,7 @@
 package com.example.tp3_examen.components1
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,12 +30,15 @@ import com.example.tp3_examen.R
 fun CardService(
     iconRes: Int,
     text: String,
-    backgroundRes: Int
+    backgroundRes: Int,
+    onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
+            .clickable(onClick = onClick)
             .padding(8.dp) // Reduce el padding alrededor de cada tarjeta
             .size(140.dp), // Ajusta el tamaño si deseas tarjetas un poco más pequeñas
+
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(4.dp)
