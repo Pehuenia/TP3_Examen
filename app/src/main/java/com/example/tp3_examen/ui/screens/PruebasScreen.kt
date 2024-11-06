@@ -11,12 +11,13 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.tp3_examen.components1.TransactionsList
 import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModel
 import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModelFactory
 
 
 @Composable
-fun PruebasScreen(userId: String) {
+fun PruebasScreen(userId: String, transactionsViewModel: TransactionsViewModel) {
 
 
     Column(
@@ -31,6 +32,7 @@ fun PruebasScreen(userId: String) {
 
         // Observar las transacciones desde el ViewModel
 
-
+        // Pantalla de prueba que muestra la lista de transacciones
+       // TransactionsList(transactionsViewModel = transactionsViewModel, userId = userId)
     }
 }

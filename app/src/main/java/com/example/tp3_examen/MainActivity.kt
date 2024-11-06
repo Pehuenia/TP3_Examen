@@ -42,9 +42,7 @@ import com.example.tp3_examen.viewmodels.ThemeViewModel
 import com.example.tp3_examen.viewmodels.ThemeViewModelFactory
 import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModel
 import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModelFactory
-import com.example.tp3_examen.viewmodels.userviewmodel.UserViewModel
-import com.example.tp3_examen.viewmodels.userviewmodel.UserViewModelFactory
-import com.google.firebase.FirebaseApp
+
 
 class MainActivity : ComponentActivity() {
 
@@ -62,7 +60,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        FirebaseApp.initializeApp(this)
+
         val authService = AuthRetrofit
         val loginUseCase = LoginUseCase(authService)
         val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
@@ -85,7 +83,7 @@ class MainActivity : ComponentActivity() {
 
 
                 //MyApp(userViewModel)
-               PruebasScreen("8G75RESPB56FO7ZEhQuz")
+                PruebasScreen(userId = "8G75RESPB56FO7ZEhQuz", transactionsViewModel = transactionsViewModel)
                 //PRUEBA FIRE
 
                 //PRUEBA FIRE

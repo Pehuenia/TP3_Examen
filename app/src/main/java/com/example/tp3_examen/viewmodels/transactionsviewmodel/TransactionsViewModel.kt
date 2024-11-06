@@ -14,9 +14,11 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TransactionsViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -33,9 +35,26 @@ class TransactionsViewModel(private val userRepository: UserRepository) : ViewMo
         _transactionsState.value = TransactionsState.Loading
 
         viewModelScope.launch {
-            userRepository.getBankAccountTransactions(userId)
-                .catch { e -> _transactionsState.value = TransactionsState.Error(e) }
-                .collect { transactions -> _transactionsState.value = TransactionsState.Success(transactions) }
+            withContext(Dispatchers.IO) {
+                try {
+                    userRepository.getBankAccountTransactions(userId)
+                        .catch { e ->
+                            withContext(Dispatchers.Main) {
+                                _transactionsState.value = TransactionsState.Error(e)
+                            }
+                        }
+                        .collect { transactions ->
+                            withContext(Dispatchers.Main) {
+                                _transactionsState.value = TransactionsState.Success(transactions)
+                            }
+                        }
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        _transactionsState.value = TransactionsState.Error(e)
+                    }
+                }
+            }
         }
     }
+
 }
