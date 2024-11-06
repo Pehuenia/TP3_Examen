@@ -40,6 +40,8 @@ import com.example.tp3_examen.ui.screens.MyApp
 import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.viewmodels.ThemeViewModel
 import com.example.tp3_examen.viewmodels.ThemeViewModelFactory
+import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModel
+import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModelFactory
 import com.example.tp3_examen.viewmodels.userviewmodel.UserViewModel
 import com.example.tp3_examen.viewmodels.userviewmodel.UserViewModelFactory
 import com.google.firebase.FirebaseApp
@@ -50,8 +52,8 @@ class MainActivity : ComponentActivity() {
         ThemeViewModelFactory(application)
     }
 
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModelFactory(UserRepository(FirebaseConnect.firestore))
+    private val transactionsViewModel: TransactionsViewModel by viewModels {
+        TransactionsViewModelFactory(UserRepository(FirebaseConnect.firestore))
     }
 
 
@@ -66,7 +68,7 @@ class MainActivity : ComponentActivity() {
         val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
 
         setContent {
-            val isNightMode by themeViewModel.isNightMode.collectAsState()
+          val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
 
@@ -82,12 +84,12 @@ class MainActivity : ComponentActivity() {
 */
 
 
-                MyApp(userViewModel)
-               // PruebasScreen("8G75RESPB56FO7ZEhQuz")
+                //MyApp(userViewModel)
+               PruebasScreen("8G75RESPB56FO7ZEhQuz")
                 //PRUEBA FIRE
 
                 //PRUEBA FIRE
-                //Log.i("PROBANDO FIRE", "FIRE FUNCIONA:")
+                Log.i("PROBANDO FIRE", "FIRE FUNCIONA:")
             }
         }
     }

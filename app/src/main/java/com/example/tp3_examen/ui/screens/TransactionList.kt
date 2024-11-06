@@ -37,7 +37,7 @@ fun TransactionItem(transaction: BankAccountTransaction) {
             .padding(8.dp)
             .fillMaxWidth()
     ) {
-        Text(text = "ID: ${transaction.transaction_id}")
+        Text(text = "ID: ${transaction.transactionId}")
         Text(text = "Fecha: ${transaction.date}")
         Text(text = "Descripción: ${transaction.description}")
         Text(text = "Monto: ${transaction.amount} ${transaction.currency}")

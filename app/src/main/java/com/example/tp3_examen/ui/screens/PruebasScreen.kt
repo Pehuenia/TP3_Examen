@@ -1,5 +1,6 @@
 package com.example.tp3_examen.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,9 +17,7 @@ import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewM
 
 @Composable
 fun PruebasScreen(userId: String) {
-    val transactionsViewModel: TransactionsViewModel = viewModel(
-        factory = TransactionsViewModelFactory()
-    )
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -26,21 +25,12 @@ fun PruebasScreen(userId: String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-       // NavDrawer(themeViewModel)
+        // NavDrawer(themeViewModel)
 
         // Llama a la función para cargar las transacciones cuando el Composable se muestra por primera vez
-        LaunchedEffect(userId) {
-            transactionsViewModel.loadBankAccountTransactions(userId)
-        }
 
         // Observar las transacciones desde el ViewModel
-        val transactions by transactionsViewModel.bankAccountTransactions.observeAsState(emptyList())
 
-        // Mostrar la lista de transacciones en la UI
-        TransactionList(transactions = transactions)
 
     }
-
 }
-
-

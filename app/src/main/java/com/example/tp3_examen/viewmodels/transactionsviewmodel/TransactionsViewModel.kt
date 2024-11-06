@@ -8,21 +8,34 @@ import com.example.tp3_examen.data.models.BankAccountTransaction
 import com.example.tp3_examen.data.network.FirebaseConnect
 import com.example.tp3_examen.data.network.services.UserRepository
 
-class TransactionsViewModel : ViewModel() {
+import androidx.lifecycle.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-    private val userRepository = UserRepository(FirebaseConnect.firestore)
-    private val _bankAccountTransactions = MutableLiveData<List<BankAccountTransaction>>()
-    val bankAccountTransactions: LiveData<List<BankAccountTransaction>> = _bankAccountTransactions
+import androidx.lifecycle.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+
+class TransactionsViewModel(private val userRepository: UserRepository) : ViewModel() {
+
+    sealed class TransactionsState {
+        object Loading : TransactionsState()
+        data class Success(val transactions: List<BankAccountTransaction>) : TransactionsState()
+        data class Error(val exception: Throwable) : TransactionsState()
+    }
+
+    private val _transactionsState = MutableLiveData<TransactionsState>()
+    val transactionsState: LiveData<TransactionsState> get() = _transactionsState
 
     fun loadBankAccountTransactions(userId: String) {
-        userRepository.getBankAccountTransactions(
-            userId,
-            onSuccess = { transactions ->
-                _bankAccountTransactions.value = transactions
-            },
-            onFailure = { exception ->
-                Log.e("TransactionsViewModel", "Error al obtener transacciones", exception)
-            }
-        )
+        _transactionsState.value = TransactionsState.Loading
+
+        viewModelScope.launch {
+            userRepository.getBankAccountTransactions(userId)
+                .catch { e -> _transactionsState.value = TransactionsState.Error(e) }
+                .collect { transactions -> _transactionsState.value = TransactionsState.Success(transactions) }
+        }
     }
 }

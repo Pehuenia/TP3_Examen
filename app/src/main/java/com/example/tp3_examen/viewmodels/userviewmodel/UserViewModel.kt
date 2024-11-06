@@ -7,13 +7,10 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun addUser(
-        userData: Map<String, Any>,
-        onSuccess: (String) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        viewModelScope.launch {
-            userRepository.addUser(userData, onSuccess, onFailure)
-        }
-    }
+
 }
+
+
+
+
+
