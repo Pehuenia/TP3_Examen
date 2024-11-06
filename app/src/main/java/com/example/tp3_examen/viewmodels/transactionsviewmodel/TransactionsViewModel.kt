@@ -31,13 +31,14 @@ class TransactionsViewModel(private val userRepository: UserRepository) : ViewMo
     private val _transactionsState = MutableLiveData<TransactionsState>()
     val transactionsState: LiveData<TransactionsState> get() = _transactionsState
 
+
     fun loadBankAccountTransactions(userId: String) {
         _transactionsState.value = TransactionsState.Loading
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 try {
-                    userRepository.getBankAccountTransactions(userId)
+                    userRepository.getBankAccountTransactions("8G75RESPB56FO7ZEhQuz")
                         .catch { e ->
                             withContext(Dispatchers.Main) {
                                 _transactionsState.value = TransactionsState.Error(e)
