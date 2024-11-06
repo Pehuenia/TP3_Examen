@@ -50,37 +50,7 @@ fun CargarSubeScreen(navController: NavHostController) {
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = colorResource(R.color.white),
-                    titleContentColor = colorResource(R.color.black)
-                ),
-                title = {
-                    Text(
-                        "Cargar Sube",
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                },
-                navigationIcon = {
-                    if (showArrow) {
-                        IconButton(onClick = { navController.navigate(Rutas.PagoDeServiciosScreen.ruta) }) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Localized description"
-                            )
-                        }
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { navController.navigate(Rutas.PagoDeServiciosScreen.ruta) }) {
-                        Icon(
-                            imageVector = Icons.Filled.Close,
-                            contentDescription = "Localized description"
-                        )
-                    }
-                },
-            )
+
         },
     ) { innerPadding ->
         CargarSubeContenido(

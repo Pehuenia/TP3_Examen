@@ -86,7 +86,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     value = usuario,
                     onValueChange = { usuario = it },
                     label = "DNI o E-mail",
-                    errorMessage = "Formato de email invalido",
+                    errorMessage = stringResource(R.string.loginErrorUser),
                     isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
                 )
                 Column(
@@ -99,7 +99,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                         value = password,
                         onValueChange = { password = it },
                         label = "Contraseña",
-                        errorMessage = "La contraseña debe tener al menos 4 caracteres",
+                        errorMessage = stringResource(id = R.string.loginErrorPassUser),
                         isValid = { it.length >= 4 },
                         keyboardType = KeyboardType.Password,
                         imeAction = ImeAction.Done,
@@ -135,7 +135,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                         size = 24.dp
                     )
                     Text(
-                        text = "Recordar datos de ingreso",
+                        text = stringResource(R.string.loginScreen),
                         color = colorResource(id = R.color.black),
                         style = TextStyle(
                             fontSize = 16.sp,
