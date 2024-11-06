@@ -2,6 +2,7 @@ package com.example.tp3_examen
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -33,9 +34,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.tp3_examen.data.network.FirebaseConnect
+import com.example.tp3_examen.data.network.services.UserRepository
+import com.example.tp3_examen.ui.screens.MyApp
 import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.viewmodels.ThemeViewModel
 import com.example.tp3_examen.viewmodels.ThemeViewModelFactory
+import com.example.tp3_examen.viewmodels.userviewmodel.UserViewModel
+import com.example.tp3_examen.viewmodels.userviewmodel.UserViewModelFactory
+import com.google.firebase.FirebaseApp
 
 class MainActivity : ComponentActivity() {
 
@@ -43,11 +50,17 @@ class MainActivity : ComponentActivity() {
         ThemeViewModelFactory(application)
     }
 
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModelFactory(UserRepository(FirebaseConnect.firestore))
+    }
+
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        FirebaseApp.initializeApp(this)
         val authService = AuthRetrofit
         val loginUseCase = LoginUseCase(authService)
         val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
@@ -56,6 +69,8 @@ class MainActivity : ComponentActivity() {
             val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
+
+
 /*
                 if (token == null) {
                     Scaffold {
@@ -64,7 +79,15 @@ class MainActivity : ComponentActivity() {
                 } else {
                     AppNavigation()
                 }
-*/             AppNavigation()
+*/
+
+
+                MyApp(userViewModel)
+               // PruebasScreen("8G75RESPB56FO7ZEhQuz")
+                //PRUEBA FIRE
+
+                //PRUEBA FIRE
+                //Log.i("PROBANDO FIRE", "FIRE FUNCIONA:")
             }
         }
     }

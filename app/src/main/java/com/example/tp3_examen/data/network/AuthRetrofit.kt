@@ -1,7 +1,7 @@
 package com.example.tp3_examen.data.network
 
 import com.example.tp3_examen.data.models.LoginResponse
-import com.example.tp3_examen.data.models.UserComplete
+import com.example.tp3_examen.data.models.User
 import com.example.tp3_examen.data.shared.IAuthService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,7 +27,7 @@ object AuthRetrofit : IAuthService {
 
     val apiService: Api = retrofit.create(Api::class.java)
 
-    override suspend fun login(user: UserComplete): LoginResponse {
+    override suspend fun login(user: User): LoginResponse {
         return apiService.login(user)
     }
 }
