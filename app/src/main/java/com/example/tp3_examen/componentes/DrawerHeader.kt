@@ -38,7 +38,7 @@ fun DrawerHeader() {
             fontSize = 19.sp,
             fontWeight = FontWeight.W700,
             color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.padding(top = 0.dp, bottom = 38.dp)
+            modifier = Modifier.padding(top = 25.dp, bottom = 38.dp)
         )
 
 

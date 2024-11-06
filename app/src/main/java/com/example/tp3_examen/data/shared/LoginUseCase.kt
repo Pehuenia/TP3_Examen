@@ -1,6 +1,5 @@
 package com.example.tp3_examen.data.shared
 
-import android.util.Log
 import com.example.tp3_examen.data.models.LoginResponse
 import com.example.tp3_examen.data.models.User
 import kotlinx.coroutines.Dispatchers

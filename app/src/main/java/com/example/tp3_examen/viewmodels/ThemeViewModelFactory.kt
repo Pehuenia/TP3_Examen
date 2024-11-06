@@ -14,14 +14,3 @@ class ThemeViewModelFactory(private val application: Application) : ViewModelPro
     }
 }
 
-/*
-class DrawerViewModelFactory : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DrawerViewModel::class.java)) {
-            return DrawerViewModel() as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
-
-*/

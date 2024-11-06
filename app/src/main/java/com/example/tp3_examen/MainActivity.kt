@@ -2,6 +2,7 @@ package com.example.tp3_examen
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -33,9 +34,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.tp3_examen.data.network.FirebaseConnect
+import com.example.tp3_examen.data.network.services.UserRepository
+import com.example.tp3_examen.ui.screens.MyApp
 import com.example.tp3_examen.ui.screens.PruebasScreen
 import com.example.tp3_examen.viewmodels.ThemeViewModel
 import com.example.tp3_examen.viewmodels.ThemeViewModelFactory
+import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModel
+import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModelFactory
+
 
 class MainActivity : ComponentActivity() {
 
@@ -43,20 +50,28 @@ class MainActivity : ComponentActivity() {
         ThemeViewModelFactory(application)
     }
 
+    private val transactionsViewModel: TransactionsViewModel by viewModels {
+        TransactionsViewModelFactory(UserRepository(FirebaseConnect.firestore))
+    }
+
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
 
         val authService = AuthRetrofit
         val loginUseCase = LoginUseCase(authService)
         val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
 
         setContent {
-            val isNightMode by themeViewModel.isNightMode.collectAsState()
+          val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
 
+
+/*
                 if (token == null) {
                     Scaffold {
                         LoginScreen(viewModel)
@@ -64,7 +79,15 @@ class MainActivity : ComponentActivity() {
                 } else {
                     AppNavigation()
                 }
+*/
 
+
+                //MyApp(userViewModel)
+                PruebasScreen(userId = "8G75RESPB56FO7ZEhQuz", transactionsViewModel = transactionsViewModel)
+                //PRUEBA FIRE
+
+                //PRUEBA FIRE
+                Log.i("PROBANDO FIRE", "FIRE FUNCIONA:")
             }
         }
     }

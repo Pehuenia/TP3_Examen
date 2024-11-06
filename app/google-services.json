@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1000699267767",
+    "project_id": "tp3-examen-g6-c3d8c",
+    "storage_bucket": "tp3-examen-g6-c3d8c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000699267767:android:810a4094d847541226db32",
+        "android_client_info": {
+          "package_name": "com.example.tp3_examen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiT8qX3Aq-j_ZtHtkTxJLxyk-KHgifUz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
