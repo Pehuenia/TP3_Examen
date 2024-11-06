@@ -46,10 +46,7 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                 .shadow(
                     6.dp,
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(
-                        8.dp,
-                        0.dp,
-                        0.dp,
-                        0.dp
+                        8.dp, 0.dp, 0.dp, 0.dp
                     )
                 ),
         ) {
@@ -71,7 +68,6 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                     contentScale = ContentScale.Crop
                 )
 
-                // Logo de Mastercard
                 Box(
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
@@ -114,7 +110,7 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
 
                 // Número de tarjeta
                 Text(
-                     text = if (isRevealed) "4957 7124 8154 2582" else "4957 **** **** 2582",  // si esta hardcodeado el numero de tarjeta
+                     text = if (isRevealed) "4957 7124 8154 5824" else "4957 **** **** 5824",  // si esta hardcodeado el numero de tarjeta
                    // text = if (isRevealed) cardNumber else "${cardNumber.substring(0, 4)} **** ***** ${cardNumber.substring(15)}", //le paso por parametros
                     style = TextStyle(
                         color = colorResource(id = R.color.white),
@@ -146,7 +142,6 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                 .clickable { isRevealed = !isRevealed },
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Icono de ojo
             val eyeIcon = if (isRevealed) {
                 painterResource(id = R.drawable.ojo_tachado)
             } else {

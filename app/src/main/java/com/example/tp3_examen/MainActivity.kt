@@ -66,13 +66,13 @@ class MainActivity : ComponentActivity() {
         val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
 
         setContent {
-          val isNightMode by themeViewModel.isNightMode.collectAsState()
+            val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
 
 
 
-                if (token == null) {
+                if (token != null) {
                     Scaffold {
                         LoginScreen(viewModel)
                     }

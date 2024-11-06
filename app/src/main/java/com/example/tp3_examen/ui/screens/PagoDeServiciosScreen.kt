@@ -10,10 +10,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.tp3_examen.components1.ServicesGrid
 
 @Composable
-fun PagoDeServiciosScreen() {
+fun PagoDeServiciosScreen(navController: NavHostController) {
+
     Column(
         modifier = Modifier.padding(top = 60.dp), // Espacio en la parte superior
         horizontalAlignment = Alignment.CenterHorizontally
@@ -25,6 +28,6 @@ fun PagoDeServiciosScreen() {
             color = Color(0xFF2A1846),
             modifier = Modifier.padding(bottom = 16.dp) // Espacio entre el título y las tarjetas
         )
-        ServicesGrid()
+        ServicesGrid(navController)
     }
 }
