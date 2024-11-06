@@ -17,7 +17,7 @@ import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewM
 
 
 @Composable
-fun PruebasScreen(userId: String, transactionsViewModel: TransactionsViewModel) {
+fun PruebasScreen() {
 
 
     Column(
@@ -33,6 +33,6 @@ fun PruebasScreen(userId: String, transactionsViewModel: TransactionsViewModel) 
         // Observar las transacciones desde el ViewModel
 
         // Pantalla de prueba que muestra la lista de transacciones
-       // TransactionsList(transactionsViewModel = transactionsViewModel, userId = userId)
+       //TransactionsList(transactionsViewModel = transactionsViewModel, userId = userId)
     }
 }

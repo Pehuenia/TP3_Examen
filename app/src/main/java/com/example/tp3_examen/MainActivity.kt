@@ -69,7 +69,7 @@ class MainActivity : ComponentActivity() {
             val isNightMode by themeViewModel.isNightMode.collectAsState()
             TP3_ExamenTheme (darkTheme = isNightMode) {
                 val token by viewModel.token
-/*
+
 
 
                 if (token != null) {
@@ -81,9 +81,9 @@ class MainActivity : ComponentActivity() {
                 }
 
 
-*/
 
-                PruebasScreen(userId = "8G75RESPB56FO7ZEhQuz", transactionsViewModel = transactionsViewModel)
+
+             //   PruebasScreen(userId = "8G75RESPB56FO7ZEhQuz", transactionsViewModel = transactionsViewModel)
 
 
 
