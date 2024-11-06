@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 
+//Para traer las transacciones bancarias de un usuario
 
 class UserRepository(private val firestore: FirebaseFirestore) {
 
@@ -21,7 +22,7 @@ class UserRepository(private val firestore: FirebaseFirestore) {
 
             val listener = documentRef.addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
-                    close(exception) // Cierra el flujo si hay un error
+                    close(exception)
                     return@addSnapshotListener
                 }
 
@@ -40,51 +41,6 @@ class UserRepository(private val firestore: FirebaseFirestore) {
             awaitClose { listener.remove() }
         }
 
-    /*
-
-    fun getBankAccountTransactions(userId: String): Flow<List<BankAccountTransaction>> =
-        callbackFlow {
-            val documentRef = firestore.collection("users").document(userId)
-            val listener = documentRef.addSnapshotListener { snapshot, exception ->
-                if (exception != null) {
-                    close(exception) // Cierra el flujo en caso de error
-                    return@addSnapshotListener
-                }
-
-                if (snapshot != null && snapshot.exists()) {
-                    val bankAccountTransactions = snapshot.toObject(CompleteUser::class.java)
-                        ?.transaction
-                        ?.bank_account_transactions ?: emptyList()
-                    trySend(bankAccountTransactions).isSuccess
-                } else {
-                    trySend(emptyList()).isSuccess // Emite lista vacía si el documento no existe
-                }
-            }
-
-    */
-    /*
-    fun getBankAccountTransactions(
-    userId: String,
-    onSuccess: (List<BankAccountTransaction>) -> Unit,
-    onFailure: (Exception) -> Unit
-    ) {
-    firestore.collection("users").document(userId).get()
-    .addOnSuccessListener { document ->
-        if (document != null) {
-            val bankAccountTransactions = document.toObject(CompleteUser::class.java)
-                ?.transaction
-                ?.bank_account_transactions ?: emptyList()
-            onSuccess(bankAccountTransactions)
-        } else {
-            onSuccess(emptyList()) // En caso de que el documento esté vacío
-        }
-    }
-    .addOnFailureListener { exception ->
-        onFailure(exception)
-    }
-    }
-
-    */
 
 
     // Función para agregar un usuario
