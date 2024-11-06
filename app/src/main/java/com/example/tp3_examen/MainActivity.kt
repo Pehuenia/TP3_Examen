@@ -60,6 +60,7 @@ class MainActivity : ComponentActivity() {
                 if (token != null) {
                     Scaffold {
                         LoginScreen(viewModel)
+
                     }
                 } else {
                     AppNavigation()
