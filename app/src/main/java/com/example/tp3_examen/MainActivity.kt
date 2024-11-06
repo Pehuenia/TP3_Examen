@@ -71,7 +71,7 @@ class MainActivity : ComponentActivity() {
                 val token by viewModel.token
 
 
-/*
+
                 if (token == null) {
                     Scaffold {
                         LoginScreen(viewModel)
@@ -79,15 +79,15 @@ class MainActivity : ComponentActivity() {
                 } else {
                     AppNavigation()
                 }
-*/
 
 
-                //MyApp(userViewModel)
-                PruebasScreen(userId = "8G75RESPB56FO7ZEhQuz", transactionsViewModel = transactionsViewModel)
-                //PRUEBA FIRE
 
-                //PRUEBA FIRE
-                Log.i("PROBANDO FIRE", "FIRE FUNCIONA:")
+
+                //PruebasScreen(userId = "8G75RESPB56FO7ZEhQuz", transactionsViewModel = transactionsViewModel)
+
+
+
+
             }
         }
     }
