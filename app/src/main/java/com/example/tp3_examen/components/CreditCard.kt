@@ -27,13 +27,16 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 
 @Composable
-fun CreditCard(cardNumber: String, expirationDate: String) {
+
+    //cardNumber: String, expirationDate: String
+fun CreditCard() {
     var isRevealed by remember { mutableStateOf(false) }
 
     Column(
@@ -62,8 +65,8 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                 )
 
                 Image(
-                    painter = painterResource(id = R.drawable.bkg_1),
-                    contentDescription = "Triangle Bottom Left",
+                    painter = painterResource(id = R.drawable.bkg1),
+                    contentDescription = "Background1",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -75,7 +78,7 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                         .size(55.dp, 34.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.vector),
+                        painter = painterResource(id = R.drawable.mastercard),
                         contentDescription = "Connector",
                         modifier = Modifier
                             .size(15.95.dp, 26.06.dp)
@@ -83,7 +86,7 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                     )
 
                     Image(
-                        painter = painterResource(id = R.drawable.vector1),
+                        painter = painterResource(id = R.drawable.mastercard1),
                         contentDescription = "Red Circle",
                         modifier = Modifier
                             .size(26.81.dp, 33.14.dp)
@@ -91,7 +94,7 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
                     )
 
                     Image(
-                        painter = painterResource(id = R.drawable.vector2),
+                        painter = painterResource(id = R.drawable.mastercar2),
                         contentDescription = "Yellow Circle",
                         modifier = Modifier
                             .size(26.81.dp, 33.15.dp)
@@ -143,9 +146,9 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             val eyeIcon = if (isRevealed) {
-                painterResource(id = R.drawable.ojo_tachado)
+                painterResource(id = R.drawable.crossed_out_eye)
             } else {
-                painterResource(id = R.drawable.ojo_abierto)
+                painterResource(id = R.drawable.open_eye)
             }
 
             Icon(
@@ -157,7 +160,7 @@ fun CreditCard(cardNumber: String, expirationDate: String) {
 
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = if (isRevealed) "Ocultar datos" else "Mostrar datos",
+                text = if (isRevealed) stringResource(id = R.string.hide_data) else stringResource(id =R.string.show_data),
                 color = colorResource(id = R.color.purple_900),
             )
         }

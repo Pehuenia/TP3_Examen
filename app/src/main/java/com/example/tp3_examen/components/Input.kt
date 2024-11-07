@@ -108,7 +108,7 @@ fun Input(
                     if (isPassword) {
                         IconButton(onClick = { passwordVisible = !passwordVisible }) {
                             Icon(
-                                painter = if (passwordVisible) painterResource(id = R.drawable.ojo_tachado) else painterResource(id = R.drawable.ojo_abierto),
+                                painter = if (passwordVisible) painterResource(id = R.drawable.crossed_out_eye) else painterResource(id = R.drawable.open_eye),
                                 contentDescription = if (passwordVisible) "Hide password" else "Show password",
                                 tint = if (passwordVisible) colorResource(id = R.color.purple_900) else colorResource(id = R.color.gray_500),
                             )

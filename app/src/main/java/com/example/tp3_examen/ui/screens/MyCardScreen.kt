@@ -1,15 +1,21 @@
 package com.example.tp3_examen.ui.screens
 
-import ExpandingOptionCard
+import com.example.tp3_examen.components.ExpandingOptionCard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -55,10 +61,9 @@ fun MyCardScreen() {
                 lineHeight = 14.4.sp,
                 textAlign = TextAlign.Left
             )
-            CreditCard(
-                cardNumber = "4957 7124 8154 2582",
-                expirationDate = "12/23"
-            )
+            // cardNumber = "4957 7124 8154 2582",
+            // expirationDate = "12/23"
+            CreditCard()
         }
         HorizontalDivider(
             modifier = Modifier.fillMaxWidth(),
@@ -87,6 +92,28 @@ fun MyCardScreen() {
             lineHeight = 14.4.sp,
             textAlign = TextAlign.Left
         )
+        var showDialog by remember { mutableStateOf(false) }
+        if (showDialog) {
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Acción de Ítem") },
+                text = { Text("Ejemplo de acción.") },
+                confirmButton = {
+                    TextButton(
+                        onClick = { showDialog = false }
+                    ) {
+                        Text("Aceptar")
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = { showDialog = false }
+                    ) {
+                        Text("Cancelar")
+                    }
+                }
+            )
+        }
         ExpandingOptionCard(
             items = listOf(
             stringResource(id = R.string.i_want_my_card) to "",
@@ -97,9 +124,11 @@ fun MyCardScreen() {
                 when (index) {
                     0 -> {
                         // accion primer item
+                        showDialog = true
                     }
                     1 -> {
                         // accion segundo item
+                        showDialog = true
                     }
                 }
             }
