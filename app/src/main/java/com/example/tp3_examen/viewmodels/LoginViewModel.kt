@@ -29,7 +29,6 @@ class LoginViewModel(
                 loginResponse.value = null
             }
         }
-        Log.d("viewmodel", loginResponse.toString())
     }
     companion object {
         fun provideFactory(loginUseCase: LoginUseCase): ViewModelProvider.Factory =
