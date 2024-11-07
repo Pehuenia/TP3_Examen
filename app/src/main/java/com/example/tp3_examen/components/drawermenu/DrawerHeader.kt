@@ -32,7 +32,7 @@ fun DrawerHeader() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-/*
+
         Text(
             text = stringResource(R.string.profile_text),
             fontSize = 19.sp,
@@ -41,7 +41,7 @@ fun DrawerHeader() {
             modifier = Modifier.padding(top = 25.dp, bottom = 38.dp)
         )
 
-*/
+
 
         CircularImage(
             size = 170, modifier = Modifier,
