@@ -24,26 +24,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
-
-data class Transaction(
-    val date: String,
-    val amount: String,
-    val description: String,
-    val type: String,
-    val isIncoming: Boolean
-)
+import com.example.tp3_examen.data.models.BankAccountTransaction
 
 @Composable
-fun TransactionsList() {
+fun TransactionsList(transactions: List<BankAccountTransaction>) {
     val borderColor = colorResource(id = R.color.gray_500)
-    val transactions  = listOf(
-        Transaction("19-03-20", "2000.00", "Aut. 394991", "Transferencia", true ),
-        Transaction("19-03-20", "400.00", "Aut. 394991", "Pago de Servicio", false),
-        Transaction("19-03-20", "1000.00", "Aut. 394991", "Transferencia", true),
-        Transaction("19-03-20", "100.00", "Aut. 394991", "Recarga Sube", false),
-        Transaction("19-03-20", "1000.00", "Aut. 394991", "Transferencia", true),
-        Transaction("19-03-20", "1000.00", "Aut. 394991", "Transferencia", false),
-    )
     LazyColumn(
         modifier = Modifier.padding(0.dp)
     ) {
@@ -53,7 +38,7 @@ fun TransactionsList() {
                     .fillMaxWidth()
                     .background(colorResource(id = R.color.black))
                     .padding(top = 8.dp, end = 12.dp, bottom = 8.dp, start = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = stringResource(id = R.string.transactions),
@@ -70,7 +55,7 @@ fun TransactionsList() {
 }
 
 @Composable
-fun TransactionItem(transaction: Transaction) {
+fun TransactionItem(transaction: BankAccountTransaction) {
     val borderColor = colorResource(id = R.color.gray_500)
 
     Box(
@@ -120,7 +105,7 @@ fun TransactionItem(transaction: Transaction) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = transaction.type,
+                    text = transaction.description,
                     color = colorResource(id = R.color.black),
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth(),
@@ -130,7 +115,7 @@ fun TransactionItem(transaction: Transaction) {
                     )
                 )
                 Text(
-                    text = transaction.description,
+                    text = "operacion id: ${transaction.transaction_id}",
                     color = colorResource(id = R.color.black),
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth(),
@@ -146,17 +131,18 @@ fun TransactionItem(transaction: Transaction) {
                     .weight(1f)
                     .fillMaxWidth()
             ) {
-                val amountText = if (transaction.isIncoming) {
+                val amountText = if (transaction.type == "credit") {
                     "+ $${transaction.amount}"
                 } else {
                     "- $${transaction.amount}"
                 }
 
-                val amountColor = if (transaction.isIncoming) {
+                val amountColor = if (transaction.type == "credit") {
                     colorResource(id = R.color.green)
                 } else {
                     colorResource(id = R.color.red_900)
                 }
+
                 Text(
                     text = amountText,
                     color = amountColor,
