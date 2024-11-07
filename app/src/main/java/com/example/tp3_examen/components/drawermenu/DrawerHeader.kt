@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,11 +21,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 import com.example.tp3_examen.components.CircularImage
+import com.example.tp3_examen.viewmodels.drawerviewmodel.NavDrawerViewModel
 
 
 @Composable
-fun DrawerHeader() {
-    // var name = "Mariana Belén"  //Provisorio. Borrar cuando haya conexión con la API.
+fun DrawerHeader(viewModel: NavDrawerViewModel) {
+
+    val userDataState by viewModel.userDataState.observeAsState(NavDrawerViewModel.UserDataState.Loading)
 
 
     Column(
@@ -42,7 +47,6 @@ fun DrawerHeader() {
         )
 
 
-
         CircularImage(
             size = 170, modifier = Modifier,
             imageId = R.drawable.profile_picture
@@ -51,20 +55,45 @@ fun DrawerHeader() {
 
         Row(
             modifier = Modifier
-                .padding(top = 0.dp)
+                .padding(top = 0.dp, end = 19.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
 
-
             Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = stringResource(R.string.drawer_greeting, "👋", " Mariana Belén"),
-                fontSize = 19.sp,
-                fontWeight = FontWeight.W700,
-                color = MaterialTheme.colorScheme.onSurface
-                )
-        }
 
+            when (userDataState) {
+                is NavDrawerViewModel.UserDataState.Loading -> {
+                    Text(
+                        text = "Cargando...",
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.W700,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
+                is NavDrawerViewModel.UserDataState.Success -> {
+                    val userName =
+                        (userDataState as NavDrawerViewModel.UserDataState.Success).userName
+                    Text(
+                        text = stringResource(R.string.drawer_greeting, "👋", "${userName.firstname} ${userName.lastname}"),
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.W700,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
+                is NavDrawerViewModel.UserDataState.Error -> {
+                    Text(
+                        text = "Error al cargar nombre",
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.W700,
+                        color = MaterialTheme.colorScheme.onSurface
+
+                    )
+
+                }
+            }
+        }
     }
 }
