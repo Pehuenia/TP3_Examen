@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -20,7 +23,9 @@ import com.example.tp3_examen.ui.screens.CargarSubeScreen
 import com.example.tp3_examen.ui.screens.HomeScreen
 import com.example.tp3_examen.ui.screens.MyCardScreen
 import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
+import com.example.tp3_examen.ui.screens.SplashScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
+import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModel
 
 
 @Composable
@@ -30,9 +35,11 @@ fun MainScaffold(
     onBottomBarItemSelected: (String) -> Unit,
     onDrawerIconClicked: () -> Unit
 ) {
+
     Scaffold(
         bottomBar = {
-            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+            val currentRoute =
+                navController.currentBackStackEntryAsState().value?.destination?.route
             if (currentRoute != Rutas.CargarSubeScreen.ruta) {
                 BottomAppBar(
                     modifier = Modifier.height(70.dp),
@@ -96,6 +103,7 @@ fun MainScaffold(
             startDestination = Rutas.HomeScreen.ruta,
             modifier = Modifier.padding(innerPadding)
         ) {
+
             composable(Rutas.HomeScreen.ruta) { HomeScreen() }
             composable(Rutas.TransaccionsScreen.ruta) { TransactionScreen() }
             composable(Rutas.MyCardScreen.ruta) { MyCardScreen() }
