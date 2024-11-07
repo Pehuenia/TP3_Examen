@@ -7,7 +7,7 @@ data class BankAccountTransaction(
     val currency: String = "",
     val date: String = "",
     val description: String = "",
-    @PropertyName("transaction_id")
-    val transactionId: String = "",
+    //@PropertyName("transaction_id")
+    val transaction_id: String = "",
     val type: String = ""
 )

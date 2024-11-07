@@ -29,6 +29,7 @@ firebaseDatabase = "21.0.0"
 firebaseAuth = "23.1.0"
 runtimeLivedata = "1.7.5"
 firebaseConfig = "22.0.1"
+firebaseFirestoreKtx = "25.1.1"
 
 
 [libraries]
@@ -67,6 +68,7 @@ firebase-database = { group = "com.google.firebase", name = "firebase-database",
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebaseConfig" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 
 
 [plugins]
