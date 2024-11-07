@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 import androidx.lifecycle.*
+import com.example.tp3_examen.data.models.BankData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -24,7 +25,7 @@ class TransactionsViewModel(private val userRepository: UserRepository) : ViewMo
 
     sealed class TransactionsState {
         object Loading : TransactionsState()
-        data class Success(val transactions: List<BankAccountTransaction>) : TransactionsState()
+        data class Success(val bankData: BankData) : TransactionsState()
         data class Error(val exception: Throwable) : TransactionsState()
     }
 
@@ -32,21 +33,20 @@ class TransactionsViewModel(private val userRepository: UserRepository) : ViewMo
     val transactionsState: LiveData<TransactionsState> get() = _transactionsState
 
 
-    fun loadBankAccountTransactions(userId: String) {
+    fun loadBankData() {
         _transactionsState.value = TransactionsState.Loading
-
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 try {
-                    userRepository.getBankAccountTransactions("8G75RESPB56FO7ZEhQuz")
+                    userRepository.loadBankData("8G75RESPB56FO7ZEhQuz")
                         .catch { e ->
                             withContext(Dispatchers.Main) {
                                 _transactionsState.value = TransactionsState.Error(e)
                             }
                         }
-                        .collect { transactions ->
+                        .collect { bankData ->
                             withContext(Dispatchers.Main) {
-                                _transactionsState.value = TransactionsState.Success(transactions)
+                                _transactionsState.value = TransactionsState.Success(bankData)
                             }
                         }
                 } catch (e: Exception) {

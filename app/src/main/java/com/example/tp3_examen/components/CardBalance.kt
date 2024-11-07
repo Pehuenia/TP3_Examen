@@ -32,7 +32,10 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.res.stringResource
 
 @Composable
-fun PruebaCard() {
+fun CardBalance(
+    cvu:String,
+    balance:Float
+) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = colorResource(id = R.color.white),
@@ -73,7 +76,7 @@ fun PruebaCard() {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "$ 1.322,78",
+                    text = "$ $balance",
                     color = colorResource(id = R.color.black),
                     style = TextStyle(
                         fontSize = 32.sp,
@@ -104,7 +107,7 @@ fun PruebaCard() {
                             append("CVU: ")
                         }
                         withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                            append("000654326538129540653")
+                            append(cvu)
                         }
                     },
                     color = colorResource(id = R.color.black),
@@ -137,7 +140,6 @@ fun PruebaCard() {
         }
     }
 }
-
 
 
 
