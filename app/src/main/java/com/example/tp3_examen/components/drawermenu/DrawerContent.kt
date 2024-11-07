@@ -1,4 +1,4 @@
-package com.example.tp3_examen.components
+package com.example.tp3_examen.components.drawermenu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
+import com.example.tp3_examen.components.ItemsBackground
 import com.example.tp3_examen.utilities.GetDrawerMenuItems
 
 

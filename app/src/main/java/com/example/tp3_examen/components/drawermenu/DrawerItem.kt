@@ -1,4 +1,4 @@
-package com.example.tp3_examen.components
+package com.example.tp3_examen.components.drawermenu
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

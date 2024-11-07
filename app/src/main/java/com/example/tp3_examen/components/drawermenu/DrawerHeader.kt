@@ -1,4 +1,4 @@
-package com.example.tp3_examen.components
+package com.example.tp3_examen.components.drawermenu
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
+import com.example.tp3_examen.components.CircularImage
 
 
 @Composable
@@ -31,7 +32,7 @@ fun DrawerHeader() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+/*
         Text(
             text = stringResource(R.string.profile_text),
             fontSize = 19.sp,
@@ -40,7 +41,7 @@ fun DrawerHeader() {
             modifier = Modifier.padding(top = 25.dp, bottom = 38.dp)
         )
 
-
+*/
 
         CircularImage(
             size = 170, modifier = Modifier,
