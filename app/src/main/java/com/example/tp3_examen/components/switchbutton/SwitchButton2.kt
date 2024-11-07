@@ -29,7 +29,7 @@ fun SwitchButton2(isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
         contentAlignment = Alignment.CenterStart
     ) {
         val thumbOffset = if (isChecked) 28.dp else 4.dp
-        Box(                  //círculo del switch button
+        Box(
             modifier = Modifier
                 .size(24.dp)
                 .offset(x = thumbOffset)

@@ -34,7 +34,10 @@ fun SettingsCard(
         modifier = modifier
             .fillMaxWidth()
             .padding(start = 12.dp, end = 12.dp, top = 25.dp, bottom = 4.dp)
-            .background(color = MaterialTheme.colorScheme.background, shape = RoundedCornerShape(13.dp))
+            .background(
+                color = MaterialTheme.colorScheme.background,
+                shape = RoundedCornerShape(13.dp)
+            )
             .border(
                 width = 1.dp,
                 color = colorResource(R.color.gray_500),
@@ -43,12 +46,15 @@ fun SettingsCard(
             .padding(0.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            // Switch arriba a la izquierda
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(0.dp)) {
-                SwitchButton2(isChecked = isChecked, onCheckedChange = onCheckedChange)  //SettingCard no necesita recibir el ThemeViewModel como parámetro, porque onCheckedChenge es suficiene para delegar la acción a SwitchButton2 para actualizar el estado.
+                    .padding(0.dp)
+            ) {
+                SwitchButton2(
+                    isChecked = isChecked,
+                    onCheckedChange = onCheckedChange
+                )
 
             }
 
@@ -61,7 +67,6 @@ fun SettingsCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Texto a la izquierda
                 Text(
                     text = text,
                     fontSize = 18.sp,
@@ -69,7 +74,6 @@ fun SettingsCard(
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
-                // Ícono verde a la derecha
                 IconComponent()
             }
         }

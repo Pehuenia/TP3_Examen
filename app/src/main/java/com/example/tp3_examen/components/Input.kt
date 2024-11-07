@@ -75,13 +75,15 @@ fun Input(
                     isError = false
                 }
             },
-            label = { Text(
-                text = label,
-                color = when {
-                    value.text.isNotEmpty() || isFocused -> colorResource(id = R.color.gray_500)
-                    else -> colorResource(id = R.color.gray_900)
-                }
-            ) },
+            label = {
+                Text(
+                    text = label,
+                    color = when {
+                        value.text.isNotEmpty() || isFocused -> colorResource(id = R.color.gray_500)
+                        else -> colorResource(id = R.color.gray_900)
+                    }
+                )
+            },
             colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
@@ -89,11 +91,11 @@ fun Input(
                 focusedContainerColor = colorResource(id = R.color.white),
                 unfocusedContainerColor = colorResource(id = R.color.white),
                 errorContainerColor = colorResource(id = R.color.white),
-                focusedTextColor =  colorResource(id = R.color.black)
+                focusedTextColor = colorResource(id = R.color.black)
             ),
             isError = isError,
             trailingIcon = {
-                Row (verticalAlignment = Alignment.CenterVertically) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     if (isError && value.text.isNotEmpty()) {
                         Text(
                             text = "!",
@@ -108,9 +110,13 @@ fun Input(
                     if (isPassword) {
                         IconButton(onClick = { passwordVisible = !passwordVisible }) {
                             Icon(
-                                painter = if (passwordVisible) painterResource(id = R.drawable.crossed_out_eye) else painterResource(id = R.drawable.open_eye),
+                                painter = if (passwordVisible) painterResource(id = R.drawable.crossed_out_eye) else painterResource(
+                                    id = R.drawable.open_eye
+                                ),
                                 contentDescription = if (passwordVisible) "Hide password" else "Show password",
-                                tint = if (passwordVisible) colorResource(id = R.color.purple_900) else colorResource(id = R.color.gray_500),
+                                tint = if (passwordVisible) colorResource(id = R.color.purple_900) else colorResource(
+                                    id = R.color.gray_500
+                                ),
                             )
                         }
                     }

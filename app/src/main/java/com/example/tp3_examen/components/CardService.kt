@@ -36,8 +36,8 @@ fun CardService(
     Card(
         modifier = Modifier
             .clickable(onClick = onClick)
-            .padding(8.dp) // Reduce el padding alrededor de cada tarjeta
-            .size(140.dp), // Ajusta el tamaño si deseas tarjetas un poco más pequeñas
+            .padding(8.dp)
+            .size(140.dp),
 
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -46,7 +46,7 @@ fun CardService(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp), // Reduce el padding dentro de la tarjeta
+                .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {

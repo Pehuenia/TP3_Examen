@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalDrawerSheet
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModelProvider
 import com.example.tp3_examen.data.network.AuthRetrofit
@@ -26,33 +24,22 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-
         val authService = AuthRetrofit
         val loginUseCase = LoginUseCase(authService)
-        val viewModel = ViewModelProvider(this, LoginViewModel.provideFactory(loginUseCase)).get(LoginViewModel::class.java)
-
+        val viewModel = ViewModelProvider(
+            this,
+            LoginViewModel.provideFactory(loginUseCase)
+        ).get(LoginViewModel::class.java)
 
         setContent {
-
-
-            TP3_ExamenTheme () {
+            TP3_ExamenTheme() {
                 val token by viewModel.token
-
-
-
-                if (token != null) {
-
-                        ModalDrawerSheet {  }
-                        LoginScreen(viewModel)
-
+                if (token == null) {
+                    ModalDrawerSheet { }
+                    LoginScreen(viewModel)
                 } else {
                     AppNavigation(viewModel)
                 }
-
-
-
-
-
             }
         }
     }

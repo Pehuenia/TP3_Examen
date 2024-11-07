@@ -115,7 +115,7 @@ fun TransactionItem(transaction: BankAccountTransaction) {
                     )
                 )
                 Text(
-                    text = "operacion id: ${transaction.transaction_id}",
+                    text = "Aut. ${transaction.transaction_id}",
                     color = colorResource(id = R.color.black),
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth(),
@@ -131,13 +131,13 @@ fun TransactionItem(transaction: BankAccountTransaction) {
                     .weight(1f)
                     .fillMaxWidth()
             ) {
-                val amountText = if (transaction.type == "credit") {
+                val amountText = if (transaction.type == stringResource(id = R.string.type_credit)) {
                     "+ $${transaction.amount}"
                 } else {
                     "- $${transaction.amount}"
                 }
 
-                val amountColor = if (transaction.type == "credit") {
+                val amountColor = if (transaction.type == stringResource(id = R.string.type_credit)) {
                     colorResource(id = R.color.green)
                 } else {
                     colorResource(id = R.color.red_900)

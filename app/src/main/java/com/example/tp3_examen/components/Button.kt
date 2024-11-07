@@ -26,14 +26,14 @@ import com.example.tp3_examen.R
 fun ButtonApp(
     text: String,
     onClick: () -> Unit
-){
+) {
     val colorDefault = colorResource(id = R.color.purple_900)
     val colorPressed = colorResource(id = R.color.green_900)
     val colorHover = colorResource(id = R.color.green_800)
 
     val interactionSource = remember { MutableInteractionSource() }
     val backgroundColor = remember { mutableStateOf(colorDefault) }
-    
+
     LaunchedEffect(interactionSource) {
         interactionSource.interactions.collect { interaction ->
             when (interaction) {

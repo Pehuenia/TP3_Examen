@@ -54,7 +54,26 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="request_physical_card">Quiero mi tarjeta física</string>
     <string name="activate_physical_card">Ya tengo mi tarjeta física Activa tu tarjeta para comenzar a usarla</string>
+    <string name="error_name">Error al cargar nombre</string>
 
 
+    <string name="sube_card">Tarjeta No: 6061 3580 2384 9041</string>
+    <string name="sube_balance">$200,00</string>
+
+    <string name="load_money">CARGAR\n DINERO</string>
+    <string name="extract_money">EXTRAER\n DINERO</string>
+    <string name="follow_loan">SEGUIR\n MI PRÉSTAMO</string>
+
+    <string name="load_sube">RECARGA\n SUBE</string>
+    <string name="load_phone">RECARGA\n CELULAR</string>
+    <string name="pay_service">PAGAR\n SERVICIO</string>
+    <string name="transfer_money">TRANSFERIR\n DINERO</string>
+
+    <string name="load_sube2">RECARGA SUBE</string>
+    <string name="load_phone2">RECARGA CELULAR</string>
+    <string name="pay_service2">PAGO DE SERVICIOS</string>
+    <string name="prepaid_directv">DIRECT TV PREPAGO</string>
+
+    <string name="type_credit">credit</string>
 
 </resources>

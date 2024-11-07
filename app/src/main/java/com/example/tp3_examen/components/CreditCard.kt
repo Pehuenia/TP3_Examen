@@ -34,8 +34,6 @@ import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
 
 @Composable
-
-    //cardNumber: String, expirationDate: String
 fun CreditCard() {
     var isRevealed by remember { mutableStateOf(false) }
 

@@ -65,7 +65,7 @@ fun DrawerHeader(viewModel: NavDrawerViewModel) {
             when (userDataState) {
                 is NavDrawerViewModel.UserDataState.Loading -> {
                     Text(
-                        text = "Cargando...",
+                        text = stringResource(id = R.string.loading),
                         fontSize = 19.sp,
                         fontWeight = FontWeight.W700,
                         color = MaterialTheme.colorScheme.onSurface
@@ -85,13 +85,11 @@ fun DrawerHeader(viewModel: NavDrawerViewModel) {
 
                 is NavDrawerViewModel.UserDataState.Error -> {
                     Text(
-                        text = "Error al cargar nombre",
+                        text = stringResource(id = R.string.error_name),
                         fontSize = 19.sp,
                         fontWeight = FontWeight.W700,
                         color = MaterialTheme.colorScheme.onSurface
-
                     )
-
                 }
             }
         }

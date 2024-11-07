@@ -48,8 +48,6 @@ fun ExpandingOptionCard(
                     .padding(vertical = 4.dp)
                     .clickable(
                         onClick = { onItemClick(index) },
-                        //  indication = null, // Desactiva el efecto visual de ripple
-                        //interactionSource = remember { MutableInteractionSource() }
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -57,7 +55,7 @@ fun ExpandingOptionCard(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = item.first, // Título
+                        text = item.first,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = colorResource(id = R.color.black),
@@ -65,7 +63,7 @@ fun ExpandingOptionCard(
                     )
                     if (item.second.isNotEmpty()) {
                         Text(
-                            text = item.second, // Descripción
+                            text = item.second,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Normal,
                             color = Color.Gray

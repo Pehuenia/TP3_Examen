@@ -29,7 +29,7 @@ fun ActionItem(label: String, iconResId: Int) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { /* Acción del botón */ },
+            .clickable {},
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -58,8 +58,8 @@ fun ActionItem(label: String, iconResId: Int) {
                     fontWeight = FontWeight.Bold
                 ),
                 textAlign = TextAlign.Center,
-                maxLines = Int.MAX_VALUE, // Permitir todas las líneas necesarias para envolver el texto
-                overflow = TextOverflow.Clip, // Sin truncar el texto
+                maxLines = Int.MAX_VALUE,
+                overflow = TextOverflow.Clip,
                 modifier = Modifier.fillMaxWidth()
             )
         }

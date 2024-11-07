@@ -16,22 +16,12 @@ fun CircularImage(
     imageId: Int
 
 ) {
-
-        /*
-        Image(
-            painter = painterResource(id = R.drawable.profile_picture),
-            contentDescription = "Circular Image",
-            modifier = Modifier
-                .size(100.dp)
-                .clip(CircleShape)
-        )
-        */
-        Image(
-            painter = painterResource(id = R.drawable.profile_picture),
-            contentDescription = "User Photo",
-            modifier = Modifier
-                .size(170.dp)
-                .padding(bottom = 32.dp)
-        )
+    Image(
+        painter = painterResource(id = R.drawable.profile_picture),
+        contentDescription = "User Photo",
+        modifier = Modifier
+            .size(170.dp)
+            .padding(bottom = 32.dp)
+    )
 
 }

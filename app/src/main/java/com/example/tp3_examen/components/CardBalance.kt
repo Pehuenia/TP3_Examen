@@ -2,6 +2,7 @@ package com.example.tp3_examen.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -27,14 +30,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
-import androidx.compose.foundation.clickable
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.ui.res.stringResource
 
 @Composable
 fun CardBalance(
-    cvu:String,
-    balance:Float
+    cvu: String,
+    balance: Float
 ) {
     Card(
         colors = CardDefaults.cardColors(
@@ -66,7 +66,7 @@ fun CardBalance(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "SALDO DISPONIBLE",
+                    text = stringResource(id = R.string.available_balance),
                     color = colorResource(id = R.color.black),
                     style = TextStyle(
                         fontSize = 12.sp,

@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -39,13 +40,12 @@ fun CardSube() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Logo de SUBE con fondo azul
             Box(
                 modifier = Modifier
                     .width(140.dp)
                     .height(80.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(colorResource(id = R.color.sube_blue)),  // Color de fondo azul para el logo
+                    .background(colorResource(id = R.color.sube_blue)),
                 contentAlignment = Alignment.Center
             ) {
                 androidx.compose.foundation.Image(
@@ -65,9 +65,8 @@ fun CardSube() {
                     .background(colorResource(id = R.color.gray_500))
             )
 
-            // Número de tarjeta
             Text(
-                text = "Tarjeta No: 6061 3580 2384 9041",
+                text = stringResource(id = R.string.sube_card),
                 color = colorResource(id = R.color.black),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
@@ -75,18 +74,14 @@ fun CardSube() {
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
-
-            // Línea separadora inferior
             Spacer(
                 modifier = Modifier
                     .width(288.dp)
                     .height(1.dp)
                     .background(colorResource(id = R.color.gray_500))
             )
-
-            // Saldo
             Text(
-                text = "$200,00",
+                text = stringResource(id = R.string.sube_balance),
                 color = colorResource(id = R.color.black),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,

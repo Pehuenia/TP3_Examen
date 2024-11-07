@@ -24,12 +24,12 @@ fun TopAppBar(
     onBackClick: () -> Unit,
     onCloseClick: () -> Unit,
     showBackGround: Boolean
-){
+) {
 
     var backgroundColor = Color(R.color.gray_100)
-if(showBackGround){
-    backgroundColor = Color(R.color.white)
-}
+    if (showBackGround) {
+        backgroundColor = Color(R.color.white)
+    }
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -54,7 +54,7 @@ if(showBackGround){
             }
         },
         actions = {
-            if(showCross){
+            if (showCross) {
                 IconButton(onClick = { onCloseClick() }) {
                     Icon(
                         imageVector = Icons.Filled.Close,

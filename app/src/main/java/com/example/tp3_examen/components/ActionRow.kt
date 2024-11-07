@@ -17,12 +17,12 @@ import com.example.tp3_examen.R
 fun ActionRow(actions: List<Pair<String, Int>>, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
-            .fillMaxWidth() // Llena el ancho disponible
+            .fillMaxWidth()
     ) {
         actions.forEach { action ->
             Column(
                 Modifier
-                    .weight(1f) // Distribuye el espacio entre columnas de forma equitativa
+                    .weight(1f)
                     .fillMaxHeight()
                     .border(1.dp, colorResource(id = R.color.gray_500)),
                 horizontalAlignment = Alignment.CenterHorizontally,
