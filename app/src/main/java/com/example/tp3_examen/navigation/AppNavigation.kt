@@ -22,7 +22,7 @@ import com.example.tp3_examen.viewmodels.drawerviewmodel.NavDrawerViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AppNavigation(viewModel: LoginViewModel) {
+fun AppNavigation() {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf(Rutas.HomeScreen.ruta) } // Estado para el ítem seleccionado
     val drawerViewModel: NavDrawerViewModel = viewModel(factory = DrawerViewModelFactory())
