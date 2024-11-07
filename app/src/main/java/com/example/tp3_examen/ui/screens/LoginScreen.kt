@@ -37,10 +37,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
-import com.example.tp3_examen.components1.BackgroundLogin
-import com.example.tp3_examen.components1.ButtonApp
-import com.example.tp3_examen.components1.CircularIcon
-import com.example.tp3_examen.components1.Input
+import com.example.tp3_examen.components.BackgroundLogin
+import com.example.tp3_examen.components.ButtonApp
+import com.example.tp3_examen.components.CircularIcon
+import com.example.tp3_examen.components.Input
 import com.example.tp3_examen.viewmodels.LoginViewModel
 
 

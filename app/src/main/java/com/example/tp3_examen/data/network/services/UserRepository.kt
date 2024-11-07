@@ -42,42 +42,4 @@ class UserRepository(private val firestore: FirebaseFirestore) {
         }
 
 
-
-    // Función para agregar un usuario
-    fun addUser(
-        userData: Map<String, Any>,
-        onSuccess: (String) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        firestore.collection("users")
-            .add(userData)
-            .addOnSuccessListener { documentReference ->
-                Log.d("Firestore", "Documento agregado con ID: ${documentReference.id}")
-                onSuccess(documentReference.id)
-            }
-            .addOnFailureListener { e ->
-                Log.w("Firestore", "Error al agregar documento", e)
-                onFailure(e)
-            }
-    }
-
-    // Función para leer los documentos de la colección "users"
-    fun getAllUsers(
-        onSuccess: (List<Map<String, Any>>) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        firestore.collection("users")
-            .get()
-            .addOnSuccessListener { documents ->
-                val usersList = documents.map { it.data }
-                for (document in documents) {
-                    Log.d("Firestore", "${document.id} => ${document.data}")
-                }
-                onSuccess(usersList)
-            }
-            .addOnFailureListener { e ->
-                Log.w("Firestore", "Error al leer documentos", e)
-                onFailure(e)
-            }
-    }
 }

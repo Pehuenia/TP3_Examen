@@ -25,8 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
-import com.example.tp3_examen.components1.CardActions
-import com.example.tp3_examen.components1.CreditCard
+import com.example.tp3_examen.components.CardActions
+import com.example.tp3_examen.components.CreditCard
 
 
 

@@ -16,10 +16,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
-import com.example.tp3_examen.components1.ActionRow
-import com.example.tp3_examen.components1.CustomCard
-import com.example.tp3_examen.components1.PruebaCard
-import com.example.tp3_examen.components1.TransactionsList
+import com.example.tp3_examen.components.ActionRow
+import com.example.tp3_examen.components.CustomCard
+import com.example.tp3_examen.components.PruebaCard
+import com.example.tp3_examen.components.TransactionsList
 
 @Composable
 fun TransactionScreen() {
