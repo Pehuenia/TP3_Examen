@@ -30,8 +30,28 @@ object AuthRetrofit : IAuthService, IGetUserService {
     val apiService: Api = retrofit.create(Api::class.java)
 
     override suspend fun login(user: User): LoginResponse {
-        return apiService.login(user)
+        val response = apiService.login(user)
+
+        if (!response.isSuccessful) {
+            when (response.code()) {
+                401 -> throw Exception("Credenciales inválidas. Por favor, intente nuevamente.")
+                402 -> throw Exception("El pago es requerido para acceder a este servicio.")
+                else -> throw Exception("Error desconocido. Código de error: ${response.code()}")
+            }
+        }
+
+        val loginResponse = response.body()
+
+        if (loginResponse == null || loginResponse.token.isNullOrEmpty()) {
+            throw Exception("Credenciales inválidas.")
+        }
+
+        return loginResponse
     }
+
+
+
+
 
     override suspend fun getUser(id: Int): UserResponse {
         return apiService.getUser(id)

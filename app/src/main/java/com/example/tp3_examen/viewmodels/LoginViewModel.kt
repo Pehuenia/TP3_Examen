@@ -1,6 +1,7 @@
 package com.example.tp3_examen.viewmodels
 
 import android.util.Log
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -14,22 +15,26 @@ class LoginViewModel(
     private val loginUseCase: LoginUseCase
 ) : ViewModel() {
 
-    private var loginResponse = mutableStateOf<LoginResponse?>(null)
-    var token = mutableStateOf<String?>(null)
+    private var _loginResponse = mutableStateOf<LoginResponse?>(null)
+    private var _errorMessage = mutableStateOf<String?>(null)
+    val errorMessage: State<String?> get() = _errorMessage
+    val token: State<LoginResponse?> get() = _loginResponse
 
     fun login(email: String, password: String) {
         val user = User(email, password)
-        Log.d("viewmodel", user.toString())
         viewModelScope.launch {
-            Log.d("viewmodel", "entro aca")
             try {
-                loginResponse.value = loginUseCase.execute(user)
-                token.value = loginResponse.value?.token
+                _errorMessage.value = null
+
+                _loginResponse.value = loginUseCase.execute(user)
+
             } catch (e: Exception) {
-                loginResponse.value = null
+                _errorMessage.value = e.message
+                _loginResponse.value = null
             }
         }
     }
+
     companion object {
         fun provideFactory(loginUseCase: LoginUseCase): ViewModelProvider.Factory =
             object : ViewModelProvider.Factory {
