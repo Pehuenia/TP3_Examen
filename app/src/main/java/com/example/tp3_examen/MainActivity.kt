@@ -8,12 +8,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tp3_examen.data.network.AuthRetrofit
 import com.example.tp3_examen.data.shared.LoginUseCase
 import com.example.tp3_examen.navigation.AppNavigation
 import com.example.tp3_examen.ui.screens.LoginScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 import com.example.tp3_examen.viewmodels.LoginViewModel
+import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModel
+import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModelFactory
 
 
 class MainActivity : ComponentActivity() {
@@ -33,13 +36,18 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TP3_ExamenTheme() {
+                val mainViewModel: MainViewModel = viewModel(factory = MainViewModelFactory())
                 val token by viewModel.token
+
+
                 if (token == null) {
                     ModalDrawerSheet { }
                     LoginScreen(viewModel)
                 } else {
-                    AppNavigation(viewModel)
+                    AppNavigation(mainViewModel)
                 }
+
+
             }
         }
     }

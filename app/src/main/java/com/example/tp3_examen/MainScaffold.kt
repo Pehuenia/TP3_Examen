@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -20,19 +23,24 @@ import com.example.tp3_examen.ui.screens.CargarSubeScreen
 import com.example.tp3_examen.ui.screens.HomeScreen
 import com.example.tp3_examen.ui.screens.MyCardScreen
 import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
+import com.example.tp3_examen.ui.screens.SplashScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
+import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModel
 
 
 @Composable
 fun MainScaffold(
+    mainViewModel: MainViewModel,
     navController: NavHostController,
     selectedItem: String,
     onBottomBarItemSelected: (String) -> Unit,
     onDrawerIconClicked: () -> Unit
 ) {
+    val showSplash by mainViewModel.showSplash.observeAsState(true)
     Scaffold(
         bottomBar = {
-            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+            val currentRoute =
+                navController.currentBackStackEntryAsState().value?.destination?.route
             if (currentRoute != Rutas.CargarSubeScreen.ruta) {
                 BottomAppBar(
                     modifier = Modifier.height(70.dp),
@@ -93,9 +101,21 @@ fun MainScaffold(
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Rutas.HomeScreen.ruta,
+            startDestination = if (showSplash) "splash" else Rutas.HomeScreen.ruta,
             modifier = Modifier.padding(innerPadding)
         ) {
+
+            composable("splash") {
+                SplashScreen()
+                // Cuando showSplash cambia a false, navega a HomeScreen
+                LaunchedEffect(showSplash) {
+                    if (!showSplash) {
+                        navController.navigate(Rutas.HomeScreen.ruta) {
+                            popUpTo("splash") { inclusive = true }
+                        }
+                    }
+                }
+            }
             composable(Rutas.HomeScreen.ruta) { HomeScreen() }
             composable(Rutas.TransaccionsScreen.ruta) { TransactionScreen() }
             composable(Rutas.MyCardScreen.ruta) { MyCardScreen() }

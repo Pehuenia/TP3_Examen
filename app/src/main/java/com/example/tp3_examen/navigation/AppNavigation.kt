@@ -15,14 +15,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.tp3_examen.MainScaffold
 import com.example.tp3_examen.components.drawermenu.CustomDrawer
-import com.example.tp3_examen.viewmodels.LoginViewModel
 import com.example.tp3_examen.viewmodels.drawerviewmodel.DrawerViewModelFactory
 import com.example.tp3_examen.viewmodels.drawerviewmodel.NavDrawerViewModel
+import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AppNavigation() {
+fun AppNavigation(mainViewModel: MainViewModel) {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf(Rutas.HomeScreen.ruta) } // Estado para el ítem seleccionado
     val drawerViewModel: NavDrawerViewModel = viewModel(factory = DrawerViewModelFactory())
@@ -45,6 +45,7 @@ fun AppNavigation() {
         MainScaffold(
             navController = navController,
             selectedItem = selectedItem,
+            mainViewModel = mainViewModel,
             onBottomBarItemSelected = { selectedItem = it },
             onDrawerIconClicked = { isDrawerOpen = true }
         )
