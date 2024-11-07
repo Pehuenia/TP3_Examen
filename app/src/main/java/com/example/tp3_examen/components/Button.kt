@@ -25,7 +25,7 @@ import com.example.tp3_examen.R
 @Composable
 fun ButtonApp(
     text: String,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     val colorDefault = colorResource(id = R.color.purple_900)

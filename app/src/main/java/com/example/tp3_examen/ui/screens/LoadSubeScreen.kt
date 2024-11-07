@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.tp3_examen.R
 import com.example.tp3_examen.components.ButtonApp
+import com.example.tp3_examen.components.TopAppBar
 import com.example.tp3_examen.components.modalsube.CardSube
 import com.example.tp3_examen.navigation.Rutas
 
@@ -42,6 +43,18 @@ fun CargarSubeScreen(navController: NavHostController) {
 
     Scaffold(
         topBar = {
+            TopAppBar(
+                title = "Cargar SUBE",
+                showArrow = showArrow,
+                showCross = true,
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onCloseClick = {
+                    navController.popBackStack()
+                }
+
+            )
 
         },
     ) { innerPadding ->

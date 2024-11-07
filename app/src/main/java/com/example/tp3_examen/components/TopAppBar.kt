@@ -23,13 +23,11 @@ fun TopAppBar(
     showCross: Boolean,
     onBackClick: () -> Unit,
     onCloseClick: () -> Unit,
-    showBackGround: Boolean
 ) {
 
-    var backgroundColor = Color(R.color.gray_100)
-    if (showBackGround) {
-        backgroundColor = Color(R.color.white)
-    }
+    var backgroundColor = colorResource(R.color.white)
+
+
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
