@@ -1,6 +1,5 @@
 package com.example.tp3_examen.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.AlertDialog
@@ -22,14 +21,16 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tp3_examen.R
 import com.example.tp3_examen.components.Alert
 import com.example.tp3_examen.components.CardActions
-import com.example.tp3_examen.components.CardBalance
 import com.example.tp3_examen.components.CreditCard
 import com.example.tp3_examen.data.network.AuthRetrofit
+import com.example.tp3_examen.data.network.services.UserRepository
 import com.example.tp3_examen.data.shared.GetUserCase
-import com.example.tp3_examen.data.shared.IGetUserService
 import com.example.tp3_examen.utilities.AccessTimeManager
 import com.example.tp3_examen.viewmodels.homeviewmodel.HomeViewModel
 import com.example.tp3_examen.viewmodels.homeviewmodel.HomeViewModelFactory
+import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModel
+import com.example.tp3_examen.viewmodels.transactionsviewmodel.TransactionsViewModelFactory
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 fun HomeScreen() {
@@ -37,6 +38,7 @@ fun HomeScreen() {
     var lastAccessTime by remember { mutableStateOf(AccessTimeManager.getLastAccessTime(context)) }
     var isFirstAccess by remember { mutableStateOf(AccessTimeManager.isFirstAccess(context)) }
     val getUserService = AuthRetrofit
+
     val getUserCase = GetUserCase(getUserService)
     val homeViewModel: HomeViewModel = viewModel(
         factory = HomeViewModelFactory(getUserCase)
@@ -59,6 +61,20 @@ LaunchedEffect(Unit) {
         AccessTimeManager.setLastAccessTime(context)
     }
 }
+    val firestore = FirebaseFirestore.getInstance() // Inicializa Firestore
+    val userRepository = UserRepository(firestore);
+    val transactionsViewModel: TransactionsViewModel = viewModel(
+        factory = TransactionsViewModelFactory(userRepository)
+    )
+    val transactionsState by transactionsViewModel.transactionsState.observeAsState(
+        TransactionsViewModel.TransactionsState.Loading
+    )
+    LaunchedEffect(Unit) {
+        transactionsViewModel.loadBankData()
+    }
+
+
+
     Column(
         modifier = Modifier
             .background(colorResource(id = R.color.gray_100))
@@ -72,44 +88,25 @@ LaunchedEffect(Unit) {
                 .padding(12.dp)
                 .fillMaxWidth()
         ) {
-            when (val state = userDataState) {
-                is HomeViewModel.UserDataState.Loading -> {
-                    Text(
-                        text = "cargando",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            lineHeight = 21.6.sp,
-                            textAlign = TextAlign.Left,
-                            color = colorResource(id = R.color.black)
-                        )
-                    )
-                }
-                is HomeViewModel.UserDataState.Error -> {
-                    Text(
-                        text = "error",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            lineHeight = 21.6.sp,
-                            textAlign = TextAlign.Left,
-                            color = colorResource(id = R.color.black)
-                        )
-                    )
-                }
-                is HomeViewModel.UserDataState.Success -> {
-                    Text(
-                        text = stringResource(id = R.string.greeting) + " " + state.userName.firstname,
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            lineHeight = 21.6.sp,
-                            textAlign = TextAlign.Left,
-                            color = colorResource(id = R.color.black)
-                        )
-                    )
-                }
+            val textStyle = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 21.6.sp,
+                textAlign = TextAlign.Left,
+                color = colorResource(id = R.color.black)
+            )
+
+            val greetingText = when (val state = userDataState) {
+                is HomeViewModel.UserDataState.Loading -> stringResource(id = R.string.loading)
+                is HomeViewModel.UserDataState.Error -> stringResource(id = R.string.error)
+                is HomeViewModel.UserDataState.Success -> stringResource(id = R.string.greeting) + " " + state.userName.firstname
             }
+
+            Text(
+                text = greetingText,
+                style = textStyle
+            )
+
 
             Spacer(modifier = Modifier.height(4.dp))
             Text(
@@ -127,7 +124,6 @@ LaunchedEffect(Unit) {
         // cardNumber = "4957 7124 8154 2582" ,
         //expirationDate = "12/23"
         CreditCard()
-
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -142,15 +138,24 @@ LaunchedEffect(Unit) {
                 ),
                 textAlign = TextAlign.Center
             )
+
+            val balanceTextStyle = TextStyle(
+                fontSize = 44.sp,
+                lineHeight = 35.2.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                color = colorResource(id = R.color.black)
+            )
+
+            val balanceText = when (val state = transactionsState) {
+                is TransactionsViewModel.TransactionsState.Loading -> stringResource(id = R.string.loading)
+                is TransactionsViewModel.TransactionsState.Error -> stringResource(id = R.string.error)
+                is TransactionsViewModel.TransactionsState.Success -> "$ ${state.bankData.balance}"
+            }
+
             Text(
-                text = "$ 1.322,78", // le deberiamos pasar el monto
-                color = colorResource(id = R.color.black),
-                style = TextStyle(
-                    fontSize = 44.sp,
-                    lineHeight = 35.2.sp,
-                    fontWeight = FontWeight.Bold
-                ),
-                textAlign = TextAlign.Center
+                text = balanceText,
+                style = balanceTextStyle
             )
         }
 
