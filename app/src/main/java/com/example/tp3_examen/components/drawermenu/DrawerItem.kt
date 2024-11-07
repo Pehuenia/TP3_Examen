@@ -29,7 +29,7 @@ fun DrawerItem(item: DrawerMenuItem) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(24.dp))
         Text(
             item.text,
             style = MaterialTheme.typography.bodyMedium

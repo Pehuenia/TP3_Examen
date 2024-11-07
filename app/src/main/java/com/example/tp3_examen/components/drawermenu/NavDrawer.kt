@@ -14,6 +14,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.tp3_examen.R
@@ -24,32 +26,47 @@ import com.example.tp3_examen.components.switchbutton.SettingsCard
 fun NavDrawer() {
     var isNightMode by remember { mutableStateOf(false) }
 
-    val drawerColors = if (isNightMode) {
-        darkColorScheme()  // Usar el esquema de colores oscuro
+    // Aplica el esquema de colores solo en modo oscuro
+    if (isNightMode) {
+        MaterialTheme(colorScheme = darkColorScheme()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.surface) // Fondo en modo oscuro
+            ) {
+                DrawerHeader()
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                DrawerContent()
+
+                SettingsCard(
+                    text = stringResource(R.string.dark_mode),
+                    isChecked = isNightMode,
+                    onCheckedChange = { isNightMode = it },
+                    IconComponent = { CircularIcon() }
+                )
+            }
+        }
     } else {
-        lightColorScheme()  // Usar el esquema de colores claro
+        // Modo claro con fondo gris claro para visibilidad
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colorResource(R.color.gray_100)) // Fondo gris claro en modo claro
+        ) {
+            DrawerHeader()
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            DrawerContent()
+
+            SettingsCard(
+                text = stringResource(R.string.dark_mode),
+                isChecked = isNightMode,
+                onCheckedChange = { isNightMode = it },
+                IconComponent = { CircularIcon() }
+            )
+        }
     }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.surface)
-    ) {
-
-        DrawerHeader()
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        DrawerContent()
-
-        SettingsCard(
-            text = stringResource(R.string.dark_mode),
-            isChecked = isNightMode,
-            onCheckedChange = { isNightMode = it },
-            IconComponent = { CircularIcon() }
-
-        )
-    }
-
-
 }

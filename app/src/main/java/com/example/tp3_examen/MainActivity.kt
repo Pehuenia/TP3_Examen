@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-            val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
 
             TP3_ExamenTheme () {
                 val token by viewModel.token
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
                         LoginScreen(viewModel)
 
                 } else {
-                    AppNavigation(viewModel,drawerState)
+                    AppNavigation(viewModel)
                 }
 
 
