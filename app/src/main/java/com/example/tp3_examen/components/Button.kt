@@ -25,25 +25,31 @@ import com.example.tp3_examen.R
 @Composable
 fun ButtonApp(
     text: String,
+    enabled: Boolean = false,
     onClick: () -> Unit
 ) {
     val colorDefault = colorResource(id = R.color.purple_900)
     val colorPressed = colorResource(id = R.color.green_900)
     val colorHover = colorResource(id = R.color.green_800)
-
+    val colorDisabled = colorResource(id = R.color.gray_500)
     val interactionSource = remember { MutableInteractionSource() }
     val backgroundColor = remember { mutableStateOf(colorDefault) }
 
-    LaunchedEffect(interactionSource) {
-        interactionSource.interactions.collect { interaction ->
-            when (interaction) {
-                is PressInteraction.Press -> backgroundColor.value = colorPressed
-                is PressInteraction.Release -> backgroundColor.value = colorDefault
-                is HoverInteraction.Enter -> backgroundColor.value = colorHover
-                is HoverInteraction.Exit -> backgroundColor.value = colorDefault
+    LaunchedEffect(interactionSource, enabled) {
+        if (enabled) {
+            interactionSource.interactions.collect { interaction ->
+                when (interaction) {
+                    is PressInteraction.Press -> backgroundColor.value = colorPressed
+                    is PressInteraction.Release -> backgroundColor.value = colorDefault
+                    is HoverInteraction.Enter -> backgroundColor.value = colorHover
+                    is HoverInteraction.Exit -> backgroundColor.value = colorDefault
+                }
             }
+        } else {
+            backgroundColor.value = colorDisabled
         }
     }
+
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -54,6 +60,7 @@ fun ButtonApp(
             containerColor = backgroundColor.value,
             contentColor = colorResource(id = R.color.white)
         ),
+        enabled = enabled, // Establecer si el botón está habilitado o deshabilitado
         interactionSource = interactionSource
     ) {
         Text(
@@ -64,7 +71,6 @@ fun ButtonApp(
                 .fillMaxSize()
                 .wrapContentHeight(),
             softWrap = true
-
         )
     }
 }

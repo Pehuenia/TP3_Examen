@@ -47,9 +47,10 @@ import com.example.tp3_examen.viewmodels.LoginViewModel
 @Composable
 fun LoginScreen(viewModel: LoginViewModel) {
 
-    var usuario by remember { mutableStateOf(TextFieldValue("")) }
+    var username by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
     val errorMessage by viewModel.errorMessage
+    val isFormValid = username.text.isNotEmpty() && password.text.isNotEmpty()
 
 
     BackgroundLogin {
@@ -85,11 +86,13 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     textAlign = TextAlign.Start
                 )
                 Input(
-                    value = usuario,
-                    onValueChange = { usuario = it },
+                    value = username,
+                    onValueChange = { username = it },
                     label = "DNI o E-mail",
                     errorMessage = stringResource(R.string.loginErrorUser),
-                    isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() },
+                    isValid = {true},
+                  //  isValid = { android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() }
+
                 )
                 Column(
                     Modifier
@@ -125,6 +128,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
+
                 if (errorMessage != null) {
                     Text(
                         text = errorMessage.toString(),
@@ -164,7 +168,9 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     )
                 }
 
-                ButtonApp(text = "Ingresar") { viewModel.login(usuario.text, password.text) }
+                ButtonApp(text = "Ingresar",
+                    enabled = isFormValid // Aquí controlas si el botón está habilitado
+                ) { viewModel.login(username.text, password.text) }
             }
         }
 
