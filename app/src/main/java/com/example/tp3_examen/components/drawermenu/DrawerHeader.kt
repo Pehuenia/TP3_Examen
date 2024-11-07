@@ -1,4 +1,4 @@
-package com.example.tp3_examen.components
+package com.example.tp3_examen.components.drawermenu
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tp3_examen.R
+import com.example.tp3_examen.components.CircularImage
 
 
 @Composable

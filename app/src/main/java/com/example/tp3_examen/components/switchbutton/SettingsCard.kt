@@ -33,8 +33,8 @@ fun SettingsCard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 2.dp, end = 2.dp, top = 25.dp, bottom = 4.dp)
-            .background(color = MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(13.dp))
+            .padding(start = 12.dp, end = 12.dp, top = 25.dp, bottom = 4.dp)
+            .background(color = MaterialTheme.colorScheme.background, shape = RoundedCornerShape(13.dp))
             .border(
                 width = 1.dp,
                 color = colorResource(R.color.gray_500),
