@@ -7,6 +7,8 @@
     <string name="login">Ingresá a tu cuenta:</string>
     <string name="forgot_password">Olvidé mi contraseña</string>
     <string name="available_balance">SALDO DISPONIBLE</string>
+    <string name="loading">Cargando...</string>
+    <string name="error">Error</string>
 
     `Alert items`
 
