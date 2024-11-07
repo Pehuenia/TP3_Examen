@@ -34,7 +34,7 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun CardBalance(
     cvu:String,
-    balance:Double
+    balance:Float
 ) {
     Card(
         colors = CardDefaults.cardColors(

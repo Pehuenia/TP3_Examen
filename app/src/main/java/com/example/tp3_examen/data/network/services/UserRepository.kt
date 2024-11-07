@@ -32,6 +32,7 @@ class UserRepository(private val firestore: FirebaseFirestore) {
                     val bankData = BankData()
                     if (completeUser != null) {
                         bankData.cvu = completeUser.bank_account?.cvu ?: ""
+                        Log.d("BALANCE", completeUser.toString())
                         bankData.balance = completeUser.balance
                         bankData.transactions = completeUser.transaction
                             ?.bank_account_transactions ?: emptyList()
