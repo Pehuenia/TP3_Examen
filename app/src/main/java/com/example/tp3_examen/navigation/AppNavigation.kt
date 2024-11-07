@@ -2,9 +2,6 @@ package com.example.tp3_examen.navigation
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.EaseInOut
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
@@ -70,9 +67,9 @@ fun AppNavigation(viewModel: LoginViewModel) {
             .fillMaxSize()
             .pointerInput(Unit) { // Detectar gestos de deslizamiento
                 detectHorizontalDragGestures { change, dragAmount ->
-                    if (dragAmount < -50 && !isDrawerOpen) {
+                    if (dragAmount < -60 && !isDrawerOpen) {
                         isDrawerOpen = true
-                    } else if (dragAmount > 50 && isDrawerOpen) {
+                    } else if (dragAmount > 60 && isDrawerOpen) {
                         isDrawerOpen = false
                     }
                     change.consume()
@@ -158,6 +155,7 @@ fun AppNavigation(viewModel: LoginViewModel) {
         }
 
 
+        // Drawer personalizado con fondo para cierre al tocar fuera o deslizar
         if (isDrawerOpen) {
             Box(
                 modifier = Modifier
@@ -165,46 +163,29 @@ fun AppNavigation(viewModel: LoginViewModel) {
                     .background(Color.Black.copy(alpha = 0.3f))
                     .clickable { isDrawerOpen = false } // Cerrar al tocar fuera
             )
-        }
 
-        AnimatedVisibility(
-            visible = isDrawerOpen,
-            enter = slideInHorizontally(
-                initialOffsetX = { fullWidth -> fullWidth }, // Entra desde el borde derecho de la pantalla
-                animationSpec = tween(
-                    durationMillis = 500,
-                    easing = EaseInOut
-                )
-            ),
-            exit = slideOutHorizontally(
-                targetOffsetX = { fullWidth -> fullWidth - 100 }, // Sale hacia la derecha pero deja 100dp visible
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = EaseInOut
-                )
-            )
-        ) {
+            // Drawer que se abre desde la derecha con deslizamiento
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .width(400.dp) // Ancho del drawer
+                    .width(400.dp)
+                    .align(Alignment.CenterEnd)
                     .background(MaterialTheme.colorScheme.surface)
                     .padding(0.dp)
                     .pointerInput(Unit) {
                         detectHorizontalDragGestures { change, dragAmount ->
-                            if (dragAmount > 30) {
+                            // Cerrar el drawer si se desliza hacia la derecha
+                            if (dragAmount < -30) { // Ajusta el valor según la sensibilidad que prefieras
                                 isDrawerOpen = false
                             }
                             change.consume()
                         }
                     }
             ) {
-                NavDrawer()
+                NavDrawer() // Sin parámetros adicionales
             }
         }
-
     }
-
 }
 
 
