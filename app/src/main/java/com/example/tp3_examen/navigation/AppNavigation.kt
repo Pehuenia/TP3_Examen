@@ -58,13 +58,13 @@ import androidx.navigation.NavHostController
 fun AppNavigation(viewModel: LoginViewModel) {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf(Rutas.HomeScreen.ruta) } // Estado para el ítem seleccionado
-    val scope = rememberCoroutineScope()
+    val drawerViewModel: NavDrawerViewModel = viewModel(factory = DrawerViewModelFactory())
     var isDrawerOpen by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .pointerInput(Unit) { // Detectar gestos de deslizamiento
+            .pointerInput(Unit) {
                 detectHorizontalDragGestures { change, dragAmount ->
                     if (dragAmount < -60 && !isDrawerOpen) {
                         isDrawerOpen = true
@@ -85,11 +85,10 @@ fun AppNavigation(viewModel: LoginViewModel) {
         CustomDrawer(
             isDrawerOpen = isDrawerOpen,
             onCloseDrawer = { isDrawerOpen = false },
+            drawerViewModel = drawerViewModel
         )
     }
 }
-
-
 /*
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable

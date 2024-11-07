@@ -69,21 +69,64 @@ fun MainScaffold(
                 BottomAppBar(
                     modifier = Modifier.height(70.dp),
                     content = {
-                        Row(
-                            modifier = Modifier.height(70.dp),
-                        ) {
-                            // Coloca aquí los iconos de la barra inferior
+                        Row(modifier = Modifier.height(70.dp)) {
+                            BottomBarIcon(
+                                painter = painterResource(id = R.drawable.toolbar1),
+                                description = "Home",
+                                isSelected = selectedItem == Rutas.HomeScreen.ruta,
+                                onClick = {
+                                    onBottomBarItemSelected(Rutas.HomeScreen.ruta)
+                                    navController.navigate(Rutas.HomeScreen.ruta)
+                                },
+                                modifier = Modifier.weight(1f)
+                            )
+                            BottomBarIcon(
+                                painter = painterResource(id = R.drawable.toolbar2),
+                                description = "TransaccionsScreen",
+                                isSelected = selectedItem == Rutas.TransaccionsScreen.ruta,
+                                onClick = {
+                                    onBottomBarItemSelected(Rutas.TransaccionsScreen.ruta)
+                                    navController.navigate(Rutas.TransaccionsScreen.ruta)
+                                },
+                                modifier = Modifier.weight(1f)
+                            )
+                            BottomBarIcon(
+                                painter = painterResource(id = R.drawable.toolbar3),
+                                description = "Menu",
+                                isSelected = selectedItem == Rutas.MyCardScreen.ruta,
+                                onClick = {
+                                    onBottomBarItemSelected(Rutas.MyCardScreen.ruta)
+                                    navController.navigate(Rutas.MyCardScreen.ruta)
+                                },
+                                modifier = Modifier.weight(1f)
+                            )
+                            BottomBarIcon(
+                                painter = painterResource(id = R.drawable.toolbar4),
+                                description = "PagoDeServiciosScreen",
+                                isSelected = selectedItem == Rutas.PagoDeServiciosScreen.ruta,
+                                onClick = {
+                                    onBottomBarItemSelected(Rutas.PagoDeServiciosScreen.ruta)
+                                    navController.navigate(Rutas.PagoDeServiciosScreen.ruta)
+                                },
+                                modifier = Modifier.weight(1f)
+                            )
+                            BottomBarIcon(
+                                painter = painterResource(id = R.drawable.toolbar5),
+                                description = "MyAcountyScreen",
+                                isSelected = false,
+                                onClick = { onDrawerIconClicked() },
+                                modifier = Modifier.weight(1f)
+                            )
                         }
                     }
                 )
             }
         }
     ) { innerPadding ->
-        // Agrega `Modifier.padding(innerPadding)` al `NavHost`
         NavHost(
             navController = navController,
             startDestination = Rutas.HomeScreen.ruta,
-            modifier = Modifier.padding(innerPadding) // Utiliza el padding aquí
+            modifier = Modifier.padding(innerPadding)
         ) {
             composable(Rutas.HomeScreen.ruta) { HomeScreen() }
             composable(Rutas.TransaccionsScreen.ruta) { TransactionScreen() }

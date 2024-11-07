@@ -16,11 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.tp3_examen.viewmodels.drawerviewmodel.NavDrawerViewModel
 
 @Composable
 fun CustomDrawer(
     isDrawerOpen: Boolean,
     onCloseDrawer: () -> Unit,
+    drawerViewModel: NavDrawerViewModel,
     drawerWidth: Dp = 400.dp
 ) {
     if (isDrawerOpen) {
@@ -28,26 +30,32 @@ fun CustomDrawer(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.Black.copy(alpha = 0.3f))
-                .clickable { onCloseDrawer() } // Cerrar al tocar fuera
+                .clickable { onCloseDrawer() }
         )
 
+        // Envolver el drawer en otro Box con contentAlignment para mantenerlo a la derecha
         Box(
             modifier = Modifier
-                .fillMaxHeight()
-                .width(drawerWidth)
-                .background(MaterialTheme.colorScheme.surface)
-                .padding(0.dp)
-                .pointerInput(Unit) {
-                    detectHorizontalDragGestures { change, dragAmount ->
-                        if (dragAmount < -30) { // Cerrar al deslizar hacia la derecha
-                            onCloseDrawer()
-                        }
-                        change.consume()
-                    }
-                },
-            contentAlignment = Alignment.CenterEnd
+                .fillMaxSize(),
+            contentAlignment = Alignment.CenterEnd // Alinea el contenido al extremo derecho
         ) {
-            NavDrawer() // Llama directamente a NavDrawer sin pasarlo como parámetro
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(drawerWidth)
+                    .background(MaterialTheme.colorScheme.surface)
+                    .padding(0.dp)
+                    .pointerInput(Unit) {
+                        detectHorizontalDragGestures { change, dragAmount ->
+                            if (dragAmount < -30) { // Cerrar al deslizar hacia la derecha
+                                onCloseDrawer()
+                            }
+                            change.consume()
+                        }
+                    }
+            ) {
+                NavDrawer(drawerViewModel)
+            }
         }
     }
 }
