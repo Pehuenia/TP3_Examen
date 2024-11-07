@@ -8,18 +8,22 @@ Nosotros concluimos que sería mejor utilizar la arquitectura Hexagonal, ya que 
 5.	Manejo de dependencias explícito: Las dependencias externas se manejan explícitamente mediante adaptadores, lo que mejora la comprensión y el mantenimiento del sistema.
 
 •	¿Tuvieron objetos stateful y stateless? ¿Cómo definen la elección de los mismos?
+
 Sí,  por ejemplo de stateful es en:  el LoginViewModel, los estados como errorMessage y token son mutables y se actualizan conforme al cambio. 
 En el caso del stateless es por ejemplo: ButtonApp, Input o IconCircular.
 
 •	¿Qué mejoras detectan que podrían realizarle a la app? ¿Tendrían side effect si escala el volumen de datos? Comenten al menos 2 cuestiones a refactorizar y tener en cuenta. 
+
 Una de ellas sería utilizar Paging de Jetpack que implementa una capa de repositorio para manejar la lógica de datos y desacoplarla de los ViewModels y, además, optimiza considerablemente el uso del Side effects: ya que, si el volumen de datos escalara, podría haber problemas de rendimiento y consumo de memoria. Utilizar Paging optimiza las consultas a la base de datos mitigando estos problemas. 
 Consideramos:
  Refactorizar la lógica de manejo de errores para centralizarla y hacerla más manejable. Implementar una arquitectura de capas más clara, separando la lógica de negocio, la lógica de datos y la interfaz de usuario.
  
 •	¿Qué manejo de errores harían? ¿dónde los contemplan a nivel código? Mencionen la estrategia de mapeo que más se adecúe. 
+
 El manejo de errores se puede mejorar utilizando una clase Result que encapsule tanto los datos exitosos como los errores. Esto se puede contemplar en los ViewModel y en las capas de repositorio. La estrategia de mapeo adecuada sería mapear los errores a estados específicos de la UI, mostrando mensajes de error adecuados al usuario.
 
 •	En el caso de uso de persistencia para Favoritos, ¿qué estrategia sugieren?
+
 Para la persistencia del login, se sugiere utilizar SharedPreferences para almacenar el token de autenticación de manera segura. Alternativamente, se puede utilizar una base de datos local como Room para almacenar información más compleja del usuario.
 
 •	Si la tendríamos que convertir a Español y conservar el Inglés, qué estrategia utilizaría para extenderla. Y si necesitamos agregar otros idiomas?
