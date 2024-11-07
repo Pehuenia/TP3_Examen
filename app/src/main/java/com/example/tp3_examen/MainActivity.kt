@@ -38,16 +38,12 @@ class MainActivity : ComponentActivity() {
             TP3_ExamenTheme() {
                 val mainViewModel: MainViewModel = viewModel(factory = MainViewModelFactory())
                 val token by viewModel.token
-
-
                 if (token == null) {
                     ModalDrawerSheet { }
                     LoginScreen(viewModel)
                 } else {
                     AppNavigation(mainViewModel)
                 }
-
-
             }
         }
     }
