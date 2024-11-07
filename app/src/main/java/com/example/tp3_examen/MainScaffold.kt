@@ -30,13 +30,12 @@ import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModel
 
 @Composable
 fun MainScaffold(
-    mainViewModel: MainViewModel,
     navController: NavHostController,
     selectedItem: String,
     onBottomBarItemSelected: (String) -> Unit,
     onDrawerIconClicked: () -> Unit
 ) {
-    val showSplash by mainViewModel.showSplash.observeAsState(true)
+
     Scaffold(
         bottomBar = {
             val currentRoute =
@@ -101,21 +100,10 @@ fun MainScaffold(
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = if (showSplash) "splash" else Rutas.HomeScreen.ruta,
+            startDestination = Rutas.HomeScreen.ruta,
             modifier = Modifier.padding(innerPadding)
         ) {
 
-            composable("splash") {
-                SplashScreen()
-                // Cuando showSplash cambia a false, navega a HomeScreen
-                LaunchedEffect(showSplash) {
-                    if (!showSplash) {
-                        navController.navigate(Rutas.HomeScreen.ruta) {
-                            popUpTo("splash") { inclusive = true }
-                        }
-                    }
-                }
-            }
             composable(Rutas.HomeScreen.ruta) { HomeScreen() }
             composable(Rutas.TransaccionsScreen.ruta) { TransactionScreen() }
             composable(Rutas.MyCardScreen.ruta) { MyCardScreen() }

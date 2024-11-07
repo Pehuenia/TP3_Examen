@@ -6,13 +6,17 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tp3_examen.data.network.AuthRetrofit
 import com.example.tp3_examen.data.shared.LoginUseCase
 import com.example.tp3_examen.navigation.AppNavigation
+import com.example.tp3_examen.navigation.Rutas
 import com.example.tp3_examen.ui.screens.LoginScreen
+import com.example.tp3_examen.ui.screens.SplashScreen
 import com.example.tp3_examen.ui.theme.TP3_ExamenTheme
 import com.example.tp3_examen.viewmodels.LoginViewModel
 import com.example.tp3_examen.viewmodels.mainviewmodel.MainViewModel
@@ -38,11 +42,21 @@ class MainActivity : ComponentActivity() {
             TP3_ExamenTheme() {
                 val mainViewModel: MainViewModel = viewModel(factory = MainViewModelFactory())
                 val token by viewModel.token
-                if (token == null) {
-                    ModalDrawerSheet { }
-                    LoginScreen(viewModel)
+                val showSplash by mainViewModel.showSplash.observeAsState(true)
+                if (showSplash) {
+                    SplashScreen()
+                    // Cuando showSplash cambia a false, navega a la pantalla principal
+                    LaunchedEffect(showSplash) {
+                        if (!showSplash) {
+                            mainViewModel.onSplashCompleted() // Cambia el estado de la splash para ocultarla
+                        }
+                    }
                 } else {
-                    AppNavigation(mainViewModel)
+                    if (token == null) {
+                        LoginScreen(viewModel)
+                    } else {
+                        AppNavigation()
+                    }
                 }
             }
         }

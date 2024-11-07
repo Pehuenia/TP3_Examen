@@ -17,9 +17,12 @@ class MainViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             delay(3.seconds) // Espera 3 segundos
-            _showSplash.value = false
+            _showSplash.value = false // Esto oculta la splash automáticamente en MainActivity
         }
     }
 
-
+    // Método opcional si deseas hacer algo adicional después de que la splash desaparezca
+    fun onSplashCompleted() {
+        // Acciones adicionales, si las necesitas
+    }
 }
