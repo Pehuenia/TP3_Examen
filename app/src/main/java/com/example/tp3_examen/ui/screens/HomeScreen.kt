@@ -34,11 +34,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 fun HomeScreen() {
+    // Context
     val context = LocalContext.current
+
+    // Access Time Management
     var lastAccessTime by remember { mutableStateOf(AccessTimeManager.getLastAccessTime(context)) }
     var isFirstAccess by remember { mutableStateOf(AccessTimeManager.isFirstAccess(context)) }
-    val getUserService = AuthRetrofit
 
+    // User Service and ViewModel
+    val getUserService = AuthRetrofit
     val getUserCase = GetUserCase(getUserService)
     val homeViewModel: HomeViewModel = viewModel(
         factory = HomeViewModelFactory(getUserCase)
@@ -47,33 +51,37 @@ fun HomeScreen() {
         HomeViewModel.UserDataState.Loading
     )
 
+    // Fetch User Data
     LaunchedEffect(true) {
         homeViewModel.getUser()
     }
 
-LaunchedEffect(Unit) {
-    if (isFirstAccess) {
-        lastAccessTime = context.getString(R.string.first_access)
-        AccessTimeManager.setLastAccessTime(context)
-        isFirstAccess = false
-    } else {
-        lastAccessTime = AccessTimeManager.getLastAccessTime(context)
-        AccessTimeManager.setLastAccessTime(context)
+    // Update Access Time
+    LaunchedEffect(Unit) {
+        if (isFirstAccess) {
+            lastAccessTime = context.getString(R.string.first_access)
+            AccessTimeManager.setLastAccessTime(context)
+            isFirstAccess = false
+        } else {
+            lastAccessTime = AccessTimeManager.getLastAccessTime(context)
+            AccessTimeManager.setLastAccessTime(context)
+        }
     }
-}
-    val firestore = FirebaseFirestore.getInstance() // Inicializa Firestore
-    val userRepository = UserRepository(firestore);
+
+    // Firestore and Transactions ViewModel
+    val firestore = FirebaseFirestore.getInstance()
+    val userRepository = UserRepository(firestore)
     val transactionsViewModel: TransactionsViewModel = viewModel(
         factory = TransactionsViewModelFactory(userRepository)
     )
     val transactionsState by transactionsViewModel.transactionsState.observeAsState(
         TransactionsViewModel.TransactionsState.Loading
     )
+
+    // Fetch Bank Data
     LaunchedEffect(Unit) {
         transactionsViewModel.loadBankData()
     }
-
-
 
     Column(
         modifier = Modifier
@@ -124,6 +132,7 @@ LaunchedEffect(Unit) {
         // cardNumber = "4957 7124 8154 2582" ,
         //expirationDate = "12/23"
         CreditCard()
+
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
