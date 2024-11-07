@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     ModalDrawerSheet { }
                     LoginScreen(viewModel)
                 } else {
-                    AppNavigation(viewModel)
+                    AppNavigation()
                 }
             }
         }

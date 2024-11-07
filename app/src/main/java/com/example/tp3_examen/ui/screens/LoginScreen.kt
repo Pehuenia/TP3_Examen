@@ -49,6 +49,8 @@ fun LoginScreen(viewModel: LoginViewModel) {
 
     var usuario by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
+    val errorMessage by viewModel.errorMessage
+
 
     BackgroundLogin {
         Box(
@@ -123,11 +125,28 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     )
                 }
                 Spacer(modifier = Modifier.weight(1f))
+                if (errorMessage != null) {
+                    Text(
+                        text = errorMessage.toString(),
+                        color = colorResource(id = R.color.red_900),
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Medium
+                        ),
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center
+                    )
+                }
+
                 Row(
                     Modifier
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+
+
                     CircularIcon(
                         backgroundColor = colorResource(id = R.color.gray_500),
                         icon = Icons.Default.Check,
