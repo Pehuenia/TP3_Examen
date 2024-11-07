@@ -36,11 +36,14 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.tp3_examen.MainScaffold
 import com.example.tp3_examen.R
+import com.example.tp3_examen.components.drawermenu.CustomDrawer
 import com.example.tp3_examen.components.drawermenu.NavDrawer
 import com.example.tp3_examen.ui.screens.CargarSubeScreen
 import com.example.tp3_examen.ui.screens.HomeScreen
@@ -50,6 +53,46 @@ import com.example.tp3_examen.ui.screens.TransactionScreen
 import com.example.tp3_examen.viewmodels.LoginViewModel
 import kotlinx.coroutines.launch
 
+
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun AppNavigation(viewModel: LoginViewModel) {
+    val navController = rememberNavController()
+    var selectedItem by remember { mutableStateOf(Rutas.HomeScreen.ruta) } // Estado para el ítem seleccionado
+    val scope = rememberCoroutineScope()
+    var isDrawerOpen by remember { mutableStateOf(false) }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .pointerInput(Unit) { // Detectar gestos de deslizamiento
+                detectHorizontalDragGestures { change, dragAmount ->
+                    if (dragAmount < -60 && !isDrawerOpen) {
+                        isDrawerOpen = true
+                    } else if (dragAmount > 60 && isDrawerOpen) {
+                        isDrawerOpen = false
+                    }
+                    change.consume()
+                }
+            }
+    ) {
+        MainScaffold(
+            navController = navController,
+            selectedItem = selectedItem,
+            onBottomBarItemSelected = { selectedItem = it },
+            onDrawerIconClicked = { isDrawerOpen = true }
+        )
+
+        CustomDrawer(
+            isDrawerOpen = isDrawerOpen,
+            onCloseDrawer = { isDrawerOpen = false },
+        )
+    }
+}
+
+
+/*
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AppNavigation(viewModel: LoginViewModel) {
@@ -224,3 +267,4 @@ fun BottomBarIcon(
 }
 
 
+*/
