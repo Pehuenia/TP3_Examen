@@ -1,9 +1,6 @@
 package com.example.tp3_examen.navigation
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
@@ -18,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +32,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -48,7 +45,8 @@ import com.example.tp3_examen.ui.screens.MyCardScreen
 import com.example.tp3_examen.ui.screens.PagoDeServiciosScreen
 import com.example.tp3_examen.ui.screens.TransactionScreen
 import com.example.tp3_examen.viewmodels.LoginViewModel
-import kotlinx.coroutines.launch
+import com.example.tp3_examen.viewmodels.drawerviewmodel.DrawerViewModelFactory
+import com.example.tp3_examen.viewmodels.drawerviewmodel.NavDrawerViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -56,8 +54,7 @@ fun AppNavigation(viewModel: LoginViewModel) {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf(Rutas.HomeScreen.ruta) } // Estado para el ítem seleccionado
     val scope = rememberCoroutineScope()
-    //val viewModel: NavDrawerViewModel = viewModel(factory = DrawerViewModelFactory())
-
+    val drawerViewModel: NavDrawerViewModel = viewModel(factory = DrawerViewModelFactory())
     var isDrawerOpen by remember { mutableStateOf(false) }
 
 
@@ -182,7 +179,7 @@ fun AppNavigation(viewModel: LoginViewModel) {
                         }
                     }
             ) {
-                NavDrawer() // Sin parámetros adicionales
+                NavDrawer(drawerViewModel) // Sin parámetros adicionales
             }
         }
     }
